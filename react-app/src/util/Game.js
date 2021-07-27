@@ -1,4 +1,4 @@
-import Deck from './Deck';
+const { Deck } = require('./Deck.js');
 
 valueMap = {
     'A': 11,
@@ -69,7 +69,7 @@ class Game {
     getWinner() {
         if (this.winner) return this.winner;
         if (this.playerDone && this.dealerDone) {
-            this.winner = this.playerScore > this.dealerDone ? 'Player' : 'Dealer';
+            this.winner = this.playerScore > this.dealerScore ? 'Player' : 'Dealer';
         }
         return this.winner;
     }
@@ -79,11 +79,16 @@ class Game {
         let aceCount = 0;
         for (let card of cards) {
             score += valueMap[card.value];
-            if (valueMap[card.value] === 'A') aceCount++;
+            if (card.value === 'A') {
+                aceCount++;
+            }
         }
-        if (score > 21 && aceCount) {
+        while (score > 21 && aceCount) {
             score -= 10;
+            aceCount--;
         }
         return score;
     }
 }
+
+module.exports = { Game }
