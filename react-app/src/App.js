@@ -5,8 +5,6 @@ import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import UsersList from "./components/UsersList";
-import User from "./components/User";
 // import { authenticate } from "./services/auth";
 import { authenticate } from "./store/session";
 
@@ -36,14 +34,14 @@ function App() {
         <Route path="/sign-up" exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path="/users" exact={true} >
-          <UsersList/>
+        <ProtectedRoute path="/main" exact={true} >
+
         </ProtectedRoute>
-        <ProtectedRoute path="/users/:userId" exact={true} >
-          <User />
+        <ProtectedRoute path="/single-player" exact={true}>
+
         </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true}>
-          <h1>My Home Page</h1>
+        <ProtectedRoute path="/multiplayer-player" exact={true}>
+
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
