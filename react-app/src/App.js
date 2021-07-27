@@ -3,9 +3,9 @@ import { useDispatch } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
+import SplashPage from "./components/SplashPage/SplashPage";
 import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-// import { authenticate } from "./services/auth";
 import { authenticate } from "./store/session";
 
 function App() {
@@ -29,7 +29,7 @@ function App() {
       <NavBar />
       <Switch>
         <Route path="/" exact={true}>
-
+          <SplashPage />
         </Route>
         <Route path="/login" exact={true}>
           <LoginForm />
