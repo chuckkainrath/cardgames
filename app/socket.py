@@ -61,6 +61,7 @@ def on_join(data):
         print('Player seat at table: ', 0)
         room = len(rooms) - 1
 
+    userStatusMap[username] = GAME_OVER
     emit('player_joined', { 'players': rooms[room], 'seat': userSeatMap[username], 'status': roomStatus[room] }, to=room)
 
 
@@ -71,11 +72,9 @@ def on_leave(data):
     leave_room(room)
     del userRoomMap[username]
     del userSeatMap[username]
+    del userStatusMap[username]
 
-    if username in userStatusMap:
-        del userStatusMap[username]
-
-    rooms[room] = [player for player in rooms[room] if player != username]
+    rooms[room].remove(username)
     emit('player_left', { 'players': rooms[room] }, to=room)
 
 
@@ -83,15 +82,39 @@ def on_leave(data):
 def on_ready(data):
     username = data['username']
     userStatusMap[username] = READY
+    room = userRoomMap[username]
+
+    for player in rooms[room]:
+        if userStatusMap[player] != READY:
+            return
+
+    # If here, all players ready
+    roomStatus[room] = IN_GAME
+    emit('start_game', to=room)
 
 
 @socketio.on('game_over')
 def on_game_over(data):
     username = data['username']
     userStatusMap[username] = GAME_OVER
+    room = userRoomMap[username]
+
+    for player in rooms[room]:
+        if userStatusMap[player] != GAME_OVER:
+            return
+
+    # If here, all players done
+    roomStatus[room] = GAME_OVER
+    emit('game_over', to=room)
 
 
 @socketio.on('hit')
 def on_hit(data):
     username = data['username']
     card_idx = data['cardIdx']
+
+
+@socketio.on('hold')
+def on_hold(data):
+    username = data['username']
+    

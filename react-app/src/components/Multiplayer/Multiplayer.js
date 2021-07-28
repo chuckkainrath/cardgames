@@ -21,6 +21,14 @@ function Multiplayer() {
             setPlayers(data.players)
         });
 
+        socket.on('player_left', data => {
+            setPlayers(data.players);
+        })
+
+        return (() => {
+            socket.removeAllListeners('player_joined');
+            socket.removeAllListeners('player_left');
+        })
     }, [players])
 
     return (
