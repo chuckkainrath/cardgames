@@ -31,9 +31,12 @@ let valuesDict = {
 class Deck {
     constructor() {
         this.cards = [];
-        for (let i = 0; i < 4; i++) {
-            for (let j = 0; j < 13; j++) {
-                this.cards.push(new Card(suitDict[i], valuesDict[j]));
+        // 4 copies of each cards (4 decks per game)
+        for (let k = 0; k < 4; k++) {
+            for (let i = 0; i < 4; i++) {
+                for (let j = 0; j < 13; j++) {
+                    this.cards.push(new Card(suitDict[i], valuesDict[j]));
+                }
             }
         }
     }
