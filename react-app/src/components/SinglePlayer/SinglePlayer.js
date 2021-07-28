@@ -113,7 +113,7 @@ function SinglePlayer() {
             }
             {(gameState === IN_GAME || gameState === GAME_OVER) &&
                 <div>
-                    <div>
+                    <div className='flex flex-initial flex-row'>
 
                         {!btnDisable &&
                             <>
@@ -136,7 +136,7 @@ function SinglePlayer() {
                             </>
                         }
                     </div>
-                    <div>
+                    <div className='flex flex-initial flex-row p-2'>
                         <h1>Player Cards</h1>
                         {playerCards && playerCards.map((card, idx) => (
                             <>
