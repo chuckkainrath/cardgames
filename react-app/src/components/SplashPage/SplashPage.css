@@ -29,7 +29,7 @@ header .logo
   position: relative;
   width: 3.75rem;
   height: 3.75rem;
-  background: url(https://i.ibb.co/HrfVRcx/menu.png);
+  background: url('https://i.ibb.co/HrfVRcx/menu.png');
   background-repeat: no-repeat;
   background-size: 1.875rem;
   background-position: center;
@@ -37,7 +37,7 @@ header .logo
 }
 .toggle.active
 {
-  background: url(https://i.ibb.co/rt3HybH/close.png);
+  background: url('https://i.ibb.co/rt3HybH/close.png');
   background-repeat: no-repeat;
   background-size: 1.563rem;
   background-position: center;
