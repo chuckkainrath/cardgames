@@ -44,7 +44,7 @@ function SinglePlayer() {
         while (!game.dealerDone) game.dealerHit()
         setWinner(game.getWinner());
         setGameState(GAME_OVER);
-        await dispatch(addGame(user.id , winner === 'Player'));
+        await dispatch(addGame(user.id , game.getWinner()));
     }
 
     return (

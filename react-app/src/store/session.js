@@ -74,13 +74,13 @@ export const signUp = (username, email, password) => async (dispatch)=> {
     dispatch(setUser(data));
 }
 
-export const addGame = (userId, won) => async dispatch => {
-    const response = await fetch(`/api/user/${userId}`, {
+export const addGame = (userId, winner) => async dispatch => {
+    const response = await fetch(`/api/users/${userId}`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ won })
+        body: JSON.stringify({ winner })
     });
     const user = await response.json();
     dispatch(setUser(user));
