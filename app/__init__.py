@@ -40,7 +40,7 @@ Migrate(app, db)
 CORS(app)
 
 # Initialize the app with socket
-socket.init_app(app)
+socketio.init_app(app)
 
 
 @app.before_request
