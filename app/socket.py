@@ -22,8 +22,8 @@ def on_join(data):
     username = data['username']
     joined = False
     for i in range(len(rooms)):
-        if rooms[i] < 4:
-            rooms[i] += 1
+        if len(rooms[i]) < 4:
+            rooms[i].append(username)
             join_room(i)
             joined = True
             break
@@ -32,11 +32,13 @@ def on_join(data):
         rooms.append(1)
         join_room(i + 1)
 
-    emit('player_joined', { 'username': username }, to=str(i))
+    emit('player_joined', { 'players': rooms[i] }, to=str(i))
 
 
 @socketio.on('leave')
 def on_leave(data):
     room = data['room']
+    username = data['username']
     leave_room(room)
-    rooms[room] -= 1
+    rooms[room] = [player for player in rooms[room] if player != username]
+    emit('player_left', { 'players': rooms[room] }, to=str(room))
