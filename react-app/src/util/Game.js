@@ -1,6 +1,6 @@
 const { Deck } = require('./Deck.js');
 
-valueMap = {
+const valueMap = {
     'A': 11,
     'K': 10,
     'Q': 10,
@@ -27,6 +27,12 @@ class Game {
         this.dealerDone = false;
         this.winner = '';
 
+        // Have to bind functions to Class
+        this.playerHit = this.playerHit.bind(this);
+        this.playerStop = this.playerStop.bind(this);
+        this.dealerHit = this.dealerHit.bind(this);
+        this.getWinner = this.getWinner.bind(this);
+
         this.playerCards.push(this.deck.drawCard());
         this.dealerCards.push(this.deck.drawCard());
         this.playerCards.push(this.deck.drawCard());
@@ -34,7 +40,7 @@ class Game {
         if (this.playerScore === 21) this.playerDone = true;
         this.dealerCards.push(this.deck.drawCard());
         this.dealerScore = Game.calculateScore(this.dealerCards);
-        if (this.dealerScore >= 17) this.playerDone = true;
+        if (this.dealerScore >= 17) this.dealerDone = true;
     }
 
     playerHit() {
