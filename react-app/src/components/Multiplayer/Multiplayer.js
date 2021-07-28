@@ -5,28 +5,31 @@ import { socket } from '../../util/socket';
 
 function Multiplayer() {
     const dispatch = useDispatch();
-    const [room, setRoom] = useState();
-    const [users, setUsers] = useState()
+    const [players, setPlayers] = useState()
     const user = useSelector(state => state.session.user);
 
     useEffect(() => {
         socket.emit('join', { username: user.username });
 
         return (() => {
-            socket.emit('leave', { room, username: user.username });
+            socket.emit('leave', { username: user.username });
         })
     }, []);
 
     useEffect(() => {
         socket.on('player_joined', data => {
-            const room 
+            setPlayers(data.players)
         });
 
-    }, [users])
+    }, [players])
 
     return (
         <div>
-
+            {players &&
+                players.map((player, idx) => (
+                    <p key={idx}>{player}</p>
+                ))
+            }
         </div>
     );
 }
