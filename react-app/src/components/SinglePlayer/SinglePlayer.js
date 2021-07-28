@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addGame } from '../../store/session';
 
 const { Game } = require('../../util/Game');
 
@@ -7,6 +9,8 @@ const IN_GAME = 'IN_GAME';
 const GAME_OVER = 'GAME_OVER';
 
 function SinglePlayer() {
+    const dispatch = useDispatch();
+    const user = useSelector(state => state.session.user);
     const [game, setGame] = useState();
     const [gameState, setGameState] = useState(NOT_STARTED)
     const [playerCards, setPlayerCards] = useState();
@@ -34,12 +38,13 @@ function SinglePlayer() {
         if (game.playerScore >= 21) playerTurnFinished()
     }
 
-    const playerTurnFinished = () => {
+    const playerTurnFinished = async () => {
         game.playerStop();
         setBtnDisable(true);
         while (!game.dealerDone) game.dealerHit()
         setWinner(game.getWinner());
         setGameState(GAME_OVER);
+        await dispatch(addGame(user.id , winner === 'Player'));
     }
 
     return (
