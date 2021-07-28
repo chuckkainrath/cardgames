@@ -46,6 +46,10 @@ class Deck {
         let [card] = this.cards.splice(idx, 1);
         return card;
     }
+
+    removeCard(index) {
+        this.cards.splice(index, 1);
+    }
 }
 
 module.exports = { Deck }
