@@ -1,15 +1,9 @@
 from flask import Blueprint, jsonify
+from flask.globals import request
 from flask_login import login_required
-from app.models import User
+from app.models import db, User
 
 user_routes = Blueprint('users', __name__)
-
-
-@user_routes.route('/')
-@login_required
-def users():
-    users = User.query.all()
-    return {"users": [user.to_dict() for user in users]}
 
 
 @user_routes.route('/<int:id>')
@@ -19,3 +13,12 @@ def user(id):
     return user.to_dict()
 
 
+@user_routes.route('/<int:user_id>', methods=['PATCH'])
+def updateWinLoss(user_id):
+    user = User.query.get(user_id)
+    if request.json['won']:
+        user.wins += 1
+    else:
+        user.losses += 1
+    db.session.commit()
+    return user.to_dict()

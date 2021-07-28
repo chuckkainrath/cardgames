@@ -1,6 +1,7 @@
 // constants
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
+const ADD_GAME = "session/ADD_GAME";
 
 const setUser = (user) => ({
     type: SET_USER,
@@ -10,8 +11,6 @@ const setUser = (user) => ({
 const removeUser = () => ({
     type: REMOVE_USER
 })
-
-
 
 // thunks
 export const authenticate = () => async (dispatch) => {
@@ -26,7 +25,7 @@ export const authenticate = () => async (dispatch) => {
         return;
     }
     dispatch(setUser(data))
-    
+
 }
 
 export const login = (email, password) => async (dispatch) => {
@@ -73,6 +72,16 @@ export const signUp = (username, email, password) => async (dispatch)=> {
     });
     const data = await response.json();
     dispatch(setUser(data));
+}
+
+export const addGame = (user, won) => async dispatch => {
+    const response = await fetch(`/api/user/${user.id}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ won })
+    });
 }
 
 // reducer
