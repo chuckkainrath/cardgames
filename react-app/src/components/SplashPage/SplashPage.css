@@ -95,15 +95,9 @@ header .logo
   color: #fff;
   line-height: 1em;
   text-transform: uppercase;
+  /* backdrop-filter: blur(20px); */
 }
-.splash-text h3
-{
-  font-size: 4em;
-  font-weight: 700;
-  color: #fff;
-  line-height: 1em;
-  text-transform: uppercase;
-}
+
 .splash-text p
 {
   font-size: 1.1em;
@@ -111,6 +105,7 @@ header .logo
   margin: 1.25rem 0;
   font-weight: 400;
   max-width: 43.75rem;
+  /* backdrop-filter: blur(20px); */
 }
 .splash-text a
 {

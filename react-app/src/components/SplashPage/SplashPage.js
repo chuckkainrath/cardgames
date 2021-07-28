@@ -22,8 +22,8 @@ function SplashPage() {
           </h2>
           <p>
             Blackjack is very scientific. There's always a right answer and a
-            wrong answer. Do you take a card, increase your bet, bet big or bet
-            small. There's absolutely a right and wrong answer.
+            wrong answer. <br></br> Do you take a card, increase your bet, bet big or bet
+            small. <br></br>There's absolutely a right and wrong answer.
           </p>
                   <NavLink to="/login">Log In</NavLink>
                  {"  "} {/*  do not remove space */}
