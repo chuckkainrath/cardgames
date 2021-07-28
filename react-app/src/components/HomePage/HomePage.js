@@ -7,6 +7,7 @@ function HomePage() {
     return (
         <div>
             <button onClick={() => history.push('/single-player')}>Single Player</button>
+            <button onClick={() => history.push('/multi-player')}>Multiplayer</button>
         </div>
     );
 }

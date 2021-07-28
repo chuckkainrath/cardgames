@@ -5,6 +5,7 @@ import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import SplashPage from "./components/SplashPage/SplashPage";
 import SinglePlayer from "./components/SinglePlayer/SinglePlayer";
+import Multiplayer from "./components/Multiplayer/Multiplayer";
 import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import { authenticate } from "./store/session";
@@ -48,8 +49,8 @@ function App() {
         <ProtectedRoute path="/single-player" exact={true}>
           <SinglePlayer />
         </ProtectedRoute>
-        <ProtectedRoute path="/multiplayer-player" exact={true}>
-
+        <ProtectedRoute path="/multi-player" exact={true}>
+          <Multiplayer />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
