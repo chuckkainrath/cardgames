@@ -50,14 +50,16 @@ function Multiplayer() {
 
     useEffect(() => {
         socket.on('start_game', data => {
-            console.log(data);
-            console.log(data.drawIndices);
             const game = new MultiPlayerGame(data.playerOrder, data.drawIndices);
-            console.log(game);
             setGame(game);
             setGameState(IN_GAME);
             setPlayers(data.playerOrder);
             setPlayerTurn(game.playerTurn);
+            const players = data.playerOrder
+            setPlayerOne(players[0])
+            if (players[1]) setPlayerTwo(players[1])
+            if (players[2]) setPlayerThree(players[2])
+            if (players[3]) setPlayerFour(players[3])
         });
     }, [game, players])
 
@@ -76,7 +78,47 @@ function Multiplayer() {
                 <button onClick={readyUp}>New Game</button>
             }
             {gameState === IN_GAME &&
-                <p>Game started</p>
+                <div>
+                    {game &&
+                        <div>
+                            <h1>Dealer</h1>
+                            <p>{game.dealerCards[0].suit} {game.dealerCards[0].value}</p>
+                            <p>Dealer card 2?</p>
+                        </div>
+                    }
+                    {playerOne &&
+                        <div>
+                            <h1>{playerOne}</h1>
+                            {game.player1Cards.map((card, idx) => (
+                                <p key={idx}>{card.suit} {card.value}</p>
+                            ))}
+                        </div>
+                    }
+                    {playerTwo &&
+                        <div>
+                            <h1>{playerTwo}</h1>
+                            {game.player2Cards.map((card, idx) => (
+                                <p key={idx}>{card.suit} {card.value}</p>
+                            ))}
+                        </div>
+                    }
+                    {playerThree &&
+                        <div>
+                            <h1>{playerThree}</h1>
+                            {game.player3Cards.map((card, idx) => (
+                                <p key={idx}>{card.suit} {card.value}</p>
+                            ))}
+                        </div>
+                    }
+                    {playerFour &&
+                        <div>
+                            <h1>{playerFour}</h1>
+                            {game.player4Cards.map((card, idx) => (
+                                <p key={idx}>{card.suit} {card.value}</p>
+                            ))}
+                        </div>
+                    }
+                </div>
             }
         </div>
     );
