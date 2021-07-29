@@ -133,14 +133,14 @@ function SinglePlayer() {
                 <button className='inset-x-0 ml-auto mr-auto absolute bg-red-600 hover:bg-red-700 text-white text-sm px-4 py-2  border rounded-full' onClick={startGame}>Start Game</button>
             </div>
             }
-        <div className='bg-poker-table flex  justify-center'>
+        <div className='bg-poker-table flex  justify-center m-0'>
 
             {(gameState === IN_GAME || gameState === GAME_OVER) &&
                 <div>
-                    <div className='dealer-container flex flex-column p-2 items-center justify-center'>
-                    <div className='flex-column items-center justify-center'>
-                    <img className='rounded-full pb-2 h-30 w-30 ' src={dealer} alt='dealerphoto'></img>
-                    <div className='flex flex-row items-center justify-center'>
+                    <div className='dealer-container flex flex-column p-2 m-0 items-center justify-center'>
+                    <div className='flex-column items-center justify-center m-0'>
+                    <img className='rounded-full pb-2 h-30 w-30 m-0' src={dealer} alt='dealerphoto'></img>
+                    <div className='flex flex-row items-center justify-center m-0'>
 
                         {!btnDisable &&
                             <>
