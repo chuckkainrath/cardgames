@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
@@ -8,8 +8,17 @@ import logo from './bjkids.png'
 const NavBar = () => {
   const user = useSelector(state => state.session.user);
   const [isOpen, setIsOpen] = useState(false);
+  const [WLR, setWLR] = useState(null)
+
+useEffect(() => {
+  if (user) {
+    setWLR(Math.round((user.wins/user.losses) * 100))
+  }
+},[user]);
+
   if (!user) return null;
   
+
   return (
     <div>
       <nav className="bg-black">
@@ -47,6 +56,10 @@ const NavBar = () => {
                 </div>
               </div>
             </div>
+              <div className='inline-flex items-end justify-end text-white text-xs'>
+                <p className='pr-4'>Welcome, {user.username}</p>
+                W / L: {WLR}%
+              </div>
             <div className="-mr-2 flex md:hidden">
               <button
                 onClick={() => setIsOpen(!isOpen)}
