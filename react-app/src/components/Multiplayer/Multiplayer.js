@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { MultiPlayerGame } from '../../util/Game';
 import { socket } from '../../util/socket';
 
 const IN_GAME = 'IN_GAME';
@@ -11,6 +12,8 @@ function Multiplayer() {
     const [playerTwo, setPlayerTwo] = useState()
     const [playerThree, setPlayerThree] = useState()
     const [playerFour, setPlayerFour] = useState()
+    const [playerTurn, setPlayerTurn] = useState();
+    const [players, setPlayers] = useState();
     const [gameState, setGameState] = useState();
     const [game, setGame] = useState();
     const user = useSelector(state => state.session.user);
@@ -25,7 +28,7 @@ function Multiplayer() {
 
     useEffect(() => {
         socket.on('player_joined', data => {
-            setPlayers(data.players)
+            //setPlayers(data.players)
             if (data.username === user.username) {
                 if (data.status === IN_GAME) {
                     // TODO: have to wait for next game
@@ -36,20 +39,25 @@ function Multiplayer() {
         });
 
         socket.on('player_left', data => {
-            setPlayers(data.players);
+            //setPlayers(data.players);
         })
 
         return (() => {
             socket.removeAllListeners('player_joined');
             socket.removeAllListeners('player_left');
         })
-    }, [players])
+    }, [])
 
     useEffect(() => {
         socket.on('start_game', data => {
-
+            const game = new MultiPlayerGame(data.playerOrder, data.drawIndices);
+            console.log(game);
+            setGame(game);
+            setGameState(IN_GAME);
+            setPlayers(data.playerOrder);
+            setPlayerTurn(game.playerTurn);
         });
-    }, [])
+    }, [game, players])
 
     const readyUp = () => {
         socket.emit('ready', { username: user.username });
@@ -64,6 +72,9 @@ function Multiplayer() {
             }
             {gameState === GAME_OVER &&
                 <button onClick={readyUp}>New Game</button>
+            }
+            {gameState === IN_GAME &&
+                <p>Game started</p>
             }
         </div>
     );

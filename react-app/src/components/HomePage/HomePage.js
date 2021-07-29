@@ -11,7 +11,7 @@ function HomePage() {
       <div className="home-page-elements">
        <LeaderBoard />
         <div className="button-divs">
-          
+
           <div className="single-div">
             <button
               className="single-button"
@@ -23,7 +23,7 @@ function HomePage() {
           <div className="single-div">
             <button
               className="multi-button"
-              onClick={() => history.push("")}
+              onClick={() => history.push("/multi-player")}
             >
               Multi-Player
             </button>
