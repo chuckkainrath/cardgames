@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addGame } from '../../store/session';
 import './singleplayer.css';
@@ -57,6 +57,14 @@ import HK from './Cards/cardHeartsK.png'
 import HA from './Cards/cardHeartsA.png'
 import dealer from './dealer.png'
 
+
+import {
+    useWindowSize,
+    useWindowWidth,
+    useWindowHeight,
+} from '@react-hook/window-size'
+import Confetti from 'react-confetti'
+
 const { SinglePlayerGame } = require('../../util/Game');
 
 const NOT_STARTED = 'NOT_STARTED';
@@ -69,7 +77,7 @@ const valueMap = {
 
 function SinglePlayer() {
 
-
+    const { width, height } = useWindowSize();
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user);
     const [game, setGame] = useState();
@@ -77,8 +85,19 @@ function SinglePlayer() {
     const [playerCards, setPlayerCards] = useState();
     const [btnDisable, setBtnDisable] = useState(false);
     const [winner, setWinner] = useState('');
+    const [showCard, setShowCard] = useState(false);
+
+    function cardSetter () {
+        setTimeout(() => {
+            setShowCard(true)
+        }, 1000)
+    };
+
 
     const startGame = () => {
+        setWinner('')
+        setShowCard(false)
+        cardSetter()
         const game = new SinglePlayerGame();
         setBtnDisable(false);
         setGame(game);
@@ -103,10 +122,11 @@ function SinglePlayer() {
         setGameState(GAME_OVER);
         await dispatch(addGame(user.id , game.getWinner()));
     };
-    
+
+
     return (
         <>
-
+        { winner === 'Player' ? <Confetti width={width} height={height}  /> : null }
             {gameState === NOT_STARTED &&
             <div className='fixed h-full w-full flex items-center justify-center'>
 
@@ -124,15 +144,17 @@ function SinglePlayer() {
 
                         {!btnDisable &&
                             <>
-                                <img src={valueMap[game.dealerCards[0].suit.concat(game.dealerCards[0].value)]} alt='cardValue' />
-                                <img src={cardBack} alt='cardBack'></img>
+                                
+                             {showCard && <img className='animate-fade-in-down' src={valueMap[game.dealerCards[0].suit.concat(game.dealerCards[0].value)]} alt='cardValue' /> }
+                               
+                                <img className='animate-fade-in-down' src={cardBack} alt='cardBack'></img>
                             </>
                         }
                         {btnDisable &&
                             <>
                                 {game.dealerCards && game.dealerCards.map((card, idx) => (
                                     <>
-                                     <img src={valueMap[game.dealerCards[idx].suit.concat(game.dealerCards[idx].value)]} alt='dealerCard' />
+                                     <img className='animate-fade-in-down' src={valueMap[game.dealerCards[idx].suit.concat(game.dealerCards[idx].value)]} alt='dealerCard' />
                                      </>
                                 ))}
                             </>
@@ -141,6 +163,7 @@ function SinglePlayer() {
                     </div>
                 </div>
                 </div>
+
                     {gameState === GAME_OVER &&
                         <div className=' flex items-center justify-center pt-6 '>
                             <div className='flex '>
@@ -149,12 +172,13 @@ function SinglePlayer() {
                             </div>
                         </div>
                     }
+
                 <div className='flex items-center justify-center pt-20' >
                     <div className=' flex-column items-center justify-center'>
                     <div className='flex flex-initial flex-row p-2 '>
                         {playerCards && playerCards.map((card, idx) => (
                             <>
-                                <img className='animate-fade-in-down' src={valueMap[game.playerCards[idx].suit.concat(game.playerCards[idx].value)]} />
+                               <img className='animate-fade-in-down' src={valueMap[game.playerCards[idx].suit.concat(game.playerCards[idx].value)]} alt='playercard'/> 
                             </>
                         ))}
                     </div>
