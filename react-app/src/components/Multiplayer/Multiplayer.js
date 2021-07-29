@@ -50,7 +50,8 @@ function Multiplayer() {
 
     useEffect(() => {
         socket.on('start_game', data => {
-            game = new MultiPlayerGame(data.playerOrder, data.drawIndices);
+            const game = new MultiPlayerGame(data.playerOrder, data.drawIndices);
+            console.log(game);
             setGame(game);
             setGameState(IN_GAME);
             setPlayers(data.playerOrder);
