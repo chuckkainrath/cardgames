@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { MultiPlayerGame } from '../../util/Game';
+import { MultiPlayerGame } from '../../util/MultiPlayerGame';
 import { socket } from '../../util/socket';
 import { addGame } from '../../store/session';
 
