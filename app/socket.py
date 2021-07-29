@@ -1,4 +1,5 @@
 from flask_socketio import SocketIO, join_room, leave_room, emit
+from flask_login import current_user
 import os
 from app.models import db, User
 import json
@@ -29,16 +30,34 @@ userSeatMap = {}
 
 userRoomMap = {}
 
+@socketio.on('disconnect')
+def on_disconnect():
+    username = current_user.username
+    if username in userRoomMap:
+        room = userRoomMap[username]
+        leave_room(room)
+        del userRoomMap[username]
+        del userSeatMap[username]
+        del userStatusMap[username]
+
+        rooms[room].remove(username)
+
+        # If room is empty, change room status to game over
+        if len(rooms[room]) == 0:
+            roomStatus[room] = GAME_OVER
+
+        # If player leaves, start game if others are ready
+        # TODO
+
+        emit('player_left', { 'players': rooms[room] }, to=room)
+
+
 @socketio.on('join')
 def on_join(data):
     username = data['username']
     joined = False
     room = -1
-    print(rooms)
-    print(roomStatus)
-    print(userStatusMap)
-    print(userSeatMap)
-    print(userRoomMap)
+
     for i in range(len(rooms)):
         if len(rooms[i]) < 4:
             join_room(i)
@@ -76,9 +95,12 @@ def on_leave(data):
     username = data['username']
     room = userRoomMap[username]
     leave_room(room)
-    del userRoomMap[username]
-    del userSeatMap[username]
-    del userStatusMap[username]
+    if username in userRoomMap:
+        del userRoomMap[username]
+    if username in userStatusMap:
+        del userSeatMap[username]
+    if username in userStatusMap:
+        del userStatusMap[username]
 
     rooms[room].remove(username)
 
