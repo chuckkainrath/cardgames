@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { MultiPlayerGame } from '../../util/Game';
 import { socket } from '../../util/socket';
+import { addGame } from '../../store/session';
 
 const IN_GAME = 'IN_GAME';
 const GAME_OVER = 'GAME_OVER';
@@ -106,7 +107,7 @@ function Multiplayer() {
             game.nextPlayer();
         });
 
-        socket.on('game_end', data => {
+        socket.on('game_end', async data => {
             const dealerCardIndices = data.dealer_card_indices;
             if (playerTurn !== user.username) {
                 game.nextPlayer();
@@ -115,6 +116,7 @@ function Multiplayer() {
             setPlayerTurn('Dealer');
             setGameState(GAME_OVER);
             setWinner(game.getWinner(user.username));
+            await dispatch(addGame(user.id, game.getWinner()))
         });
 
         return (() => {
