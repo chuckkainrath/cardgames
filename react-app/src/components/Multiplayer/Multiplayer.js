@@ -25,7 +25,7 @@ function Multiplayer() {
 
     useEffect(() => {
         socket.on('player_joined', data => {
-            setPlayers(data.players)
+            //setPlayers(data.players)
             if (data.username === user.username) {
                 if (data.status === IN_GAME) {
                     // TODO: have to wait for next game
@@ -36,14 +36,14 @@ function Multiplayer() {
         });
 
         socket.on('player_left', data => {
-            setPlayers(data.players);
+            //setPlayers(data.players);
         })
 
         return (() => {
             socket.removeAllListeners('player_joined');
             socket.removeAllListeners('player_left');
         })
-    }, [players])
+    }, [])
 
     useEffect(() => {
         socket.on('start_game', data => {
@@ -57,11 +57,11 @@ function Multiplayer() {
 
     return (
         <div>
-            {players &&
+            {/* {players &&
                 players.map((player, idx) => (
                     <p key={idx}>{player}</p>
                 ))
-            }
+            } */}
             {gameState === GAME_OVER &&
                 <button onClick={readyUp}>New Game</button>
             }
