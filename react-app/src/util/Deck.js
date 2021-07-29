@@ -53,7 +53,7 @@ class Deck {
     }
 
     getIndex() {
-        return Math.floor(Math.randon() * 1000) % this.cards.length;
+        return Math.floor(Math.random() * 1000) % this.cards.length;
     }
 }
 

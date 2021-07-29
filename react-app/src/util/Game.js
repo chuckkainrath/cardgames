@@ -133,6 +133,7 @@ class MultiPlayerGame extends Game {
         this.drawCard = this.drawCard.bind(this);
         this.getWinner = this.getWinner.bind(this);
         this.removeCard = this.removeCard.bind(this);
+        this.playerDrew = this.playerDrew.bind(this);
 
         // Get players set up and initial draws complete
         this.player1Cards = [this.removeCard(draws.shift())];
@@ -175,18 +176,18 @@ class MultiPlayerGame extends Game {
     }
 
     drawCard() {
-        const index = this.game.getIndex();
-        const card = this.game.removeCard(index);
-        if (this.playerTurn === 'Player1') {
+        const index = this.deck.getIndex();
+        const card = this.deck.removeCard(index);
+        if (this.playerTurn === this.players[0]) {
             this.player1Cards.push(card)
             this.player1Score = Game.calculateScore(this.player1Cards);
         } else if (this.playerTurn === this.players[1]) {
             this.player2Cards.push(card)
             this.player2Score = Game.calculateScore(this.player2Cards);
-        } else if (this.playerTurn === this.players[1]) {
+        } else if (this.playerTurn === this.players[2]) {
             this.player3Cards.push(card)
             this.player3Score = Game.calculateScore(this.player3Cards);
-        } else if (this.playerTurn === this.players[1]) {
+        } else if (this.playerTurn === this.players[3]) {
             this.player4Cards.push(card)
             this.player4Score = Game.calculateScore(this.player4Cards);
         } else {
@@ -194,6 +195,26 @@ class MultiPlayerGame extends Game {
             this.dealerScore = Game.calculateScore(this.dealerCards);
         }
         return index;
+    }
+
+    playerDrew(idx) {
+        const card = this.deck.removeCard(idx);
+        if (this.playerTurn === this.players[0]) {
+            this.player1Cards.push(card)
+            this.player1Score = Game.calculateScore(this.player1Cards);
+        } else if (this.playerTurn === this.players[1]) {
+            this.player2Cards.push(card)
+            this.player2Score = Game.calculateScore(this.player2Cards);
+        } else if (this.playerTurn === this.players[2]) {
+            this.player3Cards.push(card)
+            this.player3Score = Game.calculateScore(this.player3Cards);
+        } else if (this.playerTurn === this.players[3]) {
+            this.player4Cards.push(card)
+            this.player4Score = Game.calculateScore(this.player4Cards);
+        } else {
+            this.dealerCards.push(card);
+            this.dealerScore = Game.calculateScore(this.dealerCards);
+        }
     }
 
     nextPlayer() {
