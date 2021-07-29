@@ -43,6 +43,7 @@ header .logo
   background-position: center;
   cursor: pointer;
 }
+
 .splash-container
 {
   position: absolute;
@@ -62,7 +63,7 @@ header .logo
   right: 18.75rem;
 }
 
-.splash-container video
+.splash-container iframe
 {
   position: absolute;
   top: 0;

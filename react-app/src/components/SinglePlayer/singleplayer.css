@@ -1,0 +1,7 @@
+.bg-poker-table {
+    background: url('./pokertable.jpeg');
+    background-repeat: no-repeat;
+    height: 100vh;
+    z-index: -4;
+    background-size: cover;
+}

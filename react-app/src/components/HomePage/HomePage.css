@@ -1,0 +1,129 @@
+.home-page-container{
+    display: flex;
+    justify-content: center;
+}
+.home-page-elements{
+    width: 100vh;
+}
+
+
+/* Single player button */
+.single-button{
+  position: relative;
+  display: inline-flex;
+  width: 180px;
+  height: 55px;
+  margin: 0 15px;
+  perspective: 1000px;
+}
+.single-button{
+  font-size: 19px;
+  letter-spacing: 1px;
+  transform-style: preserve-3d;
+  transform: translateZ(-25px);
+  transition: transform .25s;
+  font-family: 'Montserrat', sans-serif;
+  
+}
+.single-button:before{
+  position: absolute;
+  content:"Single Player";
+  height: 55px;
+  width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid black;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.single-button:after{
+  position: absolute;
+  content: "LET'S PLAY!";
+  height: 55px;
+  width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid black;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+.single-button:before{
+  color: #fff;
+  background: #000;
+  transform: rotateY(0deg) translateZ(25px);
+}
+.single-button:after{
+  color: #000;
+  transform: rotateX(90deg) translateZ(25px);
+}
+.single-button:hover{
+  transform: translateZ(-25px) rotateX(-90deg);
+}
+
+/* MULTI PLAYER BUTTON */
+.multi-button{
+  position: relative;
+  display: inline-flex;
+  width: 180px;
+  height: 55px;
+  margin: 0 15px;
+  perspective: 1000px;
+}
+.multi-button{
+  font-size: 19px;
+  letter-spacing: 1px;
+  transform-style: preserve-3d;
+  transform: translateZ(-25px);
+  transition: transform .25s;
+  font-family: 'Montserrat', sans-serif;
+  
+}
+.multi-button:before{
+  position: absolute;
+  content:"Multi-Player";
+  height: 55px;
+  width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid red;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.multi-button:after{
+  position: absolute;
+  content: "LET'S PLAY!";
+  height: 55px;
+  width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid red;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+.multi-button:before{
+  color: white;
+  background: red;
+  transform: rotateY(0deg) translateZ(25px);
+}
+.multi-button:after{
+  color: red;
+  transform: rotateX(90deg) translateZ(25px);
+}
+.multi-button:hover{
+  transform: translateZ(-25px) rotateX(-90deg);
+}
+
+.button-divs {
+    display: flex;
+    justify-content: space-between;
+    height: 90vh;
+    /* width: 100vw; */
+    align-items: flex-end;
+    padding: 3rem;
+}
