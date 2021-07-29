@@ -92,6 +92,12 @@ function Multiplayer() {
                             {game.player1Cards.map((card, idx) => (
                                 <p key={idx}>{card.suit} {card.value}</p>
                             ))}
+                            {(playerOne === user.username && playerTurn === user.username) &&
+                                <>
+                                    <button>Hit</button>
+                                    <button>Stand</button>
+                                </>
+                            }
                         </div>
                     }
                     {playerTwo &&
@@ -100,6 +106,12 @@ function Multiplayer() {
                             {game.player2Cards.map((card, idx) => (
                                 <p key={idx}>{card.suit} {card.value}</p>
                             ))}
+                            {(playerTwo === user.username && playerTurn === user.username) &&
+                                <>
+                                    <button>Hit</button>
+                                    <button>Stand</button>
+                                </>
+                            }
                         </div>
                     }
                     {playerThree &&
@@ -108,6 +120,12 @@ function Multiplayer() {
                             {game.player3Cards.map((card, idx) => (
                                 <p key={idx}>{card.suit} {card.value}</p>
                             ))}
+                            {(playerThree === user.username && playerTurn === user.username) &&
+                                <>
+                                    <button>Hit</button>
+                                    <button>Stand</button>
+                                </>
+                            }
                         </div>
                     }
                     {playerFour &&
@@ -116,6 +134,12 @@ function Multiplayer() {
                             {game.player4Cards.map((card, idx) => (
                                 <p key={idx}>{card.suit} {card.value}</p>
                             ))}
+                            {(playerFour === user.username && playerTurn === user.username) &&
+                                <>
+                                    <button>Hit</button>
+                                    <button>Stand</button>
+                                </>
+                            }
                         </div>
                     }
                 </div>
