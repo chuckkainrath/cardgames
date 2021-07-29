@@ -65,7 +65,7 @@ import {
 } from '@react-hook/window-size'
 import Confetti from 'react-confetti'
 
-const { SinglePlayerGame } = require('../../util/Game');
+const { SinglePlayerGame } = require('../../util/SinglePlayerGame');
 
 const NOT_STARTED = 'NOT_STARTED';
 const IN_GAME = 'IN_GAME';
@@ -144,9 +144,9 @@ function SinglePlayer() {
 
                         {!btnDisable &&
                             <>
-                                
+
                              {showCard && <img className='animate-fade-in-down' src={valueMap[game.dealerCards[0].suit.concat(game.dealerCards[0].value)]} alt='cardValue' /> }
-                               
+
                                 <img className='animate-fade-in-down' src={cardBack} alt='cardBack'></img>
                             </>
                         }
@@ -159,7 +159,7 @@ function SinglePlayer() {
                                 ))}
                             </>
                         }
-                      
+
                     </div>
                 </div>
                 </div>
@@ -178,7 +178,7 @@ function SinglePlayer() {
                     <div className='flex flex-initial flex-row p-2 '>
                         {playerCards && playerCards.map((card, idx) => (
                             <>
-                               <img className='animate-fade-in-down' src={valueMap[game.playerCards[idx].suit.concat(game.playerCards[idx].value)]} alt='playercard'/> 
+                               <img className='animate-fade-in-down' src={valueMap[game.playerCards[idx].suit.concat(game.playerCards[idx].value)]} alt='playercard'/>
                             </>
                         ))}
                     </div>
