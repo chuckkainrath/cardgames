@@ -40,6 +40,7 @@ function Multiplayer() {
             if (data.username === user.username) {
                 if (data.status === IN_GAME) {
                     setUserWaiting(true);
+                    setGameState(IN_GAME);
                     console.log('HEREERE');
                 } else if (data.status === GAME_OVER) {
                     setGameState(GAME_OVER);
@@ -181,7 +182,14 @@ function Multiplayer() {
     return (
         <div>
             {userWaiting &&
-                <h1>Match In Progress, Waiting for Next Round</h1>
+                <>
+                    {gameState === IN_GAME &&
+                        <h1>Match In Progress, Waiting for Next Round</h1>
+                    }
+                    {gameState === GAME_OVER &&
+                        <h1>Match Over, Click New Game To Start</h1>
+                    }
+                </>
             }
             {waitlist &&
                 waitlist.map((username, idx) => (
