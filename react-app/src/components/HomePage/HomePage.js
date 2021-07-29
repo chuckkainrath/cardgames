@@ -10,10 +10,23 @@ function HomePage() {
     <div className="home-page-container">
       <div className="home-page-elements">
         <LeaderBoard />
-        <div className="single-div">
-          <button className="single-button" onClick={() => history.push("/single-player")}>
-            Single Player
-          </button>
+        <div className="button-divs">
+          <div className="single-div">
+            <button
+              className="single-button"
+              onClick={() => history.push("/single-player")}
+            >
+              Single Player
+            </button>
+          </div>
+          <div className="single-div">
+            <button
+              className="multi-button"
+              onClick={() => history.push("")}
+            >
+              Multi-Player
+            </button>
+          </div>
         </div>
       </div>
     </div>
