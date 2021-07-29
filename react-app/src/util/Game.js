@@ -32,6 +32,7 @@ class Game {
         this.playerStop = this.playerStop.bind(this);
         this.dealerHit = this.dealerHit.bind(this);
         this.getWinner = this.getWinner.bind(this);
+        this.removeCard = this.removeCard.bind(this);
 
         this.playerCards.push(this.deck.drawCard());
         this.dealerCards.push(this.deck.drawCard());
@@ -58,6 +59,10 @@ class Game {
 
     playerStop() {
         this.playerDone = true;
+    }
+
+    removeCard(index) {
+        this.deck.removeCard(index);
     }
 
     dealerHit() {

@@ -5,9 +5,9 @@ import "./SplashPage.css";
 function SplashPage() {
   return (
     <div>
-      <section class="splash-container">
+      <section className="splash-container">
         <header>
-          <h1 class="logo">🃏Site Logo goes here</h1>
+          <h1 className="logo">🃏Site Logo goes here</h1>
         </header>
         <iframe
           src="https://www.youtube.com/embed/eyoh-Ku9TCI?&autoplay=1&iv_load_policy=3&playlist=eyoh-Ku9TCI&loop=1&mute=1&controls=0&showinfo=0&"

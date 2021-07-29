@@ -16,8 +16,6 @@ def user(id):
 @user_routes.route('/<int:user_id>', methods=['PATCH'])
 def updateWinLoss(user_id):
     user = User.query.get(user_id)
-    print('asdfasdlf;kjas;dlkfja;slkdjf;alskdfj')
-    print(request.json['winner'])
     if request.json['winner'] == 'Player':
         user.wins += 1
     else:
