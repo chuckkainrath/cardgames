@@ -113,6 +113,7 @@ class SinglePlayerGame extends Game {
     }
 
     dealerHit() {
+        if (this.dealerDone) return
         super.dealerHit();
     }
 
@@ -140,15 +141,15 @@ class MultiPlayerGame extends Game {
         this.player3Cards = null;
         this.player4Cards = null;
 
-        if (players.length > 2) {
+        if (players.length > 1) {
             this.player2Cards = [this.removeCard(draws.shift())]
         }
 
-        if (players.length > 3) {
+        if (players.length > 2) {
             this.player3Cards = [this.removeCard(draws.shift())]
         }
 
-        if (players.length > 4) {
+        if (players.length > 3) {
             this.player4Cards = [this.removeCard(draws.shift())]
         }
 

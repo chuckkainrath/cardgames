@@ -104,7 +104,7 @@ function SinglePlayer() {
         setGameState(IN_GAME);
         setPlayerCards(game.playerCards);
 
-        if (game.playerScore >= 21) playerTurnFinished()
+        // if (game.playerScore >= 21) playerTurnFinished()
     }
 
     const playerHit = () => {
@@ -183,8 +183,12 @@ function SinglePlayer() {
                         ))}
                     </div>
                         <div className='flex items-center justify-center'>
+
                         <button className='bg-blue-600 hover:bg-blue-400 text-white text-sm px-4 py-2   border rounded-full' disabled={btnDisable} onClick={playerHit}>Hit</button>
                         <div className='pr-6'></div>
+
+                        <button className='bg-blue-600 hover:bg-blue-400 text-white text-sm px-4 py-2   border rounded-full' disabled={btnDisable || (game && game.playerScore >= 21)} onClick={playerHit}>Hit</button>
+
                         <button className='bg-red-600 hover:bg-red-700 text-white text-sm px-4 py-2  border rounded-full' disabled={btnDisable} onClick={playerTurnFinished}>Hold</button>
                         </div>
                 </div>
