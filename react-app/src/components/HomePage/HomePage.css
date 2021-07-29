@@ -119,7 +119,11 @@
   transform: translateZ(-25px) rotateX(-90deg);
 }
 
-.button-divs{
+.button-divs {
     display: flex;
     justify-content: space-between;
+    height: 90vh;
+    /* width: 100vw; */
+    align-items: flex-end;
+    padding: 3rem;
 }
