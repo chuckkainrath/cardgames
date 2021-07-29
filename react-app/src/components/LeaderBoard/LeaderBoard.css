@@ -52,3 +52,7 @@ outter-border:after {
 .inner-border:after {
   right:  0.125rem;
 }
+
+#leader{
+  z-index: -10;
+}

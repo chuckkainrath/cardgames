@@ -5,7 +5,7 @@ import "./LeaderBoard.css"
 
 function LeaderBoard() {
   return (
-    <div className="container p-4 mt-9 inline-block ">
+    <div id='leader' className="container p-4 mt-9 inline-block ">
      
       <div className="outter-border">
         <div className="inner-border">
