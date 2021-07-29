@@ -1,3 +1,4 @@
+const { useReducer } = require('react');
 const { Deck } = require('./Deck.js');
 
 const valueMap = {
@@ -21,6 +22,7 @@ class Game {
         this.deck = new Deck();
 
         this.dealerScore = 0;
+        this.dealerCards = [];
         this.dealerDone = false;
 
         this.dealerHit = this.dealerHit.bind(this);
@@ -28,7 +30,7 @@ class Game {
     }
 
     removeCard(index) {
-        this.deck.removeCard(index);
+        return this.deck.removeCard(index);
     }
 
     dealerHit() {
@@ -66,7 +68,6 @@ class SinglePlayerGame extends Game {
         this.playerCards = [];
         this.playerScore = 0;
         this.playerDone = false;
-        this.dealerCards = [];
         this.winner = '';
 
         // Have to bind functions to Class
@@ -120,4 +121,115 @@ class SinglePlayerGame extends Game {
     }
 }
 
-module.exports = { SinglePlayerGame }
+class MultiPlayerGame extends Game {
+    constructor(players, draws) {
+        super();
+
+        this.players = players
+        this.winner = '';
+        // Have to bind functions to Class
+        this.dealerHit = this.dealerHit.bind(this);
+        this.drawCard = this.drawCard.bind(this);
+        this.getWinner = this.getWinner.bind(this);
+        this.removeCard = this.removeCard.bind(this);
+
+        // Get players set up and initial draws complete
+        this.player1Cards = [this.removeCard(draws.shift())];
+
+        this.player2Cards = null;
+        this.player3Cards = null;
+        this.player4Cards = null;
+
+        if (players.length > 2) {
+            this.player2Cards = [this.removeCard(draws.shift())]
+        }
+
+        if (players.length > 3) {
+            this.player3Cards = [this.removeCard(draws.shift())]
+        }
+
+        if (players.length > 4) {
+            this.player4Cards = [this.removeCard(draws.shift())]
+        }
+
+        this.dealerCards.push(this.removeCard(draws.shift()));
+        this.player1Cards.push(this.removeCard(draws.shift()));
+        if (this.player2Cards) this.player2Cards.push(this.removeCard(draws.shift()));
+        if (this.player3Cards) this.player3Cards.push(this.removeCard(draws.shift()));
+        if (this.player4Cards) this.player4Cards.push(this.removeCard(draws.shift()));
+        this.dealerCards.push(this.removeCard(draws.shift()));
+
+        // Calculate Scores
+        this.player1Score = Game.calculateScore(this.player1Cards);
+        this.player2Score = null;
+        this.player3Score = null;
+        this.player4Score = null;
+        this.dealerScore = Game.calculateScore(this.dealerCards);
+
+        if (this.player2Cards) this.player2Score = Game.calculateScore(this.player2Cards);
+        if (this.player3Cards) this.player3Score = Game.calculateScore(this.player3Cards);
+        if (this.player4Cards) this.player4Score = Game.calculateScore(this.player4Cards);
+
+        this.playerTurn = 'Player1';
+    }
+
+    drawCard() {
+        const index = this.game.getIndex();
+        const card = this.game.removeCard(index);
+        if (this.playerTurn === 'Player1') {
+            this.player1Cards.push(card)
+            this.player1Score = Game.calculateScore(this.player1Cards);
+        } else if (this.playerTurn === 'Player2') {
+            this.player2Cards.push(card)
+            this.player2Score = Game.calculateScore(this.player2Cards);
+        } else if (this.playerTurn === 'Player3') {
+            this.player3Cards.push(card)
+            this.player3Score = Game.calculateScore(this.player3Cards);
+        } else if (this.playerTurn === 'Player4') {
+            this.player4Cards.push(card)
+            this.player4Score = Game.calculateScore(this.player4Cards);
+        } else {
+            this.dealerCards.push(card);
+            this.dealerScore = Game.calculateScore(this.dealerCards);
+        }
+        return index;
+    }
+
+    nextPlayer() {
+        if (this.playerTurn === 'Player1') {
+            if (this.player2Cards) this.playerTurn = 'Player2';
+            else if (this.player3Cards) this.playerTurn = 'Player3';
+            else if (this.player4Cards) this.playerTurn = 'Player4';
+            else this.playerTurn = 'Dealer';
+        } else if (this.playerTurn === 'Player2') {
+            if (this.player3Cards) this.playerTurn = 'Player3';
+            else if (this.player4Cards) this.playerTurn = 'Player4';
+            else this.playerTurn = 'Dealer';
+        } else if (this.playerTurn === 'Player3') {
+            if (this.player4Cards) this.playerTurn = 'Player4';
+            else this.playerTurn = 'Dealer';
+        } else {
+            this.playerTurn = 'Dealer';
+            while (this.dealerScore < 17) {
+                this.drawCard();
+            }
+        }
+        return this.playerTurn;
+    }
+
+    getWinner(player) {
+        if (this.winner) return this.winner;
+        let playerIdx = this.players.indexOf(player);
+        let playerScore;
+        if (playerIdx === 0) playerScore = this.player1Score;
+        else if (playerIdx === 1) playerScore = this.player2Score;
+        else if (playerIdx === 2) playerScore = this.player3Score;
+        else  playerScore = this.player4Score;
+        this.winner = this.dealerScore > this.playerScore ? 'Dealer' : 'Player';
+    }
+}
+
+module.exports = {
+    SinglePlayerGame,
+    MultiPlayerGame
+ }

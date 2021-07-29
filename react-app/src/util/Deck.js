@@ -51,6 +51,10 @@ class Deck {
         const [card] = this.cards.splice(index, 1);
         return card;
     }
+
+    getIndex() {
+        return Math.floor(Math.randon() * 1000) % this.cards.length;
+    }
 }
 
 module.exports = { Deck }
