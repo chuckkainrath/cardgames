@@ -11,7 +11,7 @@ const LogoutButton = () => {
     history.push('/');
   };
 
-  return <button onClick={onLogout}>Logout</button>;
+  return <button className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" onClick={onLogout}>Logout</button>;
 };
 
 export default LogoutButton;
