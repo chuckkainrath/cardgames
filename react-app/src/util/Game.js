@@ -265,6 +265,7 @@ class MultiPlayerGame extends Game {
             return this.winner;
         }
         this.winner = this.dealerScore > this.playerScore ? 'Dealer' : player;
+        return this.winner;
     }
 }
 

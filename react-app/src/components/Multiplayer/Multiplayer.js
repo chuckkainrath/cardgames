@@ -181,7 +181,7 @@ function Multiplayer() {
             }
             {(gameState === IN_GAME || gameState === GAME_OVER) &&
                 <div>
-                    {playerTurn && <h1>{playerTurn}</h1>}
+                    {(playerTurn && playerTurn !== 'Dealer') && <h2>{playerTurn}'s Turn</h2>}
                     {game &&
                         <div>
                             <h1>Dealer</h1>
