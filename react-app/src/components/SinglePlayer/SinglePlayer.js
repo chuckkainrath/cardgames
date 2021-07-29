@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addGame } from '../../store/session';
 import './singleplayer.css';
@@ -57,6 +57,14 @@ import HK from './Cards/cardHeartsK.png'
 import HA from './Cards/cardHeartsA.png'
 import dealer from './dealer.png'
 
+
+import {
+    useWindowSize,
+    useWindowWidth,
+    useWindowHeight,
+} from '@react-hook/window-size'
+import Confetti from 'react-confetti'
+
 const { SinglePlayerGame } = require('../../util/Game');
 
 const NOT_STARTED = 'NOT_STARTED';
@@ -69,7 +77,7 @@ const valueMap = {
 
 function SinglePlayer() {
 
-
+    const { width, height } = useWindowSize();
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user);
     const [game, setGame] = useState();
@@ -77,8 +85,19 @@ function SinglePlayer() {
     const [playerCards, setPlayerCards] = useState();
     const [btnDisable, setBtnDisable] = useState(false);
     const [winner, setWinner] = useState('');
+    const [showCard, setShowCard] = useState(false);
+
+    function cardSetter () {
+        setTimeout(() => {
+            setShowCard(true)
+        }, 1000)
+    };
+
 
     const startGame = () => {
+        setWinner('')
+        setShowCard(false)
+        cardSetter()
         const game = new SinglePlayerGame();
         setBtnDisable(false);
         setGame(game);
@@ -102,67 +121,78 @@ function SinglePlayer() {
         setWinner(game.getWinner());
         setGameState(GAME_OVER);
         await dispatch(addGame(user.id , game.getWinner()));
-    }
+    };
+
 
     return (
         <>
-
+        { winner === 'Player' ? <Confetti width={width} height={height}  /> : null }
             {gameState === NOT_STARTED &&
             <div className='fixed h-full w-full flex items-center justify-center'>
 
                 <button className='inset-x-0 ml-auto mr-auto absolute bg-red-600 hover:bg-red-700 text-white text-sm px-4 py-2  border rounded-full' onClick={startGame}>Start Game</button>
             </div>
             }
-        <div className='bg-poker-table flex  justify-center'>
+        <div className='bg-poker-table flex  justify-center m-0'>
 
             {(gameState === IN_GAME || gameState === GAME_OVER) &&
                 <div>
-                    <div className='dealer-container flex flex-column p-2 items-center justify-center'>
-                    <div className='flex-column '>
-                    <img className='rounded-full pb-2 h-30 w-30 ' src={dealer}></img>
-                    <div className='flex flex-row items-center justify-center'>
+                    <div className='dealer-container flex flex-column p-2 m-0 items-center justify-center'>
+                    <div className='flex-column items-center justify-center m-0'>
+                    <img className='rounded-full pb-2 h-30 w-30 m-0' src={dealer} alt='dealerphoto'></img>
+                    <div className='flex flex-row items-center justify-center m-0'>
 
                         {!btnDisable &&
                             <>
-                                <img src={valueMap[game.dealerCards[0].suit.concat(game.dealerCards[0].value)]} />
-                                <img src={cardBack}></img>
+                                
+                             {showCard && <img className='animate-fade-in-down' src={valueMap[game.dealerCards[0].suit.concat(game.dealerCards[0].value)]} alt='cardValue' /> }
+                               
+                                <img className='animate-fade-in-down' src={cardBack} alt='cardBack'></img>
                             </>
                         }
                         {btnDisable &&
                             <>
                                 {game.dealerCards && game.dealerCards.map((card, idx) => (
                                     <>
-                                     <img src={valueMap[game.dealerCards[idx].suit.concat(game.dealerCards[idx].value)]} />
+                                     <img className='animate-fade-in-down' src={valueMap[game.dealerCards[idx].suit.concat(game.dealerCards[idx].value)]} alt='dealerCard' />
                                      </>
                                 ))}
                             </>
                         }
-                        </div>
+                      
                     </div>
                 </div>
+                </div>
+
+                    {gameState === GAME_OVER &&
+                        <div className=' flex items-center justify-center pt-6 '>
+                            <div className='flex '>
+                                <p className='text-2xl font-semibold text-white uppercase lg:text-3xl pr-6'>{winner === 'Player' ? user.username : 'Dealer'} Wins</p>
+                                <button className='bg-red-600 hover:bg-red-700 text-white text-sm px-4   border rounded-full' onClick={startGame}>New Game</button>
+                            </div>
+                        </div>
+                    }
+
                 <div className='flex items-center justify-center pt-20' >
                     <div className=' flex-column items-center justify-center'>
                     <div className='flex flex-initial flex-row p-2 '>
                         {playerCards && playerCards.map((card, idx) => (
                             <>
-                                <img className='animate-fade-in-down' src={valueMap[game.playerCards[idx].suit.concat(game.playerCards[idx].value)]} />
+                               <img className='animate-fade-in-down' src={valueMap[game.playerCards[idx].suit.concat(game.playerCards[idx].value)]} alt='playercard'/> 
                             </>
                         ))}
                     </div>
                         <div className='flex items-center justify-center'>
+
+                        <button className='bg-blue-600 hover:bg-blue-400 text-white text-sm px-4 py-2   border rounded-full' disabled={btnDisable} onClick={playerHit}>Hit</button>
+                        <div className='pr-6'></div>
+
                         <button className='bg-blue-600 hover:bg-blue-400 text-white text-sm px-4 py-2   border rounded-full' disabled={btnDisable || (game && game.playerScore >= 21)} onClick={playerHit}>Hit</button>
+
                         <button className='bg-red-600 hover:bg-red-700 text-white text-sm px-4 py-2  border rounded-full' disabled={btnDisable} onClick={playerTurnFinished}>Hold</button>
                         </div>
                 </div>
                 </div>
-                    {gameState === GAME_OVER &&
-                        <div className='flex items-center justify-center pt-6'>
-                        <div className=' flex-column '>
-                            <p className='text-2xl font-semibold text-white uppercase lg:text-3xl'>{winner} Wins</p>
-                        <button className='bg-red-600 hover:bg-red-700 text-white text-sm px-4 py-2   border rounded-full' onClick={startGame}>New Game</button>
-                        </div>
-                        </div>
-                    }
                 </div>
             }
 

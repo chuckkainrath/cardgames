@@ -4,4 +4,5 @@
     height: 100vh;
     z-index: -4;
     background-size: cover;
+    margin: 0;
 }
