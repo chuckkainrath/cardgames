@@ -31,7 +31,7 @@ outter-border:after {
 .inner-border {
   position: relative;
   border: 2px solid #b78846;
-  padding: 40px;
+  padding: .75rem;
 }
 .inner-border:before,
 .inner-border:after {
