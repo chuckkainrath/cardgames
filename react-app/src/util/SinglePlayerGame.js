@@ -1,6 +1,6 @@
 const { Game } = require('./Game');
 
-class SinglePlayerGame extends Game {
+export class SinglePlayerGame extends Game {
     constructor() {
         super();
         this.playerCards = [];
@@ -59,5 +59,3 @@ class SinglePlayerGame extends Game {
         super.removeCard(index);
     }
 }
-
-module.exports = { SinglePlayerGame }

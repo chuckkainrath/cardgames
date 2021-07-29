@@ -1,6 +1,6 @@
 const { Game } = require('./Game')
 
-class MultiPlayerGame extends Game {
+export class MultiPlayerGame extends Game {
     constructor(players, draws) {
         super();
 
@@ -146,5 +146,3 @@ class MultiPlayerGame extends Game {
         return this.winner;
     }
 }
-
-module.exports = { MultiPlayerGame }
