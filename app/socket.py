@@ -62,7 +62,7 @@ def on_join(data):
         room = len(rooms) - 1
 
     userStatusMap[username] = GAME_OVER
-    emit('player_joined', { 'players': rooms[room], 'seat': userSeatMap[username], 'status': roomStatus[room] }, to=room)
+    emit('player_joined', { 'username': username, 'players': rooms[room], 'seat': userSeatMap[username], 'status': roomStatus[room] }, to=room)
 
 
 @socketio.on('leave')
@@ -117,4 +117,3 @@ def on_hit(data):
 @socketio.on('hold')
 def on_hold(data):
     username = data['username']
-    
