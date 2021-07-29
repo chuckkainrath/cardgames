@@ -116,10 +116,10 @@ function SinglePlayer() {
         <div className='bg-poker-table flex  justify-center'>
            
             {(gameState === IN_GAME || gameState === GAME_OVER) &&
-                <div>
+                <div >
                     <div className='dealer-container flex flex-column p-2 items-center justify-center'> 
-                    <div className='flex-column '>
-                    <img className='rounded-full pb-2 h-30 w-30 ' src={dealer}></img>
+                    <div className='flex-column items-center justify-center'>
+                    <img className=' rounded-full pb-2 h-30 w-30 ' src={dealer}></img>
                     <div className='flex flex-row items-center justify-center'>
 
                         {!btnDisable &&
