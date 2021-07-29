@@ -180,6 +180,9 @@ function Multiplayer() {
 
     return (
         <div>
+            {userWaiting &&
+                <h1>Match In Progress, Waiting for Next Round</h1>
+            }
             {waitlist &&
                 waitlist.map((username, idx) => (
                     <p key={idx}>{username} is in lobby, waiting for next game.</p>
