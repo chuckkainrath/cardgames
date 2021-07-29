@@ -154,7 +154,7 @@ function Multiplayer() {
                             ))}
                             {(playerOne === user.username && playerTurn === user.username) &&
                                 <>
-                                    <button onClick={playerHit}>Hit</button>
+                                    <button disabled={game.player1Score >= 21} onClick={playerHit}>Hit</button>
                                     <button onClick={playerStand}>Stand</button>
                                 </>
                             }
@@ -168,7 +168,7 @@ function Multiplayer() {
                             ))}
                             {(playerTwo === user.username && playerTurn === user.username) &&
                                 <>
-                                    <button onClick={playerHit}>Hit</button>
+                                    <button disabled={game.player2Score >= 21} onClick={playerHit}>Hit</button>
                                     <button onClick={playerStand}>Stand</button>
                                 </>
                             }
@@ -182,7 +182,7 @@ function Multiplayer() {
                             ))}
                             {(playerThree === user.username && playerTurn === user.username) &&
                                 <>
-                                    <button onClick={playerHit}>Hit</button>
+                                    <button disabled={game.player3Score >= 21} onClick={playerHit}>Hit</button>
                                     <button onClick={playerStand}>Stand</button>
                                 </>
                             }
@@ -196,7 +196,7 @@ function Multiplayer() {
                             ))}
                             {(playerFour === user.username && playerTurn === user.username) &&
                                 <>
-                                    <button onClick={playerHit}>Hit</button>
+                                    <button disabled={game.player4Score >= 21} onClick={playerHit}>Hit</button>
                                     <button onClick={playerStand}>Stand</button>
                                 </>
                             }
