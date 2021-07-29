@@ -67,6 +67,14 @@ function Multiplayer() {
         socket.emit('ready', { username: user.username });
     }
 
+    const playerHit = () => {
+
+    }
+
+    const playerStand = () => {
+        
+    }
+
     return (
         <div>
             {players &&
@@ -94,8 +102,8 @@ function Multiplayer() {
                             ))}
                             {(playerOne === user.username && playerTurn === user.username) &&
                                 <>
-                                    <button>Hit</button>
-                                    <button>Stand</button>
+                                    <button onClick={playerHit}>Hit</button>
+                                    <button onClick={playerStand}>Stand</button>
                                 </>
                             }
                         </div>
@@ -108,8 +116,8 @@ function Multiplayer() {
                             ))}
                             {(playerTwo === user.username && playerTurn === user.username) &&
                                 <>
-                                    <button>Hit</button>
-                                    <button>Stand</button>
+                                    <button onClick={playerHit}>Hit</button>
+                                    <button onClick={playerStand}>Stand</button>
                                 </>
                             }
                         </div>
@@ -122,8 +130,8 @@ function Multiplayer() {
                             ))}
                             {(playerThree === user.username && playerTurn === user.username) &&
                                 <>
-                                    <button>Hit</button>
-                                    <button>Stand</button>
+                                    <button onClick={playerHit}>Hit</button>
+                                    <button onClick={playerStand}>Stand</button>
                                 </>
                             }
                         </div>
@@ -136,8 +144,8 @@ function Multiplayer() {
                             ))}
                             {(playerFour === user.username && playerTurn === user.username) &&
                                 <>
-                                    <button>Hit</button>
-                                    <button>Stand</button>
+                                    <button onClick={playerHit}>Hit</button>
+                                    <button onClick={playerStand}>Stand</button>
                                 </>
                             }
                         </div>
