@@ -77,11 +77,9 @@ class SinglePlayerGame extends Game {
         this.getWinner = this.getWinner.bind(this);
         this.removeCard = this.removeCard.bind(this);
 
-        //this.playerCards.push(this.deck.drawCard());
-        this.playerCards.push(this.deck.removeCard(0));
+        this.playerCards.push(this.deck.drawCard());
         this.dealerCards.push(this.deck.drawCard());
-        this.playerCards.push(this.deck.removeCard(10));
-        //this.playerCards.push(this.deck.drawCard());
+        this.playerCards.push(this.deck.drawCard());
         this.playerScore = Game.calculateScore(this.playerCards);
         if (this.playerScore === 21) this.playerDone = true;
         this.dealerCards.push(this.deck.drawCard());
