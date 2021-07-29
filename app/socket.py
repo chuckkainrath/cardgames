@@ -34,6 +34,11 @@ def on_join(data):
     username = data['username']
     joined = False
     room = -1
+    print(rooms)
+    print(roomStatus)
+    print(userStatusMap)
+    print(userSeatMap)
+    print(userRoomMap)
     for i in range(len(rooms)):
         if len(rooms[i]) < 4:
             join_room(i)
@@ -76,6 +81,14 @@ def on_leave(data):
     del userStatusMap[username]
 
     rooms[room].remove(username)
+
+    # If room is empty, change room status to game over
+    if len(rooms[room]) == 0:
+        roomStatus[room] = GAME_OVER
+
+    # If player leaves, start game if others are ready
+    # TODO
+
     emit('player_left', { 'players': rooms[room] }, to=room)
 
 
@@ -101,11 +114,11 @@ def on_ready(data):
     drawIndices = []
 
     # Each player + dealer draws 2 cards
-    for i in range(len(rooms[room]) * 2 + 2):
-        drawIndices.append(random.randomint(0, deckSize))
+    for i in range(len(playerOrder) * 2 + 2):
+        drawIndices.append(random.randint(0, deckSize))
         deckSize -= 1
 
-    emit('start_game', { 'playerOrder': playerOrder, 'drawIndices': drawIndices}, to=room)
+    emit('start_game', { 'drawIndices': drawIndices, 'playerOrder': playerOrder }, to=room)
 
 
 @socketio.on('game_over')
@@ -127,6 +140,10 @@ def on_game_over(data):
 def on_hit(data):
     username = data['username']
     card_idx = data['cardIdx']
+    room = userRoomMap[username]
+    print('PLAYER HITEEREREERE')
+    print('card IDX', card_idx)
+    emit('on_hit', { 'username': username, 'card_idx': card_idx}, to=room)
 
 
 @socketio.on('hold')
