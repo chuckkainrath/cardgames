@@ -102,8 +102,8 @@ function SinglePlayer() {
         setWinner(game.getWinner());
         setGameState(GAME_OVER);
         await dispatch(addGame(user.id , game.getWinner()));
-    }
-
+    };
+    
     return (
         <>
 
@@ -118,28 +118,37 @@ function SinglePlayer() {
             {(gameState === IN_GAME || gameState === GAME_OVER) &&
                 <div>
                     <div className='dealer-container flex flex-column p-2 items-center justify-center'>
-                    <div className='flex-column '>
-                    <img className='rounded-full pb-2 h-30 w-30 ' src={dealer}></img>
+                    <div className='flex-column items-center justify-center'>
+                    <img className='rounded-full pb-2 h-30 w-30 ' src={dealer} alt='dealerphoto'></img>
                     <div className='flex flex-row items-center justify-center'>
 
                         {!btnDisable &&
                             <>
-                                <img src={valueMap[game.dealerCards[0].suit.concat(game.dealerCards[0].value)]} />
-                                <img src={cardBack}></img>
+                                <img src={valueMap[game.dealerCards[0].suit.concat(game.dealerCards[0].value)]} alt='cardValue' />
+                                <img src={cardBack} alt='cardBack'></img>
                             </>
                         }
                         {btnDisable &&
                             <>
                                 {game.dealerCards && game.dealerCards.map((card, idx) => (
                                     <>
-                                     <img src={valueMap[game.dealerCards[idx].suit.concat(game.dealerCards[idx].value)]} />
+                                     <img src={valueMap[game.dealerCards[idx].suit.concat(game.dealerCards[idx].value)]} alt='dealerCard' />
                                      </>
                                 ))}
                             </>
                         }
-                        </div>
+                      
                     </div>
                 </div>
+                </div>
+                    {gameState === GAME_OVER &&
+                        <div className=' flex items-center justify-center pt-6 '>
+                            <div className='flex '>
+                                <p className='text-2xl font-semibold text-white uppercase lg:text-3xl pr-6'>{winner === 'Player' ? user.username : 'Dealer'} Wins</p>
+                                <button className='bg-red-600 hover:bg-red-700 text-white text-sm px-4   border rounded-full' onClick={startGame}>New Game</button>
+                            </div>
+                        </div>
+                    }
                 <div className='flex items-center justify-center pt-20' >
                     <div className=' flex-column items-center justify-center'>
                     <div className='flex flex-initial flex-row p-2 '>
@@ -151,18 +160,11 @@ function SinglePlayer() {
                     </div>
                         <div className='flex items-center justify-center'>
                         <button className='bg-blue-600 hover:bg-blue-400 text-white text-sm px-4 py-2   border rounded-full' disabled={btnDisable} onClick={playerHit}>Hit</button>
+                        <div className='pr-6'></div>
                         <button className='bg-red-600 hover:bg-red-700 text-white text-sm px-4 py-2  border rounded-full' disabled={btnDisable} onClick={playerTurnFinished}>Hold</button>
                         </div>
                 </div>
                 </div>
-                    {gameState === GAME_OVER &&
-                        <div className='flex items-center justify-center pt-6'>
-                        <div className=' flex-column '>
-                            <p className='text-2xl font-semibold text-white uppercase lg:text-3xl'>{winner} Wins</p>
-                        <button className='bg-red-600 hover:bg-red-700 text-white text-sm px-4 py-2   border rounded-full' onClick={startGame}>New Game</button>
-                        </div>
-                        </div>
-                    }
                 </div>
             }
 
