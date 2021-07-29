@@ -2,6 +2,7 @@ from flask_socketio import SocketIO, join_room, leave_room, emit
 import os
 from app.models import db, User
 import json
+import random
 
 if os.environ.get("FLASK_ENV") == 'production':
     origins = [
@@ -89,8 +90,22 @@ def on_ready(data):
             return
 
     # If here, all players ready
+    playerOrder = [0] * len(rooms[room])
+    for player in rooms[room]:
+        playerOrder[userSeatMap[player]] = player
+
     roomStatus[room] = IN_GAME
-    emit('start_game', to=room)
+
+    # Generate random indices
+    deckSize = 4 * 52
+    drawIndices = []
+
+    # Each player + dealer draws 2 cards
+    for i in range(len(rooms[room]) * 2 + 2):
+        drawIndices.append(random.randomint(0, deckSize))
+        deckSize -= 1
+
+    emit('start_game', { 'playerOrder': playerOrder, 'drawIndices': drawIndices}, to=room)
 
 
 @socketio.on('game_over')

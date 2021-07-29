@@ -48,7 +48,8 @@ class Deck {
     }
 
     removeCard(index) {
-        this.cards.splice(index, 1);
+        const [card] = this.cards.splice(index, 1);
+        return card;
     }
 }
 

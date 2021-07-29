@@ -7,8 +7,12 @@ const GAME_OVER = 'GAME_OVER';
 
 function Multiplayer() {
     const dispatch = useDispatch();
-    const [players, setPlayers] = useState()
+    const [playerOne, setPlayerOne] = useState()
+    const [playerTwo, setPlayerTwo] = useState()
+    const [playerThree, setPlayerThree] = useState()
+    const [playerFour, setPlayerFour] = useState()
     const [gameState, setGameState] = useState();
+    const [game, setGame] = useState();
     const user = useSelector(state => state.session.user);
 
     useEffect(() => {
@@ -42,7 +46,9 @@ function Multiplayer() {
     }, [players])
 
     useEffect(() => {
+        socket.on('start_game', data => {
 
+        });
     }, [])
 
     const readyUp = () => {
