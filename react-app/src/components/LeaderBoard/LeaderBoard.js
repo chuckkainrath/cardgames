@@ -1,63 +1,60 @@
 import React, { useEffect } from "react";
-import "./LeaderBoard.css";
+import "../../../src/index.css";
 import { useSelector, useDispatch } from "react-redux";
 
-
 function LeaderBoard() {
-    
-    return (
-      <div class="container">
-        <h1 class="mb-8">
-    Scrollable Table Fixed Height
-  </h1>
-
-	<table class="text-left w-full">
-		<thead class="bg-black flex text-white w-full">
-			<tr class="flex w-full mb-4">
-				<th class="p-4 w-1/4">One</th>
-				<th class="p-4 w-1/4">Two</th>
-				<th class="p-4 w-1/4">Three</th>
-				<th class="p-4 w-1/4">Four</th>
-			</tr>
-		</thead>
-   
-		<tbody class="bg-grey-light flex flex-col items-center justify-between overflow-y-scroll w-full" style="height: 50vh;">
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			<tr class="flex w-full mb-4">
-				<td class="p-4 w-1/4">Dogs</td>
-				<td class="p-4 w-1/4">Cats</td>
-				<td class="p-4 w-1/4">Birds</td>
-				<td class="p-4 w-1/4">Fish</td>
-			</tr>
-			
-		</tbody>
-	</table>
-</div>
-    );
-
+  return (
+    <div className="container p-4 mt-9 inline-block ">
+      <h1 className="h1-board m-4 font-black text-3xl justify-center flex">
+        Leader Board
+      </h1>
+      <table className="text-left w-full">
+        <thead className="bg-black flex text-white w-full">
+          <tr className="flex w-full mb-4">
+            <th className="p-4 w-1/4">User Name</th>
+            <th className="p-4 w-1/4">Wins</th>
+            <th className="p-4 w-1/4">Lost</th>
+            <th className="p-4 w-1/4">Win Ratio %</th>
+          </tr>
+        </thead>
+        <tbody
+          className="bg-green flex flex-col items-center justify-between overflow-y-auto w-full"
+          style={{ height: "50vh" }}
+        >
+          <tr className="first-place bg-yellow-400 flex w-full">
+            <td className="p-4 w-1/4">Dogs</td>
+            <td className="p-4 w-1/4">Cats</td>
+            <td className="p-4 w-1/4">Birds</td>
+            <td className="p-4 w-1/4">Fish</td>
+          </tr>
+          <tr className="second-place bg-gray-400 flex w-full">
+            <td className="p-4 w-1/4">Dogs</td>
+            <td className="p-4 w-1/4">Cats</td>
+            <td className="p-4 w-1/4">Birds</td>
+            <td className="p-4 w-1/4">Fish</td>
+          </tr>
+          <tr className="third-place bg-yellow-700 flex w-full ">
+            <td className="p-4 w-1/4">Dogs</td>
+            <td className="p-4 w-1/4">Cats</td>
+            <td className="p-4 w-1/4">Birds</td>
+            <td className="p-4 w-1/4">Fish</td>
+          </tr>
+          <tr className="flex w-full mb-4">
+            <td className="p-4 w-1/4">Dogs</td>
+            <td className="p-4 w-1/4">Cats</td>
+            <td className="p-4 w-1/4">Birds</td>
+            <td className="p-4 w-1/4">Fish</td>
+          </tr>
+          <tr className="flex w-full mb-4">
+            <td className="p-4 w-1/4">Dogs</td>
+            <td className="p-4 w-1/4">Cats</td>
+            <td className="p-4 w-1/4">Birds</td>
+            <td className="p-4 w-1/4">Fish</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  );
 }
 
 export default LeaderBoard;
