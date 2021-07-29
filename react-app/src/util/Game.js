@@ -170,7 +170,7 @@ class MultiPlayerGame extends Game {
         if (this.player3Cards) this.player3Score = Game.calculateScore(this.player3Cards);
         if (this.player4Cards) this.player4Score = Game.calculateScore(this.player4Cards);
 
-        this.playerTurn = 'Player1';
+        this.playerTurn = this.players[0];
     }
 
     drawCard() {
@@ -179,13 +179,13 @@ class MultiPlayerGame extends Game {
         if (this.playerTurn === 'Player1') {
             this.player1Cards.push(card)
             this.player1Score = Game.calculateScore(this.player1Cards);
-        } else if (this.playerTurn === 'Player2') {
+        } else if (this.playerTurn === this.players[1]) {
             this.player2Cards.push(card)
             this.player2Score = Game.calculateScore(this.player2Cards);
-        } else if (this.playerTurn === 'Player3') {
+        } else if (this.playerTurn === this.players[1]) {
             this.player3Cards.push(card)
             this.player3Score = Game.calculateScore(this.player3Cards);
-        } else if (this.playerTurn === 'Player4') {
+        } else if (this.playerTurn === this.players[1]) {
             this.player4Cards.push(card)
             this.player4Score = Game.calculateScore(this.player4Cards);
         } else {
@@ -196,17 +196,17 @@ class MultiPlayerGame extends Game {
     }
 
     nextPlayer() {
-        if (this.playerTurn === 'Player1') {
-            if (this.player2Cards) this.playerTurn = 'Player2';
-            else if (this.player3Cards) this.playerTurn = 'Player3';
-            else if (this.player4Cards) this.playerTurn = 'Player4';
+        if (this.playerTurn === this.players[0]) {
+            if (this.player2Cards) this.playerTurn = this.players[1];
+            else if (this.player3Cards) this.playerTurn = this.players[1];
+            else if (this.player4Cards) this.playerTurn = this.players[1];
             else this.playerTurn = 'Dealer';
-        } else if (this.playerTurn === 'Player2') {
-            if (this.player3Cards) this.playerTurn = 'Player3';
-            else if (this.player4Cards) this.playerTurn = 'Player4';
+        } else if (this.playerTurn === this.players[1]) {
+            if (this.player3Cards) this.playerTurn = this.players[1];
+            else if (this.player4Cards) this.playerTurn = this.players[1];
             else this.playerTurn = 'Dealer';
-        } else if (this.playerTurn === 'Player3') {
-            if (this.player4Cards) this.playerTurn = 'Player4';
+        } else if (this.playerTurn === this.players[1]) {
+            if (this.player4Cards) this.playerTurn = this.players[1];
             else this.playerTurn = 'Dealer';
         } else {
             this.playerTurn = 'Dealer';
@@ -225,7 +225,7 @@ class MultiPlayerGame extends Game {
         else if (playerIdx === 1) playerScore = this.player2Score;
         else if (playerIdx === 2) playerScore = this.player3Score;
         else  playerScore = this.player4Score;
-        this.winner = this.dealerScore > this.playerScore ? 'Dealer' : 'Player';
+        this.winner = this.dealerScore > this.playerScore ? 'Dealer' : player;
     }
 }
 
