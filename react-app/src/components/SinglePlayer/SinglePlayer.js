@@ -145,21 +145,23 @@ function SinglePlayer() {
                     <div className='flex flex-initial flex-row p-2 '>
                         {playerCards && playerCards.map((card, idx) => (
                             <>
-                            <img src={valueMap[game.playerCards[idx].suit.concat(game.playerCards[idx].value)]} />
+                                <img className='animate-fade-in-down' src={valueMap[game.playerCards[idx].suit.concat(game.playerCards[idx].value)]} />
                             </>
                         ))}
                     </div>
                         <div className='flex items-center justify-center'>
-                        <button className='bg-red-600 hover:bg-red-700 text-white text-sm px-4 py-2   border rounded-full' disabled={btnDisable} onClick={playerHit}>Hit</button>
+                        <button className='bg-blue-600 hover:bg-blue-400 text-white text-sm px-4 py-2   border rounded-full' disabled={btnDisable} onClick={playerHit}>Hit</button>
                         <button className='bg-red-600 hover:bg-red-700 text-white text-sm px-4 py-2  border rounded-full' disabled={btnDisable} onClick={playerTurnFinished}>Hold</button>
                         </div>
                 </div>
                 </div>
                     {gameState === GAME_OVER &&
-                        <>
+                        <div className='flex items-center justify-center pt-6'>
+                        <div className=' flex-column '>
                             <p className='text-2xl font-semibold text-white uppercase lg:text-3xl'>{winner} Wins</p>
-                            <button onClick={startGame}>New Game</button>
-                        </>
+                        <button className='bg-red-600 hover:bg-red-700 text-white text-sm px-4 py-2   border rounded-full' onClick={startGame}>New Game</button>
+                        </div>
+                        </div>
                     }
                 </div>
             }
