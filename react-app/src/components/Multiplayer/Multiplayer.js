@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { MultiPlayerGame } from '../../util/Game';
 import { socket } from '../../util/socket';
+import { addGame } from '../../store/session';
 
 const IN_GAME = 'IN_GAME';
 const GAME_OVER = 'GAME_OVER';
@@ -21,6 +22,8 @@ function Multiplayer() {
     const [gameState, setGameState] = useState();
     const [game, setGame] = useState();
     const [winner, setWinner] = useState('');
+    const [waitlist, setWaitlist] = useState();
+    const [userWaiting, setUserWaiting] = useState();
     const user = useSelector(state => state.session.user);
 
     useEffect(() => {
@@ -36,10 +39,15 @@ function Multiplayer() {
             //setPlayers(data.players)
             if (data.username === user.username) {
                 if (data.status === IN_GAME) {
-                    // TODO: have to wait for next game
+                    setUserWaiting(true);
+                    setGameState(IN_GAME);
+                    console.log('HEREERE');
                 } else if (data.status === GAME_OVER) {
                     setGameState(GAME_OVER);
+                    setUserWaiting(false);
                 }
+            } else if (gameState === IN_GAME) {
+                setWaitlist([...waitlist, data.username])
             }
         });
 
@@ -64,6 +72,8 @@ function Multiplayer() {
             setPlayerOne(players[0])
             setPlayerOneCards(game.player1Cards)
             setWinner('');
+            setWaitlist();
+            setUserWaiting(false);
             if (players[1]) {
                 setPlayerTwo(players[1])
                 setPlayerTwoCards(game.player2Cards)
@@ -85,7 +95,7 @@ function Multiplayer() {
 
     useEffect(() => {
         socket.on('on_hit', data => {
-            console.log(data);
+            if (userWaiting) return;
             if (data.username !== user.username) {
                 game.playerDrew(data.card_idx);
                 if (playerTurn === playerOne) {
@@ -101,12 +111,16 @@ function Multiplayer() {
         });
 
         socket.on('on_stand', data => {
-            console.log(data);
+            if (userWaiting) return;
             setPlayerTurn(data.username);
             game.nextPlayer();
         });
 
-        socket.on('game_end', data => {
+        socket.on('game_end', async data => {
+            if (userWaiting) {
+                setGameState(GAME_OVER);
+                return;
+            }
             const dealerCardIndices = data.dealer_card_indices;
             if (playerTurn !== user.username) {
                 game.nextPlayer();
@@ -115,6 +129,7 @@ function Multiplayer() {
             setPlayerTurn('Dealer');
             setGameState(GAME_OVER);
             setWinner(game.getWinner(user.username));
+            await dispatch(addGame(user.id, game.getWinner()))
         });
 
         return (() => {
@@ -122,7 +137,7 @@ function Multiplayer() {
             socket.removeAllListeners('on_stand');
             socket.removeAllListeners('game_end');
         })
-    }, [playerTurn, playerOneCards, playerTwoCards, playerThreeCards, playerFourCards])
+    }, [userWaiting, playerTurn, playerOneCards, playerTwoCards, playerThreeCards, playerFourCards])
 
     const readyUp = () => {
         socket.emit('ready', { username: user.username });
@@ -166,6 +181,21 @@ function Multiplayer() {
 
     return (
         <div>
+            {userWaiting &&
+                <>
+                    {gameState === IN_GAME &&
+                        <h1>Match In Progress, Waiting for Next Round</h1>
+                    }
+                    {gameState === GAME_OVER &&
+                        <h1>Match Over, Click New Game To Start</h1>
+                    }
+                </>
+            }
+            {waitlist &&
+                waitlist.map((username, idx) => (
+                    <p key={idx}>{username} is in lobby, waiting for next game.</p>
+                ))
+            }
             {players &&
                 players.map((player, idx) => (
                     <p key={idx}>{player}</p>

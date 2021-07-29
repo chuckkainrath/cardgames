@@ -16,9 +16,9 @@ def user(id):
 @user_routes.route('/<int:user_id>', methods=['PATCH'])
 def updateWinLoss(user_id):
     user = User.query.get(user_id)
-    if request.json['winner'] == 'Player':
-        user.wins += 1
-    else:
+    if request.json['winner'] == 'Dealer':
         user.losses += 1
+    else:
+        user.wins += 1
     db.session.commit()
     return user.to_dict()
