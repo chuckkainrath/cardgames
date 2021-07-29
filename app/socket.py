@@ -149,3 +149,5 @@ def on_hit(data):
 @socketio.on('hold')
 def on_hold(data):
     username = data['username']
+    room = userRoomMap[username]
+    emit('on_stand', { 'username': username}, to=room)

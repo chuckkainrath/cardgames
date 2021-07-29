@@ -98,8 +98,15 @@ function Multiplayer() {
             }
         });
 
+        socket.on('on_stand', data => {
+            console.log(data);
+            setPlayerTurn(data.username);
+            game.nextPlayer();
+        });
+
         return (() => {
             socket.removeAllListeners('on_hit');
+            socket.removeAllListeners('on_stand');
         })
     }, [playerTurn, playerOneCards, playerTwoCards, playerThreeCards, playerFourCards])
 
@@ -124,7 +131,20 @@ function Multiplayer() {
     }
 
     const playerStand = () => {
-
+        let nextPlayer;
+        if (playerTurn === playerOne) {
+            if (playerTwo) nextPlayer = playerTwo;
+            else nextPlayer = 'Dealer';
+        } else if (playerTurn === playerTwo) {
+            if (playerThree) nextPlayer = playerThree;
+            else nextPlayer = 'Dealer';
+        } else if (playerTurn === playerThree) {
+            if (playerFour) nextPlayer = playerFour;
+            else nextPlayer = 'Dealer';
+        } else {
+            nextPlayer = 'Dealer';
+        }
+        socket.emit('hold', { username: nextPlayer })
     }
 
     return (
@@ -139,6 +159,7 @@ function Multiplayer() {
             }
             {gameState === IN_GAME &&
                 <div>
+                    {playerTurn && <h1>{playerTurn}</h1>}
                     {game &&
                         <div>
                             <h1>Dealer</h1>
