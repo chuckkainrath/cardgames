@@ -41,7 +41,6 @@ function Multiplayer() {
                 if (data.status === IN_GAME) {
                     setUserWaiting(true);
                     setGameState(IN_GAME);
-                    console.log('HEREERE');
                 } else if (data.status === GAME_OVER) {
                     setGameState(GAME_OVER);
                     setUserWaiting(false);
