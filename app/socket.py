@@ -107,6 +107,9 @@ def on_ready(data):
     for player in rooms[room]:
         playerOrder[userSeatMap[player]] = player
 
+        # Also change player status
+        userStatusMap[player] = IN_GAME
+
     roomStatus[room] = IN_GAME
 
     # Generate random indices
@@ -117,6 +120,7 @@ def on_ready(data):
     for i in range(len(playerOrder) * 2 + 2):
         drawIndices.append(random.randint(0, deckSize))
         deckSize -= 1
+
 
     emit('start_game', { 'drawIndices': drawIndices, 'playerOrder': playerOrder }, to=room)
 
@@ -151,3 +155,11 @@ def on_hold(data):
     username = data['username']
     room = userRoomMap[username]
     emit('on_stand', { 'username': username}, to=room)
+
+
+@socketio.on('game_end')
+def on_game_end(data):
+    dealer_card_indices = data['dealerCardIndices']
+    room = userRoomMap[data['username']]
+    roomStatus[room] = GAME_OVER
+    emit('game_end', { 'dealer_card_indices': dealer_card_indices}, to=room)

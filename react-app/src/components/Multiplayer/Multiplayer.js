@@ -20,6 +20,7 @@ function Multiplayer() {
     const [players, setPlayers] = useState();
     const [gameState, setGameState] = useState();
     const [game, setGame] = useState();
+    const [winner, setWinner] = useState('');
     const user = useSelector(state => state.session.user);
 
     useEffect(() => {
@@ -62,6 +63,7 @@ function Multiplayer() {
             const players = data.playerOrder
             setPlayerOne(players[0])
             setPlayerOneCards(game.player1Cards)
+            setWinner('');
             if (players[1]) {
                 setPlayerTwo(players[1])
                 setPlayerTwoCards(game.player2Cards)
@@ -104,9 +106,21 @@ function Multiplayer() {
             game.nextPlayer();
         });
 
+        socket.on('game_end', data => {
+            const dealerCardIndices = data.dealer_card_indices;
+            if (playerTurn !== user.username) {
+                game.nextPlayer();
+                for (let idx of dealerCardIndices) game.playerDrew(idx);
+            }
+            setPlayerTurn('Dealer');
+            setGameState(GAME_OVER);
+            setWinner(game.getWinner(user.username));
+        });
+
         return (() => {
             socket.removeAllListeners('on_hit');
             socket.removeAllListeners('on_stand');
+            socket.removeAllListeners('game_end');
         })
     }, [playerTurn, playerOneCards, playerTwoCards, playerThreeCards, playerFourCards])
 
@@ -117,8 +131,6 @@ function Multiplayer() {
     const playerHit = () => {
         const cardIdx = game.drawCard();
         if (playerTurn === playerOne) {
-            console.log('here');
-            console.log(game);
             setPlayerOneCards(game.player1Cards.slice())
         } else if (playerTurn === playerTwo) {
             setPlayerTwoCards(game.player2Cards.slice())
@@ -144,7 +156,12 @@ function Multiplayer() {
         } else {
             nextPlayer = 'Dealer';
         }
-        socket.emit('hold', { username: nextPlayer })
+        if (nextPlayer === 'Dealer') {
+            const dealerCardIndices = game.dealerDraws();
+            socket.emit('game_end', { dealerCardIndices, username: user.username })
+        } else {
+            socket.emit('hold', { username: nextPlayer })
+        }
     }
 
     return (
@@ -155,16 +172,30 @@ function Multiplayer() {
                 ))
             }
             {gameState === GAME_OVER &&
-                <button onClick={readyUp}>New Game</button>
+                <>
+                    <button onClick={readyUp}>New Game</button>
+                    {winner &&
+                        <h2>{winner} Won</h2>
+                    }
+                </>
             }
-            {gameState === IN_GAME &&
+            {(gameState === IN_GAME || gameState === GAME_OVER) &&
                 <div>
                     {playerTurn && <h1>{playerTurn}</h1>}
                     {game &&
                         <div>
                             <h1>Dealer</h1>
-                            <p>{game.dealerCards[0].suit} {game.dealerCards[0].value}</p>
-                            <p>Dealer card 2?</p>
+                            {playerTurn !== 'Dealer' &&
+                                <>
+                                    <p>{game.dealerCards[0].suit} {game.dealerCards[0].value}</p>
+                                    <p>Dealer card 2?</p>
+                                </>
+                            }
+                            {playerTurn === 'Dealer' &&
+                                game.dealerCards.map((card, idx) => (
+                                    <p key={idx}>{card.suit} {card.value}</p>
+                                ))
+                            }
                         </div>
                     }
                     {playerOne &&

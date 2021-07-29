@@ -134,6 +134,7 @@ class MultiPlayerGame extends Game {
         this.getWinner = this.getWinner.bind(this);
         this.removeCard = this.removeCard.bind(this);
         this.playerDrew = this.playerDrew.bind(this);
+        this.dealerDraws = this.dealerDraws.bind(this);
 
         // Get players set up and initial draws complete
         this.player1Cards = [this.removeCard(draws.shift())];
@@ -232,11 +233,19 @@ class MultiPlayerGame extends Game {
             else this.playerTurn = 'Dealer';
         } else {
             this.playerTurn = 'Dealer';
-            while (this.dealerScore < 17) {
-                this.drawCard();
-            }
         }
         return this.playerTurn;
+    }
+
+    dealerDraws() {
+        const dealerCardIndices = []
+        while (this.dealerScore < 17) {
+            const idx = this.deck.getIndex();
+            dealerCardIndices.push(idx);
+            this.dealerCards.push(this.removeCard(idx));
+            this.dealerScore = Game.calculateScore(this.dealerCards);
+        }
+        return dealerCardIndices;
     }
 
     getWinner(player) {
@@ -247,6 +256,14 @@ class MultiPlayerGame extends Game {
         else if (playerIdx === 1) playerScore = this.player2Score;
         else if (playerIdx === 2) playerScore = this.player3Score;
         else  playerScore = this.player4Score;
+        if (playerScore > 21) {
+            this.winner = 'Dealer';
+            return this.winner;
+        }
+        if (this.dealerScore > 21) {
+            this.winner = player;
+            return this.winner;
+        }
         this.winner = this.dealerScore > this.playerScore ? 'Dealer' : player;
     }
 }
