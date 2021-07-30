@@ -1,5 +1,4 @@
-const { useReducer } = require('react');
-const { Deck } = require('./Deck.js');
+import { Deck } from './Deck';
 
 const valueMap = {
     'A': 11,
@@ -17,7 +16,7 @@ const valueMap = {
     '2': 2,
 }
 
-class Game {
+export class Game {
     constructor() {
         this.deck = new Deck();
 
@@ -61,5 +60,3 @@ class Game {
         return score;
     }
 }
-
-module.exports = { Game }

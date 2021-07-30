@@ -28,7 +28,7 @@ let valuesDict = {
     12: 'K',
 }
 
-class Deck {
+export class Deck {
     constructor() {
         this.cards = [];
         // 4 copies of each cards (4 decks per game)
@@ -56,5 +56,3 @@ class Deck {
         return Math.floor(Math.random() * 1000) % this.cards.length;
     }
 }
-
-module.exports = { Deck }
