@@ -8,10 +8,10 @@ function HomePage() {
 
   return (
     <div className="home-page-container">
+      <div className="home-page-overlay"></div>
       <div className="home-page-elements">
-       <LeaderBoard />
+        <LeaderBoard />
         <div className="button-divs">
-
           <div className="single-div">
             <button
               className="single-button"
