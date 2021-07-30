@@ -1,13 +1,10 @@
-
-*
-{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
-header
-{
+header {
   position: absolute;
   top: 0;
   left: 0;
@@ -18,15 +15,13 @@ header
   justify-content: space-between;
   align-items: center;
 }
-header .logo
-{
+header .logo {
   color: #fff;
   text-transform: uppercase;
   cursor: pointer;
 }
 
-.splash-container
-{
+.splash-container {
   position: absolute;
   right: 0;
   width: 100%;
@@ -39,13 +34,11 @@ header .logo
   transition: 0.5s;
   z-index: 2;
 }
-.splash-container.active
-{
+.splash-container.active {
   right: 18.75rem;
 }
 
-.splash-container iframe
-{
+.splash-container iframe {
   position: absolute;
   top: 0;
   left: 0;
@@ -53,11 +46,9 @@ header .logo
   height: 100%;
   object-fit: cover;
   opacity: 0.8;
-   position: fixed;
-
+  position: fixed;
 }
-.overlay
-{
+.overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -66,14 +57,16 @@ header .logo
   background: rgba(27, 221, 27, 0.363);
   mix-blend-mode: overlay;
 }
-.splash-text
-{
+.splash-text {
   position: relative;
   z-index: 10;
+  display: flex;
+  align-self: center;
+  width: 100vw;
+  flex-flow: column;
 }
 
-.splash-text h2
-{
+.splash-text h2 {
   font-size: 4.5em;
   font-weight: 800;
   color: #fff;
@@ -83,20 +76,18 @@ header .logo
   text-align: center;
 }
 
-.splash-text p
-{
+.splash-text p {
   font-size: 1.1em;
   color: #fff;
   margin: 1.25rem 0;
   font-weight: 400;
-  
+
   text-align: center;
   /* backdrop-filter: blur(20px); */
   place-self: center;
 }
 
-.splash-text a
-{
+.splash-text a {
   display: inline-block;
   font-size: 1em;
   background: #fff;
@@ -110,30 +101,24 @@ header .logo
   transition: 0.2s;
 }
 
-.splash-text a:hover
-{
+.splash-text a:hover {
   letter-spacing: 0.375rem;
 }
 
-
-@media (max-width: 991px)
-{
+@media (max-width: 991px) {
   .splash-container,
-  .splash-container header
-  {
+  .splash-container header {
     padding: 2.5rem;
   }
-  .splash-text h2
-  {
+  .splash-text h2 {
     font-size: 3em;
   }
-  .splash-text h3
-  {
+  .splash-text h3 {
     font-size: 2em;
   }
 }
 
-.splash-buttons{
+.splash-buttons {
   display: flex;
-  justify-content:space-evenly;
+  justify-content: space-evenly;
 }

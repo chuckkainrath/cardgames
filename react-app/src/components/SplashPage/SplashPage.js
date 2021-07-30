@@ -43,13 +43,10 @@ function SplashPage() {
         <div class="overlay"></div>
         <div class="splash-text">
           <h2>
-            It's not about the cards you're dealt, But how you play the hand!
+            BlaK-JaK
           </h2>
           <p>
-            Blackjack is very scientific. There's always a right answer and a
-            wrong answer. <br></br> Do you take a card, increase your bet, bet
-            big or bet small. <br></br>There's absolutely a right and wrong
-            answer.
+          It's not about the cards you're dealt, But how you play the hand!
           </p>
           <div className="splash-buttons">
             {" "}
