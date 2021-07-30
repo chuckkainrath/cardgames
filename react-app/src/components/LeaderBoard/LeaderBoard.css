@@ -8,6 +8,7 @@
   max-width: 37.5rem;
   padding: 0.313rem;
   border: 0.125rem solid #b78846;
+  backdrop-filter: blur(5px);
 }
 outter-border:before,
 outter-border:after {

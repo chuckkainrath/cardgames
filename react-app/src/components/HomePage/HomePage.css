@@ -1,48 +1,58 @@
-.home-page-container{
-    display: flex;
-    justify-content: center;
+.home-page-container {
+  top: 0;
+  left: 0;
+  overflow: auto;
+  width: 100vw;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: inline-block;
+  background-image: url("../../../src/resources/15.jpeg");
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
 }
-.home-page-elements{
-    width: 100vh;
+.home-page-elements {
+  width: 100vh;
 }
-
 
 /* Single player button */
-.single-button{
+.single-button {
   position: relative;
   display: inline-flex;
-  width: 180px;
+  width: 13rem;
   height: 55px;
   margin: 0 15px;
   perspective: 1000px;
 }
-.single-button{
+.single-button {
   font-size: 19px;
   letter-spacing: 1px;
   transform-style: preserve-3d;
   transform: translateZ(-25px);
-  transition: transform .25s;
-  font-family: 'Montserrat', sans-serif;
-  
+  transition: transform 0.25s;
+  font-family: "Montserrat", sans-serif;
 }
-.single-button:before{
+.single-button:before {
   position: absolute;
-  content:"Single Player";
+  content: "♦️ Single Player ♥️ ";
   height: 55px;
-  width: 180px;
+  width: 13rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 5px solid black;
+  border: 5px solid white;
   box-sizing: border-box;
   border-radius: 5px;
 }
 
-.single-button:after{
+.single-button:after {
   position: absolute;
   content: "LET'S PLAY!";
   height: 55px;
-  width: 180px;
+  width: 13rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -50,55 +60,55 @@
   box-sizing: border-box;
   border-radius: 5px;
 }
-.single-button:before{
-  color: #fff;
-  background: #000;
+.single-button:before {
+  color: white;
+  background: black;
   transform: rotateY(0deg) translateZ(25px);
 }
-.single-button:after{
-  color: #000;
+.single-button:after {
+  color: black;
+  background: white;
   transform: rotateX(90deg) translateZ(25px);
 }
-.single-button:hover{
+.single-button:hover {
   transform: translateZ(-25px) rotateX(-90deg);
 }
 
 /* MULTI PLAYER BUTTON */
-.multi-button{
+.multi-button {
   position: relative;
   display: inline-flex;
-  width: 180px;
+  width: 13rem;
   height: 55px;
   margin: 0 15px;
   perspective: 1000px;
 }
-.multi-button{
+.multi-button {
   font-size: 19px;
   letter-spacing: 1px;
   transform-style: preserve-3d;
   transform: translateZ(-25px);
-  transition: transform .25s;
-  font-family: 'Montserrat', sans-serif;
-  
+  transition: transform 0.25s;
+  font-family: "Montserrat", sans-serif;
 }
-.multi-button:before{
+.multi-button:before {
   position: absolute;
-  content:"Multi-Player";
+  content: "♠️ Multi-Player ♣️ ";
   height: 55px;
-  width: 180px;
+  width: 13rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 5px solid red;
+  border: 5px solid white;
   box-sizing: border-box;
   border-radius: 5px;
 }
 
-.multi-button:after{
+.multi-button:after {
   position: absolute;
   content: "LET'S PLAY!";
   height: 55px;
-  width: 180px;
+  width: 13rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -106,139 +116,25 @@
   box-sizing: border-box;
   border-radius: 5px;
 }
-.multi-button:before{
+.multi-button:before {
   color: white;
   background: red;
   transform: rotateY(0deg) translateZ(25px);
 }
-.multi-button:after{
+.multi-button:after {
   color: red;
+  background-color: white;
   transform: rotateX(90deg) translateZ(25px);
 }
-.multi-button:hover{
+.multi-button:hover {
   transform: translateZ(-25px) rotateX(-90deg);
 }
 
 .button-divs {
-    display: flex;
-    justify-content: space-between;
-    height: 90vh;
-    /* width: 100vw; */
-    align-items: flex-end;
-    padding: 3rem;
-}
-
-
-*
-{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
-.home-page-container
-{
-  position: absolute;
-  right: 0;
-  width: 100%;
-  min-height: 100vh;
-  padding: 100px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  background: #111;
-  transition: 0.5s;
-  z-index: 2;
-}
-.home-page-container.active
-{
-  right: 300px;
-}
-
-.home-page-container video
-{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.8;
-}
-.home-page-overlay
-{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #03a9f4;
-  mix-blend-mode: overlay;
-}
-.text
-{
-  position: relative;
-  z-index: 10;
-}
-
-.text h2
-{
-  font-size: 5em;
-  font-weight: 800;
-  color: #fff;
-  line-height: 1em;
-  text-transform: uppercase;
-}
-.text h3
-{
-  font-size: 4em;
-  font-weight: 700;
-  color: #fff;
-  line-height: 1em;
-  text-transform: uppercase;
-}
-.text p
-{
-  font-size: 1.1em;
-  color: #fff;
-  margin: 20px 0;
-  font-weight: 400;
-  max-width: 700px;
-}
-.text a
-{
-  display: inline-block;
-  font-size: 1em;
-  background: #fff;
-  padding: 10px 30px;
-  text-transform: uppercase;
-  text-decoration: none;
-  font-weight: 500;
-  margin-top: 10px;
-  color: #111;
-  letter-spacing: 2px;
-  transition: 0.2s;
-}
-.text a:hover
-{
-  letter-spacing: 6px;
-}
-
-
-@media (max-width: 991px)
-{
-  .home-page-container,
-  .home-page-container header
-  {
-    padding: 40px;
-  }
-  .text h2
-  {
-    font-size: 3em;
-  }
-  .text h3
-  {
-    font-size: 2em;
-  }
+  height: 90vh;
+  /* width: 100vw; */
+  align-items: flex-end;
+  padding: 3rem;
 }
