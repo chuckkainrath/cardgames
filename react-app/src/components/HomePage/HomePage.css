@@ -50,7 +50,7 @@
 
 .single-button:after {
   position: absolute;
-  content: "LET'S PLAY!";
+  content: "♠️ LET'S PLAY ♣️ ";
   height: 55px;
   width: 13rem;
   display: flex;
@@ -106,7 +106,7 @@
 
 .multi-button:after {
   position: absolute;
-  content: "LET'S PLAY!";
+  content: "♦️ LET'S PLAY! ♥️";
   height: 55px;
   width: 13rem;
   display: flex;

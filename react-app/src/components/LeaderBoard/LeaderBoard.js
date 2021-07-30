@@ -5,15 +5,17 @@ import "./LeaderBoard.css"
 
 function LeaderBoard() {
   return (
-    <div id='leader' className="container p-4 mt-9 inline-block ">
-     
+    <div id="leader" className="container p-4 mt-9 inline-block ">
+      <div class="gradient-border">
+       
+      </div>
       <div className="outter-border">
         <div className="inner-border">
           <h1 className="h1-board m-4 font-black text-3xl justify-center flex">
-        Leader Board
-      </h1>
+            ♥️♠️ Leader Board ♣️♦️
+          </h1>
           <table className="text-left w-full">
-            <thead className="bg-black flex text-white w-full">
+            <thead className="bg-black flex text-white w-full mb-3">
               <tr className="flex w-full mb-4">
                 <th className="p-4 w-1/4">User Name</th>
                 <th className="p-4 w-1/4">Wins</th>
@@ -26,18 +28,18 @@ function LeaderBoard() {
               style={{ height: "50vh" }}
             >
               <tr className="first-place bg-yellow-400 flex w-full">
+                <td className="p-4 w-1/4">Powerbottom88</td>
+                <td className="p-4 w-1/4">100</td>
+                <td className="p-4 w-1/4">2</td>
+                <td className="p-4 w-1/4">Fish</td>
+              </tr>
+              <tr className="second-place bg-gray-300 flex w-full">
                 <td className="p-4 w-1/4">Dogs</td>
                 <td className="p-4 w-1/4">Cats</td>
                 <td className="p-4 w-1/4">Birds</td>
                 <td className="p-4 w-1/4">Fish</td>
               </tr>
-              <tr className="second-place bg-gray-400 flex w-full">
-                <td className="p-4 w-1/4">Dogs</td>
-                <td className="p-4 w-1/4">Cats</td>
-                <td className="p-4 w-1/4">Birds</td>
-                <td className="p-4 w-1/4">Fish</td>
-              </tr>
-              <tr className="third-place bg-yellow-700 flex w-full ">
+              <tr className="third-place bg-yellow-600 flex w-full ">
                 <td className="p-4 w-1/4">Dogs</td>
                 <td className="p-4 w-1/4">Cats</td>
                 <td className="p-4 w-1/4">Birds</td>
