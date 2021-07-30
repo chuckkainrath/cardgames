@@ -9,10 +9,10 @@ function SplashPage() {
         <header>
           <h1 className="logo">🃏Site Logo goes here</h1>
         </header>
-        <iframe
+        {/* <iframe
           width="1500"
           height="1500"
-          src="https://www.youtube.com/embed/eyoh-Ku9TCI?controls=0&autoplay=1&cc_load_policy=3&mute=1&showinfo=0&rel=0&loop=1&playlist=eyoh-Ku9TCI"
+          src="https://www.youtube.com/embed/NiVdFpawZs8?&controls=0&autoplay=1&cc_load_policy=3&mute=1&showinfo=0&rel=0&loop=1&playlist=eyoh-Ku9TCI"
           frameborder="0"
           title="Youtube Video"
           style={{
@@ -28,6 +28,16 @@ function SplashPage() {
             padding: "0",
             overflow: "hidden",
           }}
+          allowfullscreen="allowfullscreen"
+        ></iframe> */}
+
+        <iframe
+          width="100%"
+          height="100%"
+          src="https://www.youtube.com/embed/NiVdFpawZs8?&controls=0&autoplay=1&cc_load_policy=3&mute=1&showinfo=0&autohite=1&rel=0&modestbranding=1&loop=1&playlist=NiVdFpawZs8"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen="allowfullscreen"
         ></iframe>
         <div class="overlay"></div>
