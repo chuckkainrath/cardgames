@@ -10,11 +10,25 @@ function SplashPage() {
           <h1 className="logo">🃏Site Logo goes here</h1>
         </header>
         <iframe
-          src="https://www.youtube.com/embed/eyoh-Ku9TCI?&autoplay=1&iv_load_policy=3&playlist=eyoh-Ku9TCI&loop=1&mute=1&controls=0&showinfo=0&"
-          title="YouTube video player"
+          width="1500"
+          height="1500"
+          src="https://www.youtube.com/embed/eyoh-Ku9TCI?controls=0&autoplay=1&cc_load_policy=3&mute=1&showinfo=0&rel=0&loop=1&playlist=eyoh-Ku9TCI"
           frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
+          title="Youtube Video"
+          style={{
+            position: "fixed",
+            top: "0",
+            left: "0",
+            bottom: "0",
+            right: "0",
+            width: "100%",
+            height: "100%",
+            border: "none",
+            margin: "0",
+            padding: "0",
+            overflow: "hidden",
+          }}
+          allowfullscreen="allowfullscreen"
         ></iframe>
         <div class="overlay"></div>
         <div class="splash-text">
@@ -27,9 +41,12 @@ function SplashPage() {
             big or bet small. <br></br>There's absolutely a right and wrong
             answer.
           </p>
-          <NavLink to="/login">Log In</NavLink>
-          {"  "} {/*  do not remove space */}
-          <NavLink to="sign-up">Sign Up</NavLink>
+          <div className="splash-buttons">
+            {" "}
+            <NavLink to="/login">Log In</NavLink>
+            {"  "} {/*  do not remove space */}
+            <NavLink to="sign-up">Sign Up</NavLink>
+          </div>
         </div>
       </section>
     </div>

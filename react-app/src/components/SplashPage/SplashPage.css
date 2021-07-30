@@ -12,7 +12,7 @@ header
   top: 0;
   left: 0;
   width: 100%;
-  padding: 2.5rem 6.25rem;
+  padding: 1.5rem 6.25rem;
   z-index: 1000;
   display: flex;
   justify-content: space-between;
@@ -22,25 +22,6 @@ header .logo
 {
   color: #fff;
   text-transform: uppercase;
-  cursor: pointer;
-}
-.toggle
-{
-  position: relative;
-  width: 3.75rem;
-  height: 3.75rem;
-  background: url('https://i.ibb.co/HrfVRcx/menu.png');
-  background-repeat: no-repeat;
-  background-size: 1.875rem;
-  background-position: center;
-  cursor: pointer;
-}
-.toggle.active
-{
-  background: url('https://i.ibb.co/rt3HybH/close.png');
-  background-repeat: no-repeat;
-  background-size: 1.563rem;
-  background-position: center;
   cursor: pointer;
 }
 
@@ -91,12 +72,13 @@ header .logo
 
 .splash-text h2
 {
-  font-size: 5em;
+  font-size: 4.5em;
   font-weight: 800;
   color: #fff;
   line-height: 1em;
   text-transform: uppercase;
   /* backdrop-filter: blur(20px); */
+  text-align: center;
 }
 
 .splash-text p
@@ -105,9 +87,12 @@ header .logo
   color: #fff;
   margin: 1.25rem 0;
   font-weight: 400;
-  max-width: 43.75rem;
+  
+  text-align: center;
   /* backdrop-filter: blur(20px); */
+  place-self: center;
 }
+
 .splash-text a
 {
   display: inline-block;
@@ -122,6 +107,7 @@ header .logo
   letter-spacing: 0.125rem;
   transition: 0.2s;
 }
+
 .splash-text a:hover
 {
   letter-spacing: 0.375rem;
@@ -143,4 +129,9 @@ header .logo
   {
     font-size: 2em;
   }
+}
+
+.splash-buttons{
+  display: flex;
+  justify-content:space-evenly;
 }
