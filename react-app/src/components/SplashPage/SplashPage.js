@@ -32,12 +32,15 @@ function SplashPage() {
         ></iframe> */}
 
         <iframe
-          src="https://www.youtube.com/embed/NiVdFpawZs8?&controls=0&autoplay=1&cc_load_policy=3&mute=1&showinfo=0&autohite=1&rel=0&modestbranding=1&loop=1&playlist=NiVdFpawZs8&allowfullscreen=1"
+          width="3000"
+          height="3000"
+          src="https://www.youtube.com/embed/NiVdFpawZs8?&controls=0&autoplay=1&cc_load_policy=3&mute=1&showinfo=0&autohite=1&rel=0&modestbranding=1&loop=1&playlist=NiVdFpawZs8&allowfullscreen=allowfullscreen"
           title="YouTube video player"
-          frameborder="0"
+          frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen="allowfullscreen"
+          allowFullScreen
         ></iframe>
+
         <div className="overlay"></div>
         <div className="splash-text">
           <h2>BlaK-JaK</h2>
@@ -103,6 +106,165 @@ function SplashPage() {
                 width="400px"
                 height="300px"
               ></img>{" "}
+            </div>
+          </div>
+          <div className="engineers-container">
+            <div className="card-eng">
+              <h1 className="engineer-name">Charles Kainrath</h1>
+              <img
+                src="https://i.ibb.co/Fwg3NDP/Screen-Shot-2021-07-28-at-3-00-05-PM.png"
+                alt="Screen-Shot-2021-07-28-at-3-00-05-PM"
+                border="0"
+                width="200px"
+                height="200px"
+              />
+              <div className="engineer-story">
+                Wore different hats in the retail industry from specialist, to
+                lead, to stock, and different levels of management for about 18
+                years. Along the way I also gain experience in hospitality field
+                as well as in the food industry. Being a pisces I create and
+                escape into many world which why the gaming world appeal to me.
+                World of gaming is vast and always created a safe haven for me.
+                However, what really appeal to me is the world with-in the game
+                and the many elements that forms it. So due to covid closing
+                some doors of opportunity. I took the opportunity to strive to
+                become a Software Engineer.
+              </div>
+
+              <div className="engineers-links">
+                <div id="githubLink">
+                  <a
+                    href="https://github.com/chuckkainrath"
+                    target="_blank"
+                    style={{ textDecoration: "none" }}
+                  >
+                    <i className="fab fa-github-alt"></i>
+                  </a>
+                </div>
+                <div id="linkedinLink">
+                  <a
+                    href="https://www.linkedin.com/in/chuck-kainrath-42820b20b/"
+                    target="_blank"
+                    style={{ textDecoration: "none" }}
+                  >
+                    <i className="fab fa-linkedin"></i>
+                  </a>
+                </div>
+                <div id="porfolio-link">
+                  <a
+                    href="https://chuckkainrath.github.io"
+                    target="_blank"
+                    style={{ textDecoration: "none" }}
+                  >
+                    <i className="fas fa-user-secret"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div className="card-eng">
+              <h1 className="engineer-name">Jeb Griffin</h1>
+              <img
+                src="https://i.ibb.co/xS3pqxZ/Screen-Shot-2021-07-28-at-2-59-44-PM.png"
+                alt="Screen-Shot-2021-07-28-at-3-00-05-PM"
+                border="0"
+                width="200px"
+                height="200px"
+              />
+              <div className="engineer-story">
+                Wore different hats in the retail industry from specialist, to
+                lead, to stock, and different levels of management for about 18
+                years. Along the way I also gain experience in hospitality field
+                as well as in the food industry. Being a pisces I create and
+                escape into many world which why the gaming world appeal to me.
+                World of gaming is vast and always created a safe haven for me.
+                However, what really appeal to me is the world with-in the game
+                and the many elements that forms it. So due to covid closing
+                some doors of opportunity. I took the opportunity to strive to
+                become a Software Engineer.
+              </div>
+
+              <div className="engineers-links">
+                <div id="githubLink">
+                  <a
+                    href="https://github.com/JebGriffin85"
+                    target="_blank"
+                    style={{ textDecoration: "none" }}
+                  >
+                    <i className="fab fa-github-alt"></i>
+                  </a>
+                </div>
+                <div id="linkedinLink">
+                  <a
+                    href="https://www.linkedin.com/in/jeb-griffin-120631206/"
+                    target="_blank"
+                    style={{ textDecoration: "none" }}
+                  >
+                    <i className="fab fa-linkedin"></i>
+                  </a>
+                </div>
+                <div id="porfolio-link">
+                  <a
+                    href="https://jebgriffin85.github.io/"
+                    target="_blank"
+                    style={{ textDecoration: "none" }}
+                  >
+                    <i className="fas fa-user-secret"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div className="card-eng">
+              <h1 className="engineer-name">Tristan San Juan</h1>
+              <img
+                src="https://i.ibb.co/Y855xF8/Screenshot-20200210-125456-copy.png"
+                alt="Screen-Shot-2021-07-28-at-3-00-05-PM"
+                border="0"
+                width="200px"
+                height="200px"
+              />
+
+              <div className="engineer-story">
+                Wore different hats in the retail industry from specialist, to
+                lead, to stock, and different levels of management for about 18
+                years. Along the way I also gain experience in hospitality field
+                as well as in the food industry. Being a pisces I create and
+                escape into many world which why the gaming world appeal to me.
+                World of gaming is vast and always created a safe haven for me.
+                However, what really appeal to me is the world with-in the game
+                and the many elements that forms it. So due to covid closing
+                some doors of opportunity. I took the opportunity to strive to
+                become a Software Engineer.
+              </div>
+
+              <div className="engineers-links">
+                <div id="githubLink">
+                  <a
+                    href="https://github.com/tristan-88"
+                    target="_blank"
+                    style={{ textDecoration: "none" }}
+                  >
+                    <i className="fab fa-github-alt"></i>
+                  </a>
+                </div>
+                <div id="linkedinLink">
+                  <a
+                    href="https://www.linkedin.com/in/tristan-san-juan-75337920b/"
+                    target="_blank"
+                    style={{ textDecoration: "none" }}
+                  >
+                    <i className="fab fa-linkedin"></i>
+                  </a>
+                </div>
+                <div id="porfolio-link">
+                  <a
+                    href="https://tristan-88.github.io/"
+                    target="_blank"
+                    style={{ textDecoration: "none" }}
+                  >
+                    <i className="fas fa-user-secret"></i>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
