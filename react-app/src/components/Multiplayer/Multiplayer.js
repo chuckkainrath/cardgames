@@ -279,7 +279,6 @@ function Multiplayer() {
                     <div className='flex-column items-center justify-center m-0'>
                         <img className='rounded-full pb-2 h-30 w-30 m-0' src={dealer} alt='dealerphoto'></img>
                         <div className='flex flex-row items-center justify-center m-0'>
-                            <h1>Dealer</h1>
                             {playerTurn !== 'Dealer' &&
                                 <>
                                      <img className='animate-fade-in-down' src={valueMap[game.dealerCards[0].suit.concat(game.dealerCards[0].value)]} alt='cardValue' />
@@ -297,6 +296,7 @@ function Multiplayer() {
                             </div>
                         </div>
                     }
+                    <div className='flex flex-initial flex-row p-2 '>
                     {playerOne &&
                     <div className='flex items-center justify-center pt-20'>
                     <div className=' flex-column items-center justify-center'>
@@ -319,7 +319,7 @@ function Multiplayer() {
                         <div>
                             <h1>{playerTwo}</h1>
                             {playerTwoCards && playerTwoCards.map((card, idx) => (
-                                <p key={idx}>{card.suit} {card.value}</p>
+                                <img src={valueMap[card.suit.concat(card.value)]} alt='playercard' />
                             ))}
                             {(playerTwo === user.username && playerTurn === user.username) &&
                                 <>
@@ -333,7 +333,7 @@ function Multiplayer() {
                         <div>
                             <h1>{playerThree}</h1>
                             {playerThreeCards && playerThreeCards.map((card, idx) => (
-                                <p key={idx}>{card.suit} {card.value}</p>
+                                <img src={valueMap[card.suit.concat(card.value)]} alt='playercard' />
                             ))}
                             {(playerThree === user.username && playerTurn === user.username) &&
                                 <>
@@ -347,7 +347,7 @@ function Multiplayer() {
                         <div>
                             <h1>{playerFour}</h1>
                             {playerFourCards && playerFourCards.map((card, idx) => (
-                                <p key={idx}>{card.suit} {card.value}</p>
+                                <img src={valueMap[card.suit.concat(card.value)]} alt='playercard' />
                             ))}
                             {(playerFour === user.username && playerTurn === user.username) &&
                                 <>
@@ -357,6 +357,7 @@ function Multiplayer() {
                             }
                         </div>
                     }
+                    </div>
                     </div>
                 </div>
             }
