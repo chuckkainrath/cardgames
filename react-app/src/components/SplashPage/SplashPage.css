@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+  
 }
 header {
   position: absolute;
@@ -121,4 +122,48 @@ header .logo {
 .splash-buttons {
   display: flex;
   justify-content: space-evenly;
+}
+
+.features-container{
+  background-color: green;
+  padding: 4em;
+  margin: 3em;
+  opacity: 90%;
+  border-radius: 10%;
+  margin-top: 10rem;
+}
+
+.features-one {
+  display: flex;
+  margin: 1rem;
+  height: auto;
+  justify-content: space-between;
+  margin-top: 4rem;
+}
+
+.features-two{
+  display: flex;
+  margin: 1rem;
+  height: auto;
+  justify-content: space-between;
+}
+.features-three{
+  display: flex;
+  margin: 1em;
+  height: auto;
+  justify-content: space-between;
+}
+.features-four{
+  display: flex;
+  margin: 1rem;
+  height: auto;
+  justify-content: space-between;
+}
+
+.features-container h1{
+  display: flex;
+  justify-content: center;
+  font-weight: bolder;
+  font-size: xx-large;
+  color: white;
 }
