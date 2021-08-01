@@ -1,13 +1,16 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./SplashPage.css";
+import logo from "./bjkids.png";
 
 function SplashPage() {
   return (
     <div>
       <section className="splash-container">
         <header>
-          <h1 className="logo">🃏Site Logo goes here</h1>
+          <h1 className="logo">
+            <img src={logo} alt="logo" width="100px" height="100px" />BLAK-JAK
+          </h1>
         </header>
         {/* <iframe
           width="1500"
@@ -31,7 +34,7 @@ function SplashPage() {
           allowfullscreen="allowfullscreen"
         ></iframe> */}
 
-        <iframe
+        {/* <iframe
           width="3000"
           height="3000"
           src="https://www.youtube.com/embed/NiVdFpawZs8?&controls=0&autoplay=1&cc_load_policy=3&mute=1&showinfo=0&autohite=1&rel=0&modestbranding=1&loop=1&playlist=NiVdFpawZs8&allowfullscreen=allowfullscreen"
@@ -39,7 +42,7 @@ function SplashPage() {
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
-        ></iframe>
+        ></iframe> */}
 
         <div className="overlay"></div>
         <div className="splash-text">

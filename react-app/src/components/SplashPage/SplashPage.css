@@ -34,6 +34,10 @@ header .logo {
   background: #111;
   transition: 0.5s;
   z-index: 2;
+  background-image: url('../../resources/d320fa9-e2b98242-6204-4442-81c7-100c8f3590e4.jpeg');
+  background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 .splash-container.active {
   right: 18.75rem;
@@ -50,7 +54,7 @@ header .logo {
   opacity: 0.8;
   position: fixed;
 }
-.overlay {
+/* .overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -58,7 +62,7 @@ header .logo {
   height: 100%;
   background: rgba(27, 221, 27, 0.363);
   mix-blend-mode: overlay;
-}
+} */
 .splash-text {
   position: relative;
   z-index: 10;
@@ -66,6 +70,15 @@ header .logo {
   align-self: center;
   width: 100vw;
   flex-flow: column;
+
+}
+
+.splash-text p {
+    text-shadow: -1px 3px 3px black,
+				  3px 3px 3px black,
+				  3px -1px 0 black,
+				  -1px -1px 0 black; 
+   font-size: 2rem;
 }
 
 .splash-text h2 {
@@ -76,6 +89,10 @@ header .logo {
   text-transform: uppercase;
   /* backdrop-filter: blur(20px); */
   text-align: center;
+  text-shadow: -1px 3px 3px black,
+				  3px 3px 3px black,
+				  3px -1px 0 black,
+				  -1px -1px 0 black; 
 }
 
 .splash-text p {
@@ -126,12 +143,12 @@ header .logo {
 }
 
 .features-container{
-  background-color: green;
-  padding: 4em;
+  background-color: black;
+  padding: 3em;
   margin: 3em;
   opacity: 90%;
-  border-radius: 10%;
   margin-top: 10rem;
+  border-radius: 5%;
 }
 
 .features-one {
@@ -200,16 +217,20 @@ header .logo {
   justify-self: center;
   flex-direction: column;
   text-align: -webkit-center;
-  width: 21.25rem;
-  height: 37.75;
+  width: 31.20rem;
+  height: 41.70rem;
   justify-content: center;
   align-content: center;
-  background-color: white;
+  border-radius: 10%;
   padding: 2rem;
    box-shadow: 2px 17px 9px -7px rgba(12, 12, 12, 0.35);
-   margin: 0.5em;
+   margin: 0.1rem;
    opacity: 95%;
-  border-radius: 10%;
+  background-image: url('../../resources/_.jpeg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:contain;
+
 }
 
 .engineers-links{
@@ -226,6 +247,8 @@ header .logo {
   margin: 1em;
   width: 13rem;
   height: 13rem;
+  border-radius: 50%;
+  position: relative;
 }
 
 .card-eng h1{
@@ -234,6 +257,13 @@ header .logo {
 
 .engineers-container{
   display: flex;
-  justify-content: space-evenly;
   margin-top: 20rem;
+  justify-content: center;
+}
+
+.engineer-story{
+  backdrop-filter: blur(50px);
+  background-color: #fff;
+  /* opacity: 60%; */
+
 }
