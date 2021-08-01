@@ -9,7 +9,8 @@ function SplashPage() {
       <section className="splash-container">
         <header>
           <h1 className="logo">
-            <img src={logo} alt="logo" width="100px" height="100px" />BLAK-JAK
+            <img src={logo} alt="logo" width="100px" height="100px" />
+            BLAK-JAK
           </h1>
         </header>
         {/* <iframe
@@ -122,16 +123,11 @@ function SplashPage() {
                 height="200px"
               />
               <div className="engineer-story">
-                Wore different hats in the retail industry from specialist, to
-                lead, to stock, and different levels of management for about 18
-                years. Along the way I also gain experience in hospitality field
-                as well as in the food industry. Being a pisces I create and
-                escape into many world which why the gaming world appeal to me.
-                World of gaming is vast and always created a safe haven for me.
-                However, what really appeal to me is the world with-in the game
-                and the many elements that forms it. So due to covid closing
-                some doors of opportunity. I took the opportunity to strive to
-                become a Software Engineer.
+                Charles is detail-oriented software engineer who has experience
+                building dynamic web applications using React/Redux on the
+                frontend and Flask/SQLAlchemy/PostgreSQL on the backend. Whether
+                he is working with a team or solo, Who he is loves to write code
+                and produce results.
               </div>
 
               <div className="engineers-links">
@@ -174,16 +170,16 @@ function SplashPage() {
                 height="200px"
               />
               <div className="engineer-story">
-                Wore different hats in the retail industry from specialist, to
-                lead, to stock, and different levels of management for about 18
-                years. Along the way I also gain experience in hospitality field
-                as well as in the food industry. Being a pisces I create and
-                escape into many world which why the gaming world appeal to me.
-                World of gaming is vast and always created a safe haven for me.
-                However, what really appeal to me is the world with-in the game
-                and the many elements that forms it. So due to covid closing
-                some doors of opportunity. I took the opportunity to strive to
-                become a Software Engineer.
+                Jeb did not know he wanted to be a software engineer until he wrote
+                his first line of working code. It was a new type of satisfaction
+                unlike he never experienced before. The more he learned the more he
+                realized he didn’t know, and he wanted to know more. Before
+                writing that first line of code, He was a chef for 15 years.
+                Luckily, he found coding and never wanted to go back to a
+                hot kitchen. What he loves about coding is the same for what he
+                love about cooking: the creativity. He finds a deep satisfaction in
+                creating an application from scratch, building it how he wants and
+                calling it his own.
               </div>
 
               <div className="engineers-links">
@@ -227,16 +223,16 @@ function SplashPage() {
               />
 
               <div className="engineer-story">
-                Wore different hats in the retail industry from specialist, to
-                lead, to stock, and different levels of management for about 18
-                years. Along the way I also gain experience in hospitality field
-                as well as in the food industry. Being a pisces I create and
-                escape into many world which why the gaming world appeal to me.
-                World of gaming is vast and always created a safe haven for me.
-                However, what really appeal to me is the world with-in the game
-                and the many elements that forms it. So due to covid closing
-                some doors of opportunity. I took the opportunity to strive to
-                become a Software Engineer.
+                Tristan wore different hats in the retail industry from
+                specialist, to lead, to stock, and different levels of
+                management for about 18 years. Along the way he also gain
+                experience in hospitality field as well as in the food industry.
+                Being a pisces he creates and escapes into many world which why
+                the gaming world appeal to him. The world of gaming is vast and
+                always created a safe haven for him. However, what really appeal
+                to his is the world with-in the game and the many elements that
+                forms it. So due to covid closing some doors of opportunity. He
+                took the opportunity to strive to become a Software Engineer.
               </div>
 
               <div className="engineers-links">
