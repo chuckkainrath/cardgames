@@ -31,6 +31,45 @@ userSeatMap = {}
 
 userRoomMap = {}
 
+
+# Helper functions
+
+
+# Generate card draw
+def generateDraw(numPlayers):
+    # Generate random indices
+    deckSize = 4 * 52
+    drawIndices = []
+
+    # Each player + dealer draws 2 cards
+    for i in range(numPlayers * 2 + 2):
+        drawIndices.append(random.randint(0, deckSize))
+        deckSize -= 1
+
+    return drawIndices
+
+
+# Get player order
+def getPlayerOrder(room):
+     # If here, all players ready
+    playerOrder = [0] * len(rooms[room])
+    for player in rooms[room]:
+        playerOrder[userSeatMap[player]] = player
+
+        # Also change player status
+        userStatusMap[player] = IN_GAME
+
+    return playerOrder
+
+
+# Get game started
+def getGameStarted(room):
+    playerOrder = getPlayerOrder(room)
+    roomStatus[room] = IN_GAME
+    drawIndices = generateDraw(len(playerOrder))
+    return playerOrder, drawIndices
+
+
 @socketio.on('disconnect')
 def on_disconnect():
     username = current_user.username
@@ -46,11 +85,24 @@ def on_disconnect():
         # If room is empty, change room status to game over
         if len(rooms[room]) == 0:
             roomStatus[room] = GAME_OVER
+        else:  # If player leaves, start game if others are ready
+            # Remap player seats
+            roomList = rooms[room]
+            for i in range(len(roomList)):
+                player = roomList[i]
+                userSeatMap[player] = i
 
-        # If player leaves, start game if others are ready
-        # TODO
+            # Check if players are ready
+            ready = True
+            for player in roomList:
+                if userStatusMap[player] != READY:
+                    ready = False
+                    break
+            if ready:
+                playerOrder, drawIndices = getGameStarted(room)
+                emit('start_game', { 'drawIndices': drawIndices, 'playerOrder': playerOrder }, to=room)
 
-        emit('player_left', { 'players': rooms[room] }, to=room)
+        emit('player_left', { 'username': username }, to=room)
 
 
 @socketio.on('join')
@@ -108,11 +160,25 @@ def on_leave(data):
     # If room is empty, change room status to game over
     if len(rooms[room]) == 0:
         roomStatus[room] = GAME_OVER
+    else:  # If player leaves, start game if others are ready
+        # Remap player seats
+        roomList = rooms[room]
+        for i in range(len(roomList)):
+            player = roomList[i]
+            userSeatMap[player] = i
 
-    # If player leaves, start game if others are ready
-    # TODO
+        # Check if players are ready
+        ready = True
+        for player in roomList:
+            if userStatusMap[player] != READY:
+                ready = False
+                break
+        if ready:
+            playerOrder, drawIndices = getGameStarted(room)
+            emit('start_game', { 'drawIndices': drawIndices, 'playerOrder': playerOrder }, to=room)
 
-    emit('player_left', { 'players': rooms[room] }, to=room)
+
+    emit('player_left', { 'username': username }, to=room)
 
 
 @socketio.on('ready')
@@ -125,25 +191,7 @@ def on_ready(data):
         if userStatusMap[player] != READY:
             return
 
-    # If here, all players ready
-    playerOrder = [0] * len(rooms[room])
-    for player in rooms[room]:
-        playerOrder[userSeatMap[player]] = player
-
-        # Also change player status
-        userStatusMap[player] = IN_GAME
-
-    roomStatus[room] = IN_GAME
-
-    # Generate random indices
-    deckSize = 4 * 52
-    drawIndices = []
-
-    # Each player + dealer draws 2 cards
-    for i in range(len(playerOrder) * 2 + 2):
-        drawIndices.append(random.randint(0, deckSize))
-        deckSize -= 1
-
+    playerOrder, drawIndices = getGameStarted(room)
 
     emit('start_game', { 'drawIndices': drawIndices, 'playerOrder': playerOrder }, to=room)
 
