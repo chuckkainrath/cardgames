@@ -116,13 +116,13 @@ function Multiplayer() {
             console.log('user left', username);
             if (gameState === IN_GAME) {
                 game.playerLeft(username);
-                if (username === playerOne) {
+                if (username === playerOne && gameState == IN_GAME) {
                     setPlayerOne(`${playerOne} Left`);
-                } else if (username === playerTwo) {
+                } else if (username === playerTwo && gameState == IN_GAME) {
                     setPlayerTwo(`${playerTwo} Left`);
-                } else if (username === playerThree) {
+                } else if (username === playerThree && gameState == IN_GAME) {
                     setPlayerThree(`${playerThree} Left`);
-                } else {
+                } else if (username === playerFour && gameState == IN_GAME) {
                     setPlayerFour(`${playerFour} Left`);
                 }
 
