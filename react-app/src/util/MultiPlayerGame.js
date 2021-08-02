@@ -147,7 +147,7 @@ export class MultiPlayerGame extends Game {
     }
 
     playerLeft(username) {
-        const playerIdx = this.players.getIndex(username);
+        const playerIdx = this.players.indexOf(username);
         this.players[playerIdx] = '';
         switch (playerIdx) {
             case 0:

@@ -52,14 +52,21 @@ function Multiplayer() {
 
         socket.on('player_left', data => {
             const username = data.username;
+            console.log(username);
             if (gameState === IN_GAME) {
-                this.game.playerLeft(username);
-                // if (username === playerOne) {
-                //     setPlayerOne('');
+                game.playerLeft(username);
+                if (username === playerOne) {
+                    setPlayerOne(`${playerOne} Left`);
+                } else if (username === playerTwo) {
+                    setPlayerTwo(`${playerTwo} Left`);
+                } else if (username === playerThree) {
+                    setPlayerThree(`${playerThree} Left`);
+                } else {
+                    setPlayerFour(`${playerFour} Left`);
+                }
 
-                // }
                 if (username === playerTurn) {
-                    const nextPlayer = this.game.nextPlayer();
+                    const nextPlayer = game.nextPlayer();
                     setPlayerTurn(nextPlayer);
                     if (nextPlayer === 'Dealer') {
 
@@ -75,7 +82,7 @@ function Multiplayer() {
             socket.removeAllListeners('player_joined');
             socket.removeAllListeners('player_left');
         })
-    }, [gameState, playerTurn])
+    }, [gameState, playerTurn, playerOne, playerTwo, playerThree, playerFour])
 
     useEffect(() => {
         socket.on('start_game', data => {
@@ -93,15 +100,25 @@ function Multiplayer() {
             if (players[1]) {
                 setPlayerTwo(players[1])
                 setPlayerTwoCards(game.player2Cards)
+            } else {
+                setPlayerTwo('');
+                setPlayerTwoCards();
             }
             if (players[2]) {
                 setPlayerThree(players[2])
                 setPlayerThreeCards(game.player3Cards);
+            } else {
+                setPlayerThree('');
+                setPlayerThreeCards()
             }
             if (players[3]) {
                 setPlayerFourCards(game.player4Cards);
                 setPlayerFour(players[3])
+            } else {
+                setPlayerFour('');
+                setPlayerFourCards();
             }
+            console.log('players', players);
         });
 
         return (() => {

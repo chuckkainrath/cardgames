@@ -102,6 +102,8 @@ def on_disconnect():
                 playerOrder, drawIndices = getGameStarted(room)
                 emit('start_game', { 'drawIndices': drawIndices, 'playerOrder': playerOrder }, to=room)
 
+
+
         emit('player_left', { 'username': username }, to=room)
 
 
@@ -122,7 +124,6 @@ def on_join(data):
                 if seat != -1:
                     playerSeat = seat
                     break
-            print('Player seat at table: ', playerSeat)
             userRoomMap[username] = i
             rooms[i].append(username)
             userSeatMap[username] = playerSeat
@@ -173,6 +174,7 @@ def on_leave(data):
             if userStatusMap[player] != READY:
                 ready = False
                 break
+
         if ready:
             playerOrder, drawIndices = getGameStarted(room)
             emit('start_game', { 'drawIndices': drawIndices, 'playerOrder': playerOrder }, to=room)
