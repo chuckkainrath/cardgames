@@ -52,7 +52,7 @@ function Multiplayer() {
 
         socket.on('player_left', data => {
             const username = data.username;
-            console.log(username);
+            console.log('user left', username);
             if (gameState === IN_GAME) {
                 game.playerLeft(username);
                 if (username === playerOne) {
@@ -146,8 +146,9 @@ function Multiplayer() {
 
         socket.on('on_stand', data => {
             if (userWaiting) return;
-            setPlayerTurn(data.username);
-            game.nextPlayer();
+            const nextPlayer = game.nextPlayer();
+            setPlayerTurn(nextPlayer);
+            console.log(nextPlayer);
         });
 
         socket.on('game_end', async data => {
@@ -194,13 +195,13 @@ function Multiplayer() {
     const playerStand = () => {
         let nextPlayer;
         if (playerTurn === playerOne) {
-            if (playerTwo) nextPlayer = playerTwo;
+            if (playerTwo && !playerTwo.endsWith(' Left')) nextPlayer = playerTwo;
             else nextPlayer = 'Dealer';
         } else if (playerTurn === playerTwo) {
-            if (playerThree) nextPlayer = playerThree;
+            if (playerThree && !playerThree.endsWith(' Left')) nextPlayer = playerThree;
             else nextPlayer = 'Dealer';
         } else if (playerTurn === playerThree) {
-            if (playerFour) nextPlayer = playerFour;
+            if (playerFour && !playerFour.endsWith(' Left')) nextPlayer = playerFour;
             else nextPlayer = 'Dealer';
         } else {
             nextPlayer = 'Dealer';
