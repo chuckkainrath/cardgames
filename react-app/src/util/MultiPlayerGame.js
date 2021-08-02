@@ -97,6 +97,7 @@ export class MultiPlayerGame extends Game {
     }
 
     nextPlayer() {
+        console.log('game players: ', this.players);
         if (this.playerTurn === this.players[0]) {
             if (this.player2Cards) this.playerTurn = this.players[1];
             else if (this.player3Cards) this.playerTurn = this.players[1];
@@ -106,7 +107,7 @@ export class MultiPlayerGame extends Game {
             if (this.player3Cards) this.playerTurn = this.players[1];
             else if (this.player4Cards) this.playerTurn = this.players[1];
             else this.playerTurn = 'Dealer';
-        } else if (this.playerTurn === this.players[1]) {
+        } else if (this.playerTurn === this.players[2]) {
             if (this.player4Cards) this.playerTurn = this.players[1];
             else this.playerTurn = 'Dealer';
         } else {
@@ -148,7 +149,7 @@ export class MultiPlayerGame extends Game {
 
     playerLeft(username) {
         const playerIdx = this.players.indexOf(username);
-        this.players[playerIdx] = '';
+        // this.players[playerIdx] = '';
         switch (playerIdx) {
             case 0:
                 this.player1Cards = null;

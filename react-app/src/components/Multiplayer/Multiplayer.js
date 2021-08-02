@@ -67,6 +67,7 @@ function Multiplayer() {
 
                 if (username === playerTurn) {
                     const nextPlayer = game.nextPlayer();
+                    console.log('playerTurn: ', nextPlayer);
                     setPlayerTurn(nextPlayer);
                     if (nextPlayer === 'Dealer') {
 
