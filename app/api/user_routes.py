@@ -26,11 +26,11 @@ def updateWinLoss(user_id):
 
 @user_routes.route('/leaderboard')
 def getLeaderboard():
-    topPlayersQuery = User.query.order_by(User.ratio.desc()).limit(10).get()
+    topPlayersQuery = User.query.order_by(User.ratio.desc()).limit(10)
 
     topPlayers = []
     for player in topPlayersQuery:
         playerObj = player.to_dict()
         topPlayers.append(playerObj)
 
-    return { topPlayers }
+    return { 'topPlayers': topPlayers }

@@ -8,7 +8,7 @@ function LeaderBoard() {
 
   useEffect(() => {
     (async () => {
-      const result = await fetch('/users/leaderboard');
+      const result = await fetch('/api/users/leaderboard');
       const data = await result.json();
       console.log(data);
       setTopPlayers(data.topPlayers);
