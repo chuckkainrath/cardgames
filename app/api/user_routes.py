@@ -20,13 +20,14 @@ def updateWinLoss(user_id):
         user.losses += 1
     else:
         user.wins += 1
+    user.ratio = user.wins / (user.wins + user.losses) * 100
     db.session.commit()
     return user.to_dict()
 
 
 @user_routes.route('/leaderboard')
 def getLeaderboard():
-    topPlayersQuery = User.query.order_by(User.ratio.desc()).limit(10)
+    topPlayersQuery = User.query.order_by(User.ratio.desc()).limit(100)
 
     topPlayers = []
     for player in topPlayersQuery:

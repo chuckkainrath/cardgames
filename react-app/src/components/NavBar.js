@@ -10,12 +10,13 @@ const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [WLR, setWLR] = useState(null)
 
-useEffect(() => {
-  if (user) {
-    if (user.wins > 0 && user.losses === 0) setWLR(100)
-    else setWLR(Math.round((user.wins / (user.losses + user.wins)) * 100))
-  }
-},[user]);
+  useEffect(() => {
+    if (user) {
+      if (user.wins === 0 && user.losses === 0) setWLR(0)
+      else if (user.wins > 0 && user.losses === 0) setWLR(100)
+      else setWLR(Math.round((user.wins / (user.losses + user.wins)) * 100))
+    }
+  },[user]);
 
   if (!user) return null;
 

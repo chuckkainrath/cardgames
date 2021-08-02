@@ -17,13 +17,6 @@ function LeaderBoard() {
 
   return (
     <div id="leader" className="container p-4 mt-9 inline-block ">
-      {topPlayers && topPlayers.map(player => {
-        return (<div key={player.id}>
-                  <h1>{player.username}</h1>
-                  <h1>{player.ratio}</h1>
-                </div>
-        )
-      })}
       <div class="gradient-border">
       </div>
       <div className="outter-border">
@@ -41,10 +34,20 @@ function LeaderBoard() {
               </tr>
             </thead>
             <tbody
-              className="bg-green flex flex-col items-center justify-between overflow-y-auto w-full"
+              className="leaderboard bg-green flex flex-col items-center justify-between overflow-y-auto w-full"
               style={{ height: "50vh" }}
             >
-              <tr className="first-place bg-yellow-400 flex w-full">
+              {topPlayers && topPlayers.map(player => {
+              return (
+                <tr key={player.id} className="flex w-full">
+                  <td className="p-4 w-1/4">{player.username}</td>
+                  <td className="p-4 w-1/4">{player.wins}</td>
+                  <td className="p-4 w-1/4">{player.losses}</td>
+                  <td className="p-4 w-1/4">{(player.ratio * 100).toFixed(2)}%</td>
+                </tr>
+              )
+              })}
+              {/* <tr className="first-place bg-yellow-400 flex w-full">
                 <td className="p-4 w-1/4">Powerbottom88</td>
                 <td className="p-4 w-1/4">100</td>
                 <td className="p-4 w-1/4">2</td>
@@ -79,7 +82,7 @@ function LeaderBoard() {
                 <td className="p-4 w-1/4">Cats</td>
                 <td className="p-4 w-1/4">Birds</td>
                 <td className="p-4 w-1/4">Fish</td>
-              </tr>
+              </tr> */}
             </tbody>
           </table>
         </div>
