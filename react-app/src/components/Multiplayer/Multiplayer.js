@@ -304,7 +304,7 @@ function Multiplayer() {
                     {winner &&
                         <h2  className='text-2xl font-semibold text-white uppercase lg:text-3xl pr-6'>{winner} Won</h2>
                     }
-                    <button className='bg-red-600 hover:bg-red-700 text-white text-sm px-4   border rounded-full' onClick={readyUp}>New Game</button>
+                    <button className='bg-red-600 hover:bg-red-700 text-white text-sm px-4 py-2  border rounded-full   border rounded-full' onClick={readyUp}>New Game</button>
                 </div>
             }
             {(gameState === IN_GAME || gameState === GAME_OVER) &&
