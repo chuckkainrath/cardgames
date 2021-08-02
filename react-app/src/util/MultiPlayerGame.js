@@ -7,10 +7,10 @@ export class MultiPlayerGame extends Game {
         this.players = players
         this.winner = '';
         // Have to bind functions to Class
-        this.dealerHit = this.dealerHit.bind(this);
+        // this.dealerHit = this.dealerHit.bind(this);
         this.drawCard = this.drawCard.bind(this);
         this.getWinner = this.getWinner.bind(this);
-        this.removeCard = this.removeCard.bind(this);
+        // this.removeCard = this.removeCard.bind(this);
         this.playerDrew = this.playerDrew.bind(this);
         this.dealerDraws = this.dealerDraws.bind(this);
 
