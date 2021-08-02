@@ -302,17 +302,23 @@ function Multiplayer() {
             } */}
             {gameState === GAME_OVER &&
                 <div className=' flex items-center justify-center pb-64 absolute top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+                <div className='flex-column items-center justify-center'>
                     {winner &&
+                    <>
                         <h2  className='text-2xl font-semibold text-white uppercase lg:text-3xl pr-6'>{winner} Won</h2>
+                        <p className='text-2xl italic text-white  lg:text-2xl pb-2'> Waiting for all players to ready</p>
+                        
+                        </>
                     }
                     <button className='bg-red-600 hover:bg-red-700 text-white text-sm px-4 py-2  border rounded-full   border rounded-full' onClick={readyUp}>New Game</button>
+                    </div>
                 </div>
             }
             {(gameState === IN_GAME || gameState === GAME_OVER) &&
                 <div className='bg-poker-table flex-column items-center content-center m-0'>
 
 
-                    {(playerTurn && playerTurn !== 'Dealer') && <button  className='inset-x-0 ml-auto mr-auto absolute bg-red-600 text-white text-sm px-4 py-2  border rounded-full'>{playerTurn}'s Turn</button>}
+                {(playerTurn && playerTurn !== 'Dealer') && <button className='top-1/2 cursor-text	font-semibold inset-x-0 ml-auto mr-auto absolute bg-red-600 text-white text-sm px-4 py-2  border'>{playerTurn}'s Turn</button>}
                     {game &&
                     <div className='flex  justify-center' >
                     <div className='flex-column items-center justify-center align-center justify-items-center justify-self-center'>
