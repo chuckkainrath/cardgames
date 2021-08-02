@@ -142,7 +142,28 @@ export class MultiPlayerGame extends Game {
             this.winner = player;
             return this.winner;
         }
-        this.winner = this.dealerScore > this.playerScore ? 'Dealer' : player;
+        this.winner = this.dealerScore >= playerScore ? 'Dealer' : player;
         return this.winner;
+    }
+
+    playerLeft(username) {
+        const playerIdx = this.players.getIndex(username);
+        this.players[playerIdx] = '';
+        switch (playerIdx) {
+            case 0:
+                this.player1Cards = null;
+                break;
+            case 1:
+                this.player2Cards = null;
+                break;
+            case 2:
+                this.player3Cards = null;
+                break;
+            case 3:
+                this.player4Cards = null;
+                break;
+            default:
+                break;
+        }
     }
 }

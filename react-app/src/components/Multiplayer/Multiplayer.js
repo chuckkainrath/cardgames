@@ -51,14 +51,31 @@ function Multiplayer() {
         });
 
         socket.on('player_left', data => {
-            //setPlayers(data.players);
+            const username = data.username;
+            if (gameState === IN_GAME) {
+                this.game.playerLeft(username);
+                // if (username === playerOne) {
+                //     setPlayerOne('');
+
+                // }
+                if (username === playerTurn) {
+                    const nextPlayer = this.game.nextPlayer();
+                    setPlayerTurn(nextPlayer);
+                    if (nextPlayer === 'Dealer') {
+
+                        const dealerCardIndices = game.dealerDraws();
+                        socket.emit('game_end', { dealerCardIndices, username: user.username })
+
+                    }
+                }
+            }
         })
 
         return (() => {
             socket.removeAllListeners('player_joined');
             socket.removeAllListeners('player_left');
         })
-    }, [])
+    }, [gameState, playerTurn])
 
     useEffect(() => {
         socket.on('start_game', data => {
