@@ -240,7 +240,7 @@ function Multiplayer() {
     }
 
     return (
-        <div >
+        <div className=''>
             {userWaiting &&
                 <>
                     {gameState === IN_GAME &&
@@ -256,109 +256,122 @@ function Multiplayer() {
                     <p key={idx}>{username} is in lobby, waiting for next game.</p>
                 ))
             }
-            {players &&
+            {/* {players &&
                 players.map((player, idx) => (
                     <p key={idx}>{player}</p>
                 ))
-            }
+            } */}
             {gameState === GAME_OVER &&
-                <>
-                    <button onClick={readyUp}>New Game</button>
+                <div className=' flex items-center justify-center pb-64 absolute top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
                     {winner &&
-                        <h2>{winner} Won</h2>
+                        <h2  className='text-2xl font-semibold text-white uppercase lg:text-3xl pr-6'>{winner} Won</h2>
                     }
-                </>
+                    <button className='bg-red-600 hover:bg-red-700 text-white text-sm px-4   border rounded-full' onClick={readyUp}>New Game</button>
+                </div>
             }
             {(gameState === IN_GAME || gameState === GAME_OVER) &&
-                <div className='bg-poker-table flex  justify-center m-0'>
-                    <div className='dealer-container  flex-column p-2 m-0 items-center justify-center'>
+                <div className='bg-poker-table flex-column items-center content-center m-0'>
+                   
                     
-                    {(playerTurn && playerTurn !== 'Dealer') && <h2>{playerTurn}'s Turn</h2>}
+                    {(playerTurn && playerTurn !== 'Dealer') && <button  className='inset-x-0 ml-auto mr-auto absolute bg-red-600 text-white text-sm px-4 py-2  border rounded-full'>{playerTurn}'s Turn</button>}
                     {game &&
-                    <div className='dealer-container  flex-column p-2 m-0 items-center justify-center'>
-                    <div className='flex-column items-center justify-center m-0'>
-                        <img className='rounded-full pb-2 h-30 w-30 m-0' src={dealer} alt='dealerphoto'></img>
-                        <div className='flex flex-row items-center justify-center m-0'>
+                    <div className='flex  justify-center' >
+                    <div className='flex-column items-center justify-center align-center justify-items-center justify-self-center'>
+                        <img className='rounded-full pb-2 h-30 w-30 m-0 flex align-center justify-center' src={dealer} alt='dealerphoto'></img>
                             {playerTurn !== 'Dealer' &&
-                                <>
-                                     <img className='animate-fade-in-down' src={valueMap[game.dealerCards[0].suit.concat(game.dealerCards[0].value)]} alt='cardValue' />
+                                <div className='flex'>
+                                     <img className='animate-fade-in-down ' src={valueMap[game.dealerCards[0].suit.concat(game.dealerCards[0].value)]} alt='cardValue' />
                                               <img className='animate-fade-in-down' src={cardBack} alt='cardBack'></img>
-                                </>
+                                </div>
                             }
+
+                            <div className='flex'>
                             {playerTurn === 'Dealer' &&
                                 game.dealerCards.map((card, idx) => (
-                                    
-                                     <img className='animate-fade-in-down' src={valueMap[game.dealerCards[idx].suit.concat(game.dealerCards[idx].value)]} alt='dealerCard' />
-                                     
-                                ))
-                            }
+                                     <img className='animate-fade-in-down pl-6' src={valueMap[game.dealerCards[idx].suit.concat(game.dealerCards[idx].value)]} alt='dealerCard' />
+                                     ))
+                                    }
+                                    </div>
                             </div>
                             </div>
-                        </div>
+                          
+                        
                     }
-                    <div className='flex flex-initial flex-row p-2 '>
+                    <div className=''>
+                <div className='grid grid-cols-4 grid-rows-1  absolute bottom-0'>
                     {playerOne &&
-                    <div className='flex items-center justify-center pt-20'>
-                    <div className=' flex-column items-center justify-center'>
-                            <h1>{playerOne}</h1>
-                        <div className='flex flex-initial flex-row p-2 '>
+                   
+                    <div className='p-4'>
+                            <h1 className='text-2xl font-semibold text-white uppercase lg:text-3xl pr-6'>{playerOne}</h1>
+                            <div className='flex flex-row '>
                             {playerOneCards && playerOneCards.map((card, idx) => (
-                                <img src={valueMap[card.suit.concat(card.value)]} alt='playercard'/>
+                                <img className='object-contain overflow-auto'  src={valueMap[card.suit.concat(card.value)]} alt='playercard'/>
                             ))}
                             </div>
                             {(playerOne === user.username && playerTurn === user.username) &&
-                                <>
+                                <div className='flex items-center justify-center pt-4'>
                             <button className='bg-blue-600 hover:bg-blue-400 text-white text-sm px-4 py-2   border rounded-full' disabled={game.player1Score >= 21} onClick={playerHit}>Hit</button>
+                                <div className='pr-6'></div>
                             <button className='bg-red-600 hover:bg-red-700 text-white text-sm px-4 py-2  border rounded-full' onClick={playerStand}>Stand</button>
-                                </>
+                                </div>
                             }
                             </div>
-                        </div>
+                        
                     }
                     {playerTwo &&
-                        <div>
-                            <h1>{playerTwo}</h1>
+                        <div className='p-4'>
+                            <h1 className='text-2xl font-semibold text-white uppercase lg:text-3xl pr-6'>{playerTwo}</h1>
+                        <div className='flex flex-row '>
                             {playerTwoCards && playerTwoCards.map((card, idx) => (
-                                <img src={valueMap[card.suit.concat(card.value)]} alt='playercard' />
+                                <img className='object-contain overflow-auto' src={valueMap[card.suit.concat(card.value)]} alt='playercard' />
                             ))}
+                        </div>
                             {(playerTwo === user.username && playerTurn === user.username) &&
-                                <>
-                                    <button disabled={game.player2Score >= 21} onClick={playerHit}>Hit</button>
-                                    <button onClick={playerStand}>Stand</button>
-                                </>
+                                <div className='flex items-center justify-center pt-4'>
+                                    <button className='bg-blue-600 hover:bg-blue-400 text-white text-sm px-4 py-2   border rounded-full' disabled={game.player2Score >= 21} onClick={playerHit}>Hit</button>
+                                    <div className='pr-6'></div>
+                                    <button className='bg-red-600 hover:bg-red-700 text-white text-sm px-4 py-2  border rounded-full' onClick={playerStand}>Stand</button>
+                                </div>
                             }
                         </div>
                     }
                     {playerThree &&
-                        <div>
-                            <h1>{playerThree}</h1>
+                        <div className='p-4'>
+                            <h1 className='text-2xl font-semibold text-white uppercase lg:text-3xl pr-6'>{playerThree}</h1>
+                            <div className='flex flex-row '>
                             {playerThreeCards && playerThreeCards.map((card, idx) => (
-                                <img src={valueMap[card.suit.concat(card.value)]} alt='playercard' />
+                                <img className='object-contain overflow-auto' src={valueMap[card.suit.concat(card.value)]} alt='playercard' />
                             ))}
+                            </div>
                             {(playerThree === user.username && playerTurn === user.username) &&
-                                <>
-                                    <button disabled={game.player3Score >= 21} onClick={playerHit}>Hit</button>
-                                    <button onClick={playerStand}>Stand</button>
-                                </>
+                                <div className='flex items-center justify-center pt-4'>
+                                    <button  className='bg-blue-600 hover:bg-blue-400 text-white text-sm px-4 py-2   border rounded-full' disabled={game.player3Score >= 21} onClick={playerHit}>Hit</button>
+                                    <div className='pr-6'></div>
+                                    <button className='bg-red-600 hover:bg-red-700 text-white text-sm px-4 py-2  border rounded-full' onClick={playerStand}>Stand</button>
+                                </div>
                             }
                         </div>
                     }
                     {playerFour &&
-                        <div>
-                            <h1>{playerFour}</h1>
+                        <div className='p-4'>
+                            <h1 className='text-2xl font-semibold text-white uppercase lg:text-3xl pr-6'>{playerFour}</h1>
+                            <div className='flex flex-row '>
                             {playerFourCards && playerFourCards.map((card, idx) => (
-                                <img src={valueMap[card.suit.concat(card.value)]} alt='playercard' />
+                                <img className='object-contain overflow-auto' src={valueMap[card.suit.concat(card.value)]} alt='playercard' />
                             ))}
+                            </div>
                             {(playerFour === user.username && playerTurn === user.username) &&
-                                <>
-                                    <button disabled={game.player4Score >= 21} onClick={playerHit}>Hit</button>
-                                    <button onClick={playerStand}>Stand</button>
-                                </>
+                                <div className='flex items-center justify-center pt-4'>
+                                <button className='bg-blue-600 hover:bg-blue-400 text-white text-sm px-4 py-2   border rounded-full' disabled={game.player4Score >= 21} onClick={playerHit}>Hit</button>
+                                    <div className='pr-6'></div>
+                                    <button className='bg-red-600 hover:bg-red-700 text-white text-sm px-4 py-2  border rounded-full' onClick={playerStand}>Stand</button>
+                                </div>
                             }
                         </div>
                     }
                     </div>
                     </div>
+                    
                 </div>
             }
         </div>
