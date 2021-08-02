@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect, NavLink } from "react-router-dom";
 import { login } from "../../store/session";
 import logo from "./bjkids.png";
+import './Forms.css'
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -32,9 +33,9 @@ const LoginForm = () => {
   }
 
   return (
-    <div>
+    <div className="log-form-container">
       <div className="grid min-h-screen place-items-center">
-        <div className="w-11/12 p-12 bg-white sm:w-8/12 md:w-1/2 lg:w-5/12">
+        <div className="w-11/12 p-10 bg-white sm:w-8/12 md:w-1/2 lg:w-5/12">
           <h1 className="text-xl font-semibold text-center flex align-items-center flex-col ">
             <img
               src={logo}
@@ -95,7 +96,7 @@ const LoginForm = () => {
             >
               Log-in
             </button>
-            <p className="flex justify-between inline-block mt-4 text-xs text-gray-500 cursor-pointer hover:text-black">
+            <p className="flex justify-between inline-block mt-4 mb-4 text-xs text-gray-500 cursor-pointer hover:text-black">
               <NavLink to="/sign-up">Not a registered user?</NavLink>
             </p>
           </form>
