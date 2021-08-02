@@ -10,7 +10,6 @@ function LeaderBoard() {
     (async () => {
       const result = await fetch('/api/users/leaderboard');
       const data = await result.json();
-      console.log(data);
       setTopPlayers(data.topPlayers);
     })();
   }, []);
