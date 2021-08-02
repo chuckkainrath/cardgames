@@ -82,7 +82,7 @@ function Multiplayer() {
     const [gameState, setGameState] = useState();
     const [game, setGame] = useState();
     const [winner, setWinner] = useState('');
-    const [waitlist, setWaitlist] = useState();
+    const [waitlist, setWaitlist] = useState([]);
     const [userWaiting, setUserWaiting] = useState();
     const user = useSelector(state => state.session.user);
     // console.log(playerOne === user.username)
@@ -113,20 +113,36 @@ function Multiplayer() {
 
         socket.on('player_left', data => {
             const username = data.username;
+            console.log('user left', username);
             if (gameState === IN_GAME) {
-                this.game.playerLeft(username);
-                // if (username === playerOne) {
-                //     setPlayerOne('');
+                game.playerLeft(username);
+                if (username === playerOne) {
+                    setPlayerOne(`${playerOne} Left`);
+                } else if (username === playerTwo) {
+                    setPlayerTwo(`${playerTwo} Left`);
+                } else if (username === playerThree) {
+                    setPlayerThree(`${playerThree} Left`);
+                } else {
+                    setPlayerFour(`${playerFour} Left`);
+                }
 
-                // }
                 if (username === playerTurn) {
-                    const nextPlayer = this.game.nextPlayer();
+                    const nextPlayer = game.nextPlayer();
+                    console.log('playerTurn: ', nextPlayer);
                     setPlayerTurn(nextPlayer);
                     if (nextPlayer === 'Dealer') {
-
-                        const dealerCardIndices = game.dealerDraws();
-                        socket.emit('game_end', { dealerCardIndices, username: user.username })
-
+                        let dealerCardIndices;
+                        console.log('hera :(');
+                        if (!playerOne.endsWith(' Left') && user.username === playerOne) {
+                            dealerCardIndices = game.dealerDraws();
+                        } else if (playerTwo && !playerTwo.endsWith(' Left') && user.username === playerTwo) {
+                            dealerCardIndices = game.dealerDraws();
+                        } else if (playerThree && !playerThree.endsWith(' Left') && user.username === playerThree) {
+                            dealerCardIndices = game.dealerDraws();
+                        } else if (playerFour && !playerFour.endsWith(' Left') && user.username === playerFour) {
+                            dealerCardIndices = game.dealerDraws();
+                        }
+                        if (dealerCardIndices) socket.emit('game_end', { dealerCardIndices, username: user.username })
                     }
                 }
             }
@@ -136,7 +152,7 @@ function Multiplayer() {
             socket.removeAllListeners('player_joined');
             socket.removeAllListeners('player_left');
         })
-    }, [gameState, playerTurn])
+    }, [gameState, playerTurn, playerOne, playerTwo, playerThree, playerFour])
 
     useEffect(() => {
         socket.on('start_game', data => {
@@ -154,15 +170,25 @@ function Multiplayer() {
             if (players[1]) {
                 setPlayerTwo(players[1])
                 setPlayerTwoCards(game.player2Cards)
+            } else {
+                setPlayerTwo('');
+                setPlayerTwoCards();
             }
             if (players[2]) {
                 setPlayerThree(players[2])
                 setPlayerThreeCards(game.player3Cards);
+            } else {
+                setPlayerThree('');
+                setPlayerThreeCards()
             }
             if (players[3]) {
                 setPlayerFourCards(game.player4Cards);
                 setPlayerFour(players[3])
+            } else {
+                setPlayerFour('');
+                setPlayerFourCards();
             }
+            console.log('players', players);
         });
 
         return (() => {
@@ -189,8 +215,9 @@ function Multiplayer() {
 
         socket.on('on_stand', data => {
             if (userWaiting) return;
-            setPlayerTurn(data.username);
-            game.nextPlayer();
+            const nextPlayer = game.nextPlayer();
+            setPlayerTurn(nextPlayer);
+            console.log(nextPlayer);
         });
 
         socket.on('game_end', async data => {
@@ -199,7 +226,8 @@ function Multiplayer() {
                 return;
             }
             const dealerCardIndices = data.dealer_card_indices;
-            if (playerTurn !== user.username) {
+            console.log('game end user', data);
+            if (data.username !== user.username) {
                 game.nextPlayer();
                 for (let idx of dealerCardIndices) game.playerDrew(idx);
             }
@@ -237,13 +265,13 @@ function Multiplayer() {
     const playerStand = () => {
         let nextPlayer;
         if (playerTurn === playerOne) {
-            if (playerTwo) nextPlayer = playerTwo;
+            if (playerTwo && !playerTwo.endsWith(' Left')) nextPlayer = playerTwo;
             else nextPlayer = 'Dealer';
         } else if (playerTurn === playerTwo) {
-            if (playerThree) nextPlayer = playerThree;
+            if (playerThree && !playerThree.endsWith(' Left')) nextPlayer = playerThree;
             else nextPlayer = 'Dealer';
         } else if (playerTurn === playerThree) {
-            if (playerFour) nextPlayer = playerFour;
+            if (playerFour && !playerFour.endsWith(' Left')) nextPlayer = playerFour;
             else nextPlayer = 'Dealer';
         } else {
             nextPlayer = 'Dealer';
