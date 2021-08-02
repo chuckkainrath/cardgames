@@ -235,4 +235,4 @@ def on_game_end(data):
     dealer_card_indices = data['dealerCardIndices']
     room = userRoomMap[data['username']]
     roomStatus[room] = GAME_OVER
-    emit('game_end', { 'dealer_card_indices': dealer_card_indices}, to=room)
+    emit('game_end', { 'dealer_card_indices': dealer_card_indices, 'username': data['username'] }, to=room)
