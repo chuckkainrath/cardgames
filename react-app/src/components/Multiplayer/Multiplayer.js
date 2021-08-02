@@ -82,10 +82,9 @@ function Multiplayer() {
     const [gameState, setGameState] = useState();
     const [game, setGame] = useState();
     const [winner, setWinner] = useState('');
-    const [waitlist, setWaitlist] = useState();
+    const [waitlist, setWaitlist] = useState([]);
     const [userWaiting, setUserWaiting] = useState();
     const user = useSelector(state => state.session.user);
-    // console.log(playerOne === user.username)
 
     useEffect(() => {
         socket.emit('join', { username: user.username });
@@ -114,19 +113,32 @@ function Multiplayer() {
         socket.on('player_left', data => {
             const username = data.username;
             if (gameState === IN_GAME) {
-                this.game.playerLeft(username);
-                // if (username === playerOne) {
-                //     setPlayerOne('');
+                game.playerLeft(username);
+                if (username === playerOne && gameState == IN_GAME) {
+                    setPlayerOne(`${playerOne} Left`);
+                } else if (username === playerTwo && gameState == IN_GAME) {
+                    setPlayerTwo(`${playerTwo} Left`);
+                } else if (username === playerThree && gameState == IN_GAME) {
+                    setPlayerThree(`${playerThree} Left`);
+                } else if (username === playerFour && gameState == IN_GAME) {
+                    setPlayerFour(`${playerFour} Left`);
+                }
 
-                // }
                 if (username === playerTurn) {
-                    const nextPlayer = this.game.nextPlayer();
+                    const nextPlayer = game.nextPlayer();
                     setPlayerTurn(nextPlayer);
                     if (nextPlayer === 'Dealer') {
-
-                        const dealerCardIndices = game.dealerDraws();
-                        socket.emit('game_end', { dealerCardIndices, username: user.username })
-
+                        let dealerCardIndices;
+                        if (!playerOne.endsWith(' Left')) {
+                            if (user.username === playerOne) dealerCardIndices = game.dealerDraws();
+                        } else if (playerTwo && !playerTwo.endsWith(' Left')) {
+                            if (user.username === playerTwo) dealerCardIndices = game.dealerDraws();
+                        } else if (playerThree && !playerThree.endsWith(' Left')) {
+                            if (user.username === playerThree) dealerCardIndices = game.dealerDraws();
+                        } else if (playerFour && !playerFour.endsWith(' Left')) {
+                            if (user.username === playerFour) dealerCardIndices = game.dealerDraws();
+                        }
+                        if (dealerCardIndices) socket.emit('game_end', { dealerCardIndices, username: user.username })
                     }
                 }
             }
@@ -136,7 +148,7 @@ function Multiplayer() {
             socket.removeAllListeners('player_joined');
             socket.removeAllListeners('player_left');
         })
-    }, [gameState, playerTurn])
+    }, [gameState, playerTurn, playerOne, playerTwo, playerThree, playerFour])
 
     useEffect(() => {
         socket.on('start_game', data => {
@@ -149,19 +161,28 @@ function Multiplayer() {
             setPlayerOne(players[0])
             setPlayerOneCards(game.player1Cards)
             setWinner('');
-            setWaitlist();
+            setWaitlist([]);
             setUserWaiting(false);
             if (players[1]) {
                 setPlayerTwo(players[1])
                 setPlayerTwoCards(game.player2Cards)
+            } else {
+                setPlayerTwo('');
+                setPlayerTwoCards();
             }
             if (players[2]) {
                 setPlayerThree(players[2])
                 setPlayerThreeCards(game.player3Cards);
+            } else {
+                setPlayerThree('');
+                setPlayerThreeCards()
             }
             if (players[3]) {
                 setPlayerFourCards(game.player4Cards);
                 setPlayerFour(players[3])
+            } else {
+                setPlayerFour('');
+                setPlayerFourCards();
             }
         });
 
@@ -189,8 +210,9 @@ function Multiplayer() {
 
         socket.on('on_stand', data => {
             if (userWaiting) return;
-            setPlayerTurn(data.username);
-            game.nextPlayer();
+            const nextPlayer = game.nextPlayer();
+            console.log(nextPlayer);
+            setPlayerTurn(nextPlayer);
         });
 
         socket.on('game_end', async data => {
@@ -199,7 +221,7 @@ function Multiplayer() {
                 return;
             }
             const dealerCardIndices = data.dealer_card_indices;
-            if (playerTurn !== user.username) {
+            if (data.username !== user.username) {
                 game.nextPlayer();
                 for (let idx of dealerCardIndices) game.playerDrew(idx);
             }
@@ -237,13 +259,13 @@ function Multiplayer() {
     const playerStand = () => {
         let nextPlayer;
         if (playerTurn === playerOne) {
-            if (playerTwo) nextPlayer = playerTwo;
+            if (playerTwo && !playerTwo.endsWith(' Left')) nextPlayer = playerTwo;
             else nextPlayer = 'Dealer';
         } else if (playerTurn === playerTwo) {
-            if (playerThree) nextPlayer = playerThree;
+            if (playerThree && !playerThree.endsWith(' Left')) nextPlayer = playerThree;
             else nextPlayer = 'Dealer';
         } else if (playerTurn === playerThree) {
-            if (playerFour) nextPlayer = playerFour;
+            if (playerFour && !playerFour.endsWith(' Left')) nextPlayer = playerFour;
             else nextPlayer = 'Dealer';
         } else {
             nextPlayer = 'Dealer';
@@ -280,17 +302,23 @@ function Multiplayer() {
             } */}
             {gameState === GAME_OVER &&
                 <div className=' flex items-center justify-center pb-64 absolute top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+                <div className='flex-column items-center justify-center'>
                     {winner &&
+                    <>
                         <h2  className='text-2xl font-semibold text-white uppercase lg:text-3xl pr-6'>{winner} Won</h2>
+                        <p className='text-2xl italic text-white  lg:text-2xl pb-2'> Waiting for all players to ready</p>
+                        
+                        </>
                     }
-                    <button className='bg-red-600 hover:bg-red-700 text-white text-sm px-4   border rounded-full' onClick={readyUp}>New Game</button>
+                    <button className='bg-red-600 hover:bg-red-700 text-white text-sm px-4 py-2  border rounded-full   border rounded-full' onClick={readyUp}>New Game</button>
+                    </div>
                 </div>
             }
             {(gameState === IN_GAME || gameState === GAME_OVER) &&
                 <div className='bg-poker-table flex-column items-center content-center m-0'>
-                   
-                    
-                    {(playerTurn && playerTurn !== 'Dealer') && <button  className='inset-x-0 ml-auto mr-auto absolute bg-red-600 text-white text-sm px-4 py-2  border rounded-full'>{playerTurn}'s Turn</button>}
+
+
+                {(playerTurn && playerTurn !== 'Dealer') && <button className='top-1/2 cursor-text	font-semibold inset-x-0 ml-auto mr-auto absolute bg-red-600 text-white text-sm px-4 py-2  border'>{playerTurn}'s Turn</button>}
                     {game &&
                     <div className='flex  justify-center' >
                     <div className='flex-column items-center justify-center align-center justify-items-center justify-self-center'>
@@ -311,13 +339,13 @@ function Multiplayer() {
                                     </div>
                             </div>
                             </div>
-                          
-                        
+
+
                     }
                     <div className=''>
                 <div className='grid grid-cols-4 grid-rows-1  absolute bottom-0'>
                     {playerOne &&
-                   
+
                     <div className='p-4'>
                             <h1 className='text-2xl font-semibold text-white uppercase lg:text-3xl pr-6'>{playerOne}</h1>
                             <div className='flex flex-row '>
@@ -333,7 +361,7 @@ function Multiplayer() {
                                 </div>
                             }
                             </div>
-                        
+
                     }
                     {playerTwo &&
                         <div className='p-4'>
@@ -388,7 +416,7 @@ function Multiplayer() {
                     }
                     </div>
                     </div>
-                    
+
                 </div>
             }
         </div>

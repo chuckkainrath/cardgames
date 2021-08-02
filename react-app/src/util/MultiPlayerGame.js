@@ -7,10 +7,10 @@ export class MultiPlayerGame extends Game {
         this.players = players
         this.winner = '';
         // Have to bind functions to Class
-        this.dealerHit = this.dealerHit.bind(this);
+        // this.dealerHit = this.dealerHit.bind(this);
         this.drawCard = this.drawCard.bind(this);
         this.getWinner = this.getWinner.bind(this);
-        this.removeCard = this.removeCard.bind(this);
+        // this.removeCard = this.removeCard.bind(this);
         this.playerDrew = this.playerDrew.bind(this);
         this.dealerDraws = this.dealerDraws.bind(this);
 
@@ -99,15 +99,15 @@ export class MultiPlayerGame extends Game {
     nextPlayer() {
         if (this.playerTurn === this.players[0]) {
             if (this.player2Cards) this.playerTurn = this.players[1];
-            else if (this.player3Cards) this.playerTurn = this.players[1];
-            else if (this.player4Cards) this.playerTurn = this.players[1];
+            else if (this.player3Cards) this.playerTurn = this.players[2];
+            else if (this.player4Cards) this.playerTurn = this.players[3];
             else this.playerTurn = 'Dealer';
         } else if (this.playerTurn === this.players[1]) {
-            if (this.player3Cards) this.playerTurn = this.players[1];
-            else if (this.player4Cards) this.playerTurn = this.players[1];
+            if (this.player3Cards) this.playerTurn = this.players[2];
+            else if (this.player4Cards) this.playerTurn = this.players[3];
             else this.playerTurn = 'Dealer';
-        } else if (this.playerTurn === this.players[1]) {
-            if (this.player4Cards) this.playerTurn = this.players[1];
+        } else if (this.playerTurn === this.players[2]) {
+            if (this.player4Cards) this.playerTurn = this.players[3];
             else this.playerTurn = 'Dealer';
         } else {
             this.playerTurn = 'Dealer';
@@ -147,8 +147,8 @@ export class MultiPlayerGame extends Game {
     }
 
     playerLeft(username) {
-        const playerIdx = this.players.getIndex(username);
-        this.players[playerIdx] = '';
+        const playerIdx = this.players.indexOf(username);
+        // this.players[playerIdx] = '';
         switch (playerIdx) {
             case 0:
                 this.player1Cards = null;

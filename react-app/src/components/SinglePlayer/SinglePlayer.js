@@ -130,7 +130,7 @@ function SinglePlayer() {
             {gameState === NOT_STARTED &&
             <div className='fixed h-full w-full flex items-center justify-center'>
 
-                <button className='inset-x-0 ml-auto mr-auto absolute bg-red-600 hover:bg-red-700 text-white text-sm px-4 py-2  border rounded-full' onClick={startGame}>Start Game</button>
+                <button className='top-1/2  left-1/2 transform -translate-x-1/2 -translate-y-1/2 ml-auto mr-auto absolute bg-red-600 hover:bg-red-700 text-white text-sm px-4 py-2  border rounded-full' onClick={startGame}>Start Game</button>
             </div>
             }
         <div className='bg-poker-table flex  justify-center m-0'>
