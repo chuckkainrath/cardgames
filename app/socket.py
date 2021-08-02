@@ -137,7 +137,6 @@ def on_join(data):
         join_room(len(rooms) - 1)
         userRoomMap[username] = len(rooms) - 1
         userSeatMap[username] = 0
-        print('Player seat at table: ', 0)
         room = len(rooms) - 1
 
     userStatusMap[username] = GAME_OVER
@@ -218,8 +217,6 @@ def on_hit(data):
     username = data['username']
     card_idx = data['cardIdx']
     room = userRoomMap[username]
-    print('PLAYER HITEEREREERE')
-    print('card IDX', card_idx)
     emit('on_hit', { 'username': username, 'card_idx': card_idx}, to=room)
 
 

@@ -85,7 +85,6 @@ function Multiplayer() {
     const [waitlist, setWaitlist] = useState([]);
     const [userWaiting, setUserWaiting] = useState();
     const user = useSelector(state => state.session.user);
-    // console.log(playerOne === user.username)
 
     useEffect(() => {
         socket.emit('join', { username: user.username });
@@ -113,7 +112,6 @@ function Multiplayer() {
 
         socket.on('player_left', data => {
             const username = data.username;
-            console.log('user left', username);
             if (gameState === IN_GAME) {
                 game.playerLeft(username);
                 if (username === playerOne && gameState == IN_GAME) {
@@ -128,11 +126,9 @@ function Multiplayer() {
 
                 if (username === playerTurn) {
                     const nextPlayer = game.nextPlayer();
-                    console.log('playerTurn: ', nextPlayer);
                     setPlayerTurn(nextPlayer);
                     if (nextPlayer === 'Dealer') {
                         let dealerCardIndices;
-                        console.log('hera :(');
                         if (!playerOne.endsWith(' Left') && user.username === playerOne) {
                             dealerCardIndices = game.dealerDraws();
                         } else if (playerTwo && !playerTwo.endsWith(' Left') && user.username === playerTwo) {
@@ -188,7 +184,6 @@ function Multiplayer() {
                 setPlayerFour('');
                 setPlayerFourCards();
             }
-            console.log('players', players);
         });
 
         return (() => {
@@ -217,7 +212,6 @@ function Multiplayer() {
             if (userWaiting) return;
             const nextPlayer = game.nextPlayer();
             setPlayerTurn(nextPlayer);
-            console.log(nextPlayer);
         });
 
         socket.on('game_end', async data => {
@@ -226,7 +220,6 @@ function Multiplayer() {
                 return;
             }
             const dealerCardIndices = data.dealer_card_indices;
-            console.log('game end user', data);
             if (data.username !== user.username) {
                 game.nextPlayer();
                 for (let idx of dealerCardIndices) game.playerDrew(idx);

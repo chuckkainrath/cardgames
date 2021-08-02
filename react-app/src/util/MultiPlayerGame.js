@@ -97,7 +97,6 @@ export class MultiPlayerGame extends Game {
     }
 
     nextPlayer() {
-        console.log('game players: ', this.players);
         if (this.playerTurn === this.players[0]) {
             if (this.player2Cards) this.playerTurn = this.players[1];
             else if (this.player3Cards) this.playerTurn = this.players[1];
@@ -118,11 +117,7 @@ export class MultiPlayerGame extends Game {
 
     dealerDraws() {
         const dealerCardIndices = []
-        console.log('dealer score', this.dealerScore);
-        console.log('dealer cards', this.dealerCards);
         while (this.dealerScore < 17) {
-            console.log('dealer score', this.dealerScore);
-            console.log('cards', this.dealerCards);
             const idx = this.deck.getIndex();
             dealerCardIndices.push(idx);
             this.dealerCards.push(this.removeCard(idx));
