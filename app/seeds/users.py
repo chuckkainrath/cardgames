@@ -12,10 +12,11 @@ def seed_users():
     tristan = User(username='Tristan', email='tristan@gmail.com', password='tristan21', wins=50, losses=25, ratio=0.66666666)
     jeb = User(username='Jeb', email='jeb@gmail.com', password='jeb21', wins=80, losses=20, ratio=0.80)
     josh = User(username='Josh', email='josh@gmail.com', password='josh21', wins=60, losses=40, ratio=0.60)
-    mimi = User(username='Chuck', email='chuck@gmail.com', password='kooper21', wins=70, losses=30, ratio=0.70)
+    mimi = User(username='Mimi', email='mimi@gmail.com', password='mimi', wins=70, losses=30, ratio=0.70)
     mb = User(username='Mintbean', email='mb@gmail.com', password='mb21', wins=40, losses=40, ratio=0.50)
     christian = User(username='Christian', email='christian@gmail.com', password='christian21', wins=65, losses=35, ratio=0.65)
     maricio = User(username='Maricio', email='maricio@gmail.com', password='maricio21', wins=55, losses=45, ratio=0.55)
+    john = User(username='John', email='john@gmail.com', password='john21', wins=42, losses=58, ratio=0.42)
 
     db.session.add(chuck)
     db.session.add(tristan)
@@ -26,6 +27,7 @@ def seed_users():
     db.session.add(christian)
     db.session.add(demo)
     db.session.add(maricio)
+    db.session.add(john)
     db.session.commit()
 
 

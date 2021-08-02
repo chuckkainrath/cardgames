@@ -99,15 +99,15 @@ export class MultiPlayerGame extends Game {
     nextPlayer() {
         if (this.playerTurn === this.players[0]) {
             if (this.player2Cards) this.playerTurn = this.players[1];
-            else if (this.player3Cards) this.playerTurn = this.players[1];
-            else if (this.player4Cards) this.playerTurn = this.players[1];
+            else if (this.player3Cards) this.playerTurn = this.players[2];
+            else if (this.player4Cards) this.playerTurn = this.players[3];
             else this.playerTurn = 'Dealer';
         } else if (this.playerTurn === this.players[1]) {
-            if (this.player3Cards) this.playerTurn = this.players[1];
-            else if (this.player4Cards) this.playerTurn = this.players[1];
+            if (this.player3Cards) this.playerTurn = this.players[2];
+            else if (this.player4Cards) this.playerTurn = this.players[3];
             else this.playerTurn = 'Dealer';
         } else if (this.playerTurn === this.players[2]) {
-            if (this.player4Cards) this.playerTurn = this.players[1];
+            if (this.player4Cards) this.playerTurn = this.players[3];
             else this.playerTurn = 'Dealer';
         } else {
             this.playerTurn = 'Dealer';

@@ -211,6 +211,7 @@ function Multiplayer() {
         socket.on('on_stand', data => {
             if (userWaiting) return;
             const nextPlayer = game.nextPlayer();
+            console.log(nextPlayer);
             setPlayerTurn(nextPlayer);
         });
 
