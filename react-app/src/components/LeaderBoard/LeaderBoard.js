@@ -1,13 +1,30 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../../../src/index.css";
 import { useSelector, useDispatch } from "react-redux";
 import "./LeaderBoard.css"
 
 function LeaderBoard() {
+  const [topPlayers, setTopPlayers] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const result = await fetch('/users/leaderboard');
+      const data = await result.json();
+      console.log(data);
+      setTopPlayers(data.topPlayers);
+    })();
+  }, []);
+
   return (
     <div id="leader" className="container p-4 mt-9 inline-block ">
+      {topPlayers && topPlayers.map(player => {
+        return (<div key={player.id}>
+                  <h1>{player.username}</h1>
+                  <h1>{player.ratio}</h1>
+                </div>
+        )
+      })}
       <div class="gradient-border">
-
       </div>
       <div className="outter-border">
         <div className="inner-border">

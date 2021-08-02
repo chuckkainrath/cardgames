@@ -12,7 +12,7 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable = False)
     wins = db.Column(db.Integer, default=0)
     losses = db.Column(db.Integer, default=0)
-    ratio = db.Column(db.Integer, default=0)
+    ratio = db.Column(db.Float, default=0.0)
 
 
     @property
