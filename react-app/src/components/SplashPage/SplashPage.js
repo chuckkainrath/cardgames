@@ -112,7 +112,9 @@ function SplashPage() {
               ></img>{" "}
             </div>
           </div>
+          <div className="engineers-title"><h1>Meet The Developers</h1></div>
           <div className="engineers-container">
+            
             <div className="card-eng">
               <h1 className="engineer-name">Charles Kainrath</h1>
               <img
@@ -134,7 +136,7 @@ function SplashPage() {
                 <div id="githubLink">
                   <a
                     href="https://github.com/chuckkainrath"
-                    target="_blank"
+                    
                     style={{ textDecoration: "none" }}
                   >
                     <i className="fab fa-github-alt"></i>
@@ -143,7 +145,7 @@ function SplashPage() {
                 <div id="linkedinLink">
                   <a
                     href="https://www.linkedin.com/in/chuck-kainrath-42820b20b/"
-                    target="_blank"
+                    
                     style={{ textDecoration: "none" }}
                   >
                     <i className="fab fa-linkedin"></i>
@@ -152,7 +154,7 @@ function SplashPage() {
                 <div id="porfolio-link">
                   <a
                     href="https://chuckkainrath.github.io"
-                    target="_blank"
+                    
                     style={{ textDecoration: "none" }}
                   >
                     <i className="fas fa-user-secret"></i>
@@ -186,7 +188,7 @@ function SplashPage() {
                 <div id="githubLink">
                   <a
                     href="https://github.com/JebGriffin85"
-                    target="_blank"
+                    
                     style={{ textDecoration: "none" }}
                   >
                     <i className="fab fa-github-alt"></i>
@@ -195,7 +197,7 @@ function SplashPage() {
                 <div id="linkedinLink">
                   <a
                     href="https://www.linkedin.com/in/jeb-griffin-120631206/"
-                    target="_blank"
+                    
                     style={{ textDecoration: "none" }}
                   >
                     <i className="fab fa-linkedin"></i>
@@ -204,7 +206,7 @@ function SplashPage() {
                 <div id="porfolio-link">
                   <a
                     href="https://jebgriffin85.github.io/"
-                    target="_blank"
+                    
                     style={{ textDecoration: "none" }}
                   >
                     <i className="fas fa-user-secret"></i>
@@ -239,7 +241,7 @@ function SplashPage() {
                 <div id="githubLink">
                   <a
                     href="https://github.com/tristan-88"
-                    target="_blank"
+                    
                     style={{ textDecoration: "none" }}
                   >
                     <i className="fab fa-github-alt"></i>
@@ -248,7 +250,7 @@ function SplashPage() {
                 <div id="linkedinLink">
                   <a
                     href="https://www.linkedin.com/in/tristan-san-juan-75337920b/"
-                    target="_blank"
+                    
                     style={{ textDecoration: "none" }}
                   >
                     <i className="fab fa-linkedin"></i>
@@ -257,7 +259,7 @@ function SplashPage() {
                 <div id="porfolio-link">
                   <a
                     href="https://tristan-88.github.io/"
-                    target="_blank"
+                    
                     style={{ textDecoration: "none" }}
                   >
                     <i className="fas fa-user-secret"></i>

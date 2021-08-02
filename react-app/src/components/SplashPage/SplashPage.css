@@ -253,7 +253,7 @@ header h1{
 
 .engineers-container {
   display: flex;
-  margin-top: 20rem;
+  margin-top: 3rem;
   justify-content: center;
 }
 
@@ -262,4 +262,19 @@ header h1{
   background-color: #fff;
   /* opacity: 60%; */
   height: 15rem;
+}
+
+
+.engineers-title {
+    display: flex;
+    justify-content: center;
+    margin-top: 15rem;
+}
+
+.engineers-title h1{
+  font-size: 4rem;
+  color: white;
+  font-weight: bolder;
+  text-shadow: -1px 3px 3px black, 3px 3px 3px black, 3px -1px 0 black,
+    -1px -1px 0 black;
 }
