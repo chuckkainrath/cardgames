@@ -165,7 +165,7 @@ function Multiplayer() {
             setPlayerOne(players[0])
             setPlayerOneCards(game.player1Cards)
             setWinner('');
-            setWaitlist();
+            setWaitlist([]);
             setUserWaiting(false);
             if (players[1]) {
                 setPlayerTwo(players[1])
@@ -316,8 +316,8 @@ function Multiplayer() {
             }
             {(gameState === IN_GAME || gameState === GAME_OVER) &&
                 <div className='bg-poker-table flex-column items-center content-center m-0'>
-                   
-                    
+
+
                     {(playerTurn && playerTurn !== 'Dealer') && <button  className='inset-x-0 ml-auto mr-auto absolute bg-red-600 text-white text-sm px-4 py-2  border rounded-full'>{playerTurn}'s Turn</button>}
                     {game &&
                     <div className='flex  justify-center' >
@@ -339,13 +339,13 @@ function Multiplayer() {
                                     </div>
                             </div>
                             </div>
-                          
-                        
+
+
                     }
                     <div className=''>
                 <div className='grid grid-cols-4 grid-rows-1  absolute bottom-0'>
                     {playerOne &&
-                   
+
                     <div className='p-4'>
                             <h1 className='text-2xl font-semibold text-white uppercase lg:text-3xl pr-6'>{playerOne}</h1>
                             <div className='flex flex-row '>
@@ -361,7 +361,7 @@ function Multiplayer() {
                                 </div>
                             }
                             </div>
-                        
+
                     }
                     {playerTwo &&
                         <div className='p-4'>
@@ -416,7 +416,7 @@ function Multiplayer() {
                     }
                     </div>
                     </div>
-                    
+
                 </div>
             }
         </div>
