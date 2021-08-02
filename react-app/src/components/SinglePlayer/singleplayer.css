@@ -6,3 +6,8 @@
     background-size: cover;
     margin: 0;
 }
+
+.flex-column.items-center.justify-center.m-0 {
+    flex-direction: column;
+    display: flex;
+}

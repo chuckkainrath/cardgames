@@ -6,3 +6,8 @@
     background-size: cover;
     margin: 0;
 }
+
+center.justify-self-center {
+    display: flex;
+    flex-direction: column;
+}

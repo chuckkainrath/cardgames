@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./SplashPage.css";
 import logo from "./bjkids.png";
+import video from "./tristy.mp4"
 
 function SplashPage() {
   return (
