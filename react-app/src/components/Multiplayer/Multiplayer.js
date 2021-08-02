@@ -129,14 +129,14 @@ function Multiplayer() {
                     setPlayerTurn(nextPlayer);
                     if (nextPlayer === 'Dealer') {
                         let dealerCardIndices;
-                        if (!playerOne.endsWith(' Left') && user.username === playerOne) {
-                            dealerCardIndices = game.dealerDraws();
-                        } else if (playerTwo && !playerTwo.endsWith(' Left') && user.username === playerTwo) {
-                            dealerCardIndices = game.dealerDraws();
-                        } else if (playerThree && !playerThree.endsWith(' Left') && user.username === playerThree) {
-                            dealerCardIndices = game.dealerDraws();
-                        } else if (playerFour && !playerFour.endsWith(' Left') && user.username === playerFour) {
-                            dealerCardIndices = game.dealerDraws();
+                        if (!playerOne.endsWith(' Left')) {
+                            if (user.username === playerOne) dealerCardIndices = game.dealerDraws();
+                        } else if (playerTwo && !playerTwo.endsWith(' Left')) {
+                            if (user.username === playerTwo) dealerCardIndices = game.dealerDraws();
+                        } else if (playerThree && !playerThree.endsWith(' Left')) {
+                            if (user.username === playerThree) dealerCardIndices = game.dealerDraws();
+                        } else if (playerFour && !playerFour.endsWith(' Left')) {
+                            if (user.username === playerFour) dealerCardIndices = game.dealerDraws();
                         }
                         if (dealerCardIndices) socket.emit('game_end', { dealerCardIndices, username: user.username })
                     }
