@@ -12,7 +12,8 @@ const NavBar = () => {
 
 useEffect(() => {
   if (user) {
-    setWLR(Math.round((user.wins/user.losses) * 100))
+    if (user.wins > 0 && user.losses === 0) setWLR(100)
+    else setWLR(Math.round((user.wins / (user.losses + user.wins)) * 100))
   }
 },[user]);
 

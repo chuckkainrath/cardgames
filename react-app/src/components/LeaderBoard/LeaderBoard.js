@@ -7,7 +7,7 @@ function LeaderBoard() {
   return (
     <div id="leader" className="container p-4 mt-9 inline-block ">
       <div class="gradient-border">
-       
+
       </div>
       <div className="outter-border">
         <div className="inner-border">
@@ -17,10 +17,10 @@ function LeaderBoard() {
           <table className="text-left w-full">
             <thead className="bg-black flex text-white w-full mb-3">
               <tr className="flex w-full mb-4">
-                <th className="p-4 w-1/4">User Name</th>
+                <th className="p-4 w-1/4">Player</th>
                 <th className="p-4 w-1/4">Wins</th>
-                <th className="p-4 w-1/4">Lost</th>
-                <th className="p-4 w-1/4">Win Ratio %</th>
+                <th className="p-4 w-1/4">Losses</th>
+                <th className="p-4 w-1/4">Win %</th>
               </tr>
             </thead>
             <tbody
