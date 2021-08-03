@@ -67,18 +67,16 @@ function SplashPage() {
                 height="300px"
               ></img>
               <p>
-                When you arrived in landing page you can either log-in as a
-                existing user or sign-in as a new register user.
+                Welcome to the landing page!  You must login or sign up to play!!!
+
               </p>
             </div>
             <div className="features-two">
               <p>
-                After you log-in or sign-in you can see the be at home page.{" "}
+                Logging in or signing up will take you to the home page.{" "}
                 <br></br>
-                Where you will see your record on nav bar as well quick links to
-                single and muli-player more
-                <br></br>and the leader board as well as buttons to play in
-                single or multi player modes.
+                Here you may see the top players, as well as the ability to start a new game.
+               
               </p>
               <img
                 src="https://media.giphy.com/media/26ufcZICbgCSGe5sQ/giphy.gif"
@@ -96,13 +94,13 @@ function SplashPage() {
               ></img>{" "}
               <p>
                 When you select the single player mode you be playing against
-                the dealer AI.
+                the dealer AI.  AI always holds at 17 and plays with one card hidden!
               </p>
             </div>
             <div className="features-four">
               <p>
-                In multi-player mode, you can then play with other players going
-                against the dealer.
+                In multi-player mode, you may play live with up to 4 other users.  
+                Remember to ready up to start a new match.
               </p>
               <img
                 src="https://media.giphy.com/media/26ufcZICbgCSGe5sQ/giphy.gif"
