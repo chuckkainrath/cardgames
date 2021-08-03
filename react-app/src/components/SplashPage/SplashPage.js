@@ -170,16 +170,10 @@ function SplashPage() {
                 height="200px"
               />
               <div className="engineer-story">
-                Jeb did not know he wanted to be a software engineer until he wrote
-                his first line of working code. It was a new type of satisfaction
-                unlike he never experienced before. The more he learned the more he
-                realized he didn’t know, and he wanted to know more. Before
-                writing that first line of code, He was a chef for 15 years.
-                Luckily, he found coding and never wanted to go back to a
-                hot kitchen. What he loves about coding is the same for what he
-                love about cooking: the creativity. He finds a deep satisfaction in
-                creating an application from scratch, building it how he wants and
-                calling it his own.
+                Jeb enjoys React projects and working in both front/back end.  
+                With a history of being a professional chef, Jeb has a passion
+                for creativity and unique designs.  Upon graduating from App Academy's
+                bootcamp, Jeb has worked on other personal projects such as <a href='https://eatbambu.herokuapp.com/'>Bambu</a>
               </div>
 
               <div className="engineers-links">
