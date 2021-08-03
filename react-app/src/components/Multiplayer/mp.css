@@ -7,7 +7,7 @@
     margin: 0;
 }
 
-center.justify-self-center {
+.flex-column.items-center.justify-center.align-center.justify-items-center.justify-self-center {
     display: flex;
     flex-direction: column;
 }

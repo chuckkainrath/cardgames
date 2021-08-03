@@ -2,9 +2,15 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import LeaderBoard from "../LeaderBoard/LeaderBoard";
 import "./HomePage.css";
+import {useSelector} from "react-redux"
 
 function HomePage() {
   const history = useHistory();
+  const user = (state => state.session.user)
+
+  if (!user) {
+    history.push('/')
+  }
 
   return (
     <div className="home-page-container">
