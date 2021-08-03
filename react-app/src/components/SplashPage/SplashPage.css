@@ -4,6 +4,7 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
 header {
   position: absolute;
   top: 0;
@@ -21,7 +22,7 @@ header .logo {
   cursor: pointer;
 }
 
-header h1{
+header h1 {
   display: flex;
   align-items: center;
   font-weight: bolder;
@@ -40,35 +41,36 @@ header h1{
   background: #111;
   transition: 0.5s;
   z-index: 2;
-  background-image: url("../../resources/d320fa9-e2b98242-6204-4442-81c7-100c8f3590e4.jpeg");
+  /* background-image: url("../../resources/d320fa9-e2b98242-6204-4442-81c7-100c8f3590e4.jpeg");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover;
+  background-size: cover; */
 }
 .splash-container.active {
   right: 18.75rem;
 }
 
-.splash-container iframe {
+.splash-container video {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
   width: 100%;
   height: 100%;
-  object-fit: none;
+  object-fit: cover;
   opacity: 0.8;
   position: fixed;
 }
-/* .overlay {
-  position: absolute;
+
+.overlay {
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(27, 221, 27, 0.363);
-  mix-blend-mode: overlay;
-} */
+  background: rgba(20, 136, 9, 0.904);
+  background-blend-mode: multiply;
+  opacity: 70%;
+}
 .splash-text {
   position: relative;
   z-index: 10;
@@ -141,6 +143,7 @@ header h1{
 .splash-buttons {
   display: flex;
   justify-content: space-evenly;
+  margin-top: 10rem;
 }
 
 .features-container {
@@ -149,7 +152,6 @@ header h1{
   margin: 3em;
   opacity: 90%;
   margin-top: 10rem;
-  border-radius: 5%;
 }
 
 .features-one {
@@ -218,15 +220,15 @@ header h1{
   height: 42.7rem;
   justify-content: center;
   align-content: center;
-  border-radius: 10%;
   padding: 2rem;
-  box-shadow: 2px 17px 9px -7px rgba(12, 12, 12, 0.35);
+  box-shadow: 2px 17px 9px -7px rgb(12 12 12 / 35%);
   margin: 0.1rem;
-  opacity: 95%;
+  opacity: 100%;
+  right: 0;
   background-image: url("../../resources/_.jpeg");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: cover;
 }
 
 .engineers-links {
@@ -262,16 +264,17 @@ header h1{
   background-color: #fff;
   /* opacity: 60%; */
   height: 15rem;
+  border-radius: 10%;
+  margin-top: 0.5rem;
 }
-
 
 .engineers-title {
-    display: flex;
-    justify-content: center;
-    margin-top: 15rem;
+  display: flex;
+  justify-content: center;
+  margin-top: 15rem;
 }
 
-.engineers-title h1{
+.engineers-title h1 {
   font-size: 4rem;
   color: white;
   font-weight: bolder;

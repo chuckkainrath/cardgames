@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./SplashPage.css";
 import logo from "./bjkids.png";
+import video from "./tristy.mp4"
 
 function SplashPage() {
   return (
@@ -44,12 +45,13 @@ function SplashPage() {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         ></iframe> */}
-
+        <video src={video} muted loop autoPlay></video>
         <div className="overlay"></div>
         <div className="splash-text">
           <h2>BlaK-JaK</h2>
           <p>
-            It's not about the cards you're dealt, But how you play the hand!
+            It black-jack gaming app where the user can play in a single mode or
+            multi-player mode.
           </p>
           <div className="splash-buttons">
             {" "}
@@ -58,7 +60,10 @@ function SplashPage() {
             <NavLink to="sign-up">Sign Up</NavLink>
           </div>
           <div className="features-container">
-            <h1>FEATURES</h1>
+            <h1>FEATURES</h1>{" "}
+            <p>
+              It's not about the cards you're dealt, But how you play the hand!
+            </p>
             <div className="features-one">
               <img
                 src="https://media.giphy.com/media/26ufcZICbgCSGe5sQ/giphy.gif"
@@ -110,18 +115,20 @@ function SplashPage() {
               ></img>{" "}
             </div>
           </div>
-          <div className="engineers-title"><h1>Meet The Developers</h1></div>
+          <div className="engineers-title">
+            <h1>Meet The Developers</h1>
+          </div>
           <div className="engineers-container">
-            
             <div className="card-eng">
               <h1 className="engineer-name">Charles Kainrath</h1>
               <img
-                src="https://i.ibb.co/Fwg3NDP/Screen-Shot-2021-07-28-at-3-00-05-PM.png"
+                src="https://i.ibb.co/dcnD6FV/DSC-8093-1.jpg"
                 alt="Screen-Shot-2021-07-28-at-3-00-05-PM"
                 border="0"
                 width="200px"
                 height="200px"
               />
+
               <div className="engineer-story">
                 Charles is detail-oriented software engineer who has experience
                 building dynamic web applications using React/Redux on the
@@ -134,7 +141,6 @@ function SplashPage() {
                 <div id="githubLink">
                   <a
                     href="https://github.com/chuckkainrath"
-                    
                     style={{ textDecoration: "none" }}
                   >
                     <i className="fab fa-github-alt"></i>
@@ -143,7 +149,6 @@ function SplashPage() {
                 <div id="linkedinLink">
                   <a
                     href="https://www.linkedin.com/in/chuck-kainrath-42820b20b/"
-                    
                     style={{ textDecoration: "none" }}
                   >
                     <i className="fab fa-linkedin"></i>
@@ -152,7 +157,6 @@ function SplashPage() {
                 <div id="porfolio-link">
                   <a
                     href="https://chuckkainrath.github.io"
-                    
                     style={{ textDecoration: "none" }}
                   >
                     <i className="fas fa-user-secret"></i>
@@ -163,12 +167,13 @@ function SplashPage() {
             <div className="card-eng">
               <h1 className="engineer-name">Jeb Griffin</h1>
               <img
-                src="https://i.ibb.co/xS3pqxZ/Screen-Shot-2021-07-28-at-2-59-44-PM.png"
+                src="https://i.ibb.co/dc2BWnn/Screen-Shot-2021-08-02-at-6-18-00-PM.png"
                 alt="Screen-Shot-2021-07-28-at-3-00-05-PM"
                 border="0"
                 width="200px"
                 height="200px"
               />
+
               <div className="engineer-story">
                 Jeb enjoys React projects and working in both front/back end.  
                 With a history of being a professional chef, Jeb has a passion
@@ -180,7 +185,6 @@ function SplashPage() {
                 <div id="githubLink">
                   <a
                     href="https://github.com/JebGriffin85"
-                    
                     style={{ textDecoration: "none" }}
                   >
                     <i className="fab fa-github-alt"></i>
@@ -189,7 +193,6 @@ function SplashPage() {
                 <div id="linkedinLink">
                   <a
                     href="https://www.linkedin.com/in/jeb-griffin-120631206/"
-                    
                     style={{ textDecoration: "none" }}
                   >
                     <i className="fab fa-linkedin"></i>
@@ -198,7 +201,6 @@ function SplashPage() {
                 <div id="porfolio-link">
                   <a
                     href="https://jebgriffin85.github.io/"
-                    
                     style={{ textDecoration: "none" }}
                   >
                     <i className="fas fa-user-secret"></i>
@@ -233,7 +235,6 @@ function SplashPage() {
                 <div id="githubLink">
                   <a
                     href="https://github.com/tristan-88"
-                    
                     style={{ textDecoration: "none" }}
                   >
                     <i className="fab fa-github-alt"></i>
@@ -242,7 +243,6 @@ function SplashPage() {
                 <div id="linkedinLink">
                   <a
                     href="https://www.linkedin.com/in/tristan-san-juan-75337920b/"
-                    
                     style={{ textDecoration: "none" }}
                   >
                     <i className="fab fa-linkedin"></i>
@@ -251,7 +251,6 @@ function SplashPage() {
                 <div id="porfolio-link">
                   <a
                     href="https://tristan-88.github.io/"
-                    
                     style={{ textDecoration: "none" }}
                   >
                     <i className="fas fa-user-secret"></i>
