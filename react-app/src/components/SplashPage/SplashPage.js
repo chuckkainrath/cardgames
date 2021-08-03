@@ -72,18 +72,16 @@ function SplashPage() {
                 height="300px"
               ></img>
               <p>
-                When you arrived in landing page you can either log-in as a
-                existing user or sign-in as a new register user.
+                Welcome to the landing page!  You must login or sign up to play!!!
+
               </p>
             </div>
             <div className="features-two">
               <p>
-                After you log-in or sign-in you can see the be at home page.{" "}
+                Logging in or signing up will take you to the home page.{" "}
                 <br></br>
-                Where you will see your record on nav bar as well quick links to
-                single and muli-player more
-                <br></br>and the leader board as well as buttons to play in
-                single or multi player modes.
+                Here you may see the top players, as well as the ability to start a new game.
+               
               </p>
               <img
                 src="https://media.giphy.com/media/26ufcZICbgCSGe5sQ/giphy.gif"
@@ -101,13 +99,13 @@ function SplashPage() {
               ></img>{" "}
               <p>
                 When you select the single player mode you be playing against
-                the dealer AI.
+                the dealer AI.  AI always holds at 17 and plays with one card hidden!
               </p>
             </div>
             <div className="features-four">
               <p>
-                In multi-player mode, you can then play with other players going
-                against the dealer.
+                In multi-player mode, you may play live with up to 4 other users.  
+                Remember to ready up to start a new match.
               </p>
               <img
                 src="https://media.giphy.com/media/26ufcZICbgCSGe5sQ/giphy.gif"
@@ -177,16 +175,10 @@ function SplashPage() {
               />
 
               <div className="engineer-story">
-                Jeb did not know he wanted to be a software engineer until he
-                wrote his first line of working code. It was a new type of
-                satisfaction unlike he never experienced before. The more he
-                learned the more he realized he didn’t know, and he wanted to
-                know more. Before writing that first line of code, He was a chef
-                for 15 years. Luckily, he found coding and never wanted to go
-                back to a hot kitchen. What he loves about coding is the same
-                for what he love about cooking: the creativity. He finds a deep
-                satisfaction in creating an application from scratch, building
-                it how he wants and calling it his own.
+                Jeb enjoys React projects and working in both front/back end.  
+                With a history of being a professional chef, Jeb has a passion
+                for creativity and unique designs.  Upon graduating from App Academy's
+                bootcamp, Jeb has worked on other personal projects such as <a href='https://eatbambu.herokuapp.com/'>Bambu</a>
               </div>
 
               <div className="engineers-links">
