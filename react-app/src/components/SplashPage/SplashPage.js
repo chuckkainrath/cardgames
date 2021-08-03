@@ -2,7 +2,10 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./SplashPage.css";
 import logo from "./bjkids.png";
-import video from "./tristy.mp4"
+import video from "./tristy.mp4";
+import splashVideo from '../../resources/cardgame-login.gif';
+import homeVideo from '../../resources/cardgame-home.gif';
+import soloVideo from '../../resources/cardgame-solo.gif';
 
 function SplashPage() {
   return (
@@ -66,7 +69,7 @@ function SplashPage() {
             </p>
             <div className="features-one">
               <img
-                src="https://media.giphy.com/media/26ufcZICbgCSGe5sQ/giphy.gif"
+                src={splashVideo}
                 alt=""
                 width="400px"
                 height="300px"
@@ -84,7 +87,7 @@ function SplashPage() {
                 start a new game.
               </p>
               <img
-                src="https://media.giphy.com/media/26ufcZICbgCSGe5sQ/giphy.gif"
+                src={homeVideo}
                 alt=""
                 width="400px"
                 height="300px"
@@ -92,7 +95,7 @@ function SplashPage() {
             </div>
             <div className="features-three">
               <img
-                src="https://media.giphy.com/media/26ufcZICbgCSGe5sQ/giphy.gif"
+                src={soloVideo}
                 alt=""
                 width="400px"
                 height="300px"
@@ -105,8 +108,8 @@ function SplashPage() {
             </div>
             <div className="features-four">
               <p>
-                In multi-player mode, you may play live with up to 4 other
-                users. Remember to ready up to start a new match.
+                In multi-player mode, you may play live with up to 4 other users.
+                Remember to ready up to start a new match.
               </p>
               <img
                 src="https://media.giphy.com/media/26ufcZICbgCSGe5sQ/giphy.gif"
