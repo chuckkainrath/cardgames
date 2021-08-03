@@ -37,7 +37,7 @@ Technologies used: React, Redux, Flask, SQLAlchemy, SocketIO, Tailwind, CSS.
 ### Splash Page
 All logged out users will land here and must sign up or login to start playing.
 
-<a href="https://ibb.co/YcbPpbs"><img src="https://i.ibb.co/8rXN6XZ/Screen-Shot-2021-08-03-at-3-15-11-AM.png" alt="Screen-Shot-2021-08-03-at-3-15-11-AM" border="0"></a>
+<a href="https://ibb.co/PF9vwfh"><img src="https://i.ibb.co/MZGxM3V/Screen-Shot-2021-08-03-at-3-19-30-AM.png" alt="Screen-Shot-2021-08-03-at-3-19-30-AM" border="0"></a>
 
 
 ### Home Page
