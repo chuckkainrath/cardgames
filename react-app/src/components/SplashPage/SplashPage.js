@@ -2,7 +2,10 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./SplashPage.css";
 import logo from "./bjkids.png";
-import video from "./tristy.mp4"
+import video from "./tristy.mp4";
+import splashVideo from '../../resources/cardgame-login.gif';
+import homeVideo from '../../resources/cardgame-home.gif';
+import soloVideo from '../../resources/cardgame-solo.gif';
 
 function SplashPage() {
   return (
@@ -66,7 +69,7 @@ function SplashPage() {
             </p>
             <div className="features-one">
               <img
-                src="https://media.giphy.com/media/26ufcZICbgCSGe5sQ/giphy.gif"
+                src={splashVideo}
                 alt=""
                 width="400px"
                 height="300px"
@@ -81,10 +84,10 @@ function SplashPage() {
                 Logging in or signing up will take you to the home page.{" "}
                 <br></br>
                 Here you may see the top players, as well as the ability to start a new game.
-               
+
               </p>
               <img
-                src="https://media.giphy.com/media/26ufcZICbgCSGe5sQ/giphy.gif"
+                src={homeVideo}
                 alt=""
                 width="400px"
                 height="300px"
@@ -92,7 +95,7 @@ function SplashPage() {
             </div>
             <div className="features-three">
               <img
-                src="https://media.giphy.com/media/26ufcZICbgCSGe5sQ/giphy.gif"
+                src={soloVideo}
                 alt=""
                 width="400px"
                 height="300px"
@@ -104,7 +107,7 @@ function SplashPage() {
             </div>
             <div className="features-four">
               <p>
-                In multi-player mode, you may play live with up to 4 other users.  
+                In multi-player mode, you may play live with up to 4 other users.
                 Remember to ready up to start a new match.
               </p>
               <img
@@ -175,7 +178,7 @@ function SplashPage() {
               />
 
               <div className="engineer-story">
-                Jeb enjoys React projects and working in both front/back end.  
+                Jeb enjoys React projects and working in both front/back end.
                 With a history of being a professional chef, Jeb has a passion
                 for creativity and unique designs.  Upon graduating from App Academy's
                 bootcamp, Jeb has worked on other personal projects such as <a href='https://eatbambu.herokuapp.com/'>Bambu</a>

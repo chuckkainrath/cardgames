@@ -84,6 +84,7 @@ function Multiplayer() {
     const [winner, setWinner] = useState('');
     const [waitlist, setWaitlist] = useState([]);
     const [userWaiting, setUserWaiting] = useState();
+    const [playerWaiting, setPlayerWaiting] = useState(false);
     const user = useSelector(state => state.session.user);
 
     useEffect(() => {
@@ -157,6 +158,7 @@ function Multiplayer() {
             setGameState(IN_GAME);
             setPlayers(data.playerOrder);
             setPlayerTurn(game.playerTurn);
+            setPlayerWaiting(false);
             const players = data.playerOrder
             setPlayerOne(players[0])
             setPlayerOneCards(game.player1Cards)
@@ -239,6 +241,7 @@ function Multiplayer() {
     }, [userWaiting, playerTurn, playerOneCards, playerTwoCards, playerThreeCards, playerFourCards])
 
     const readyUp = () => {
+        setPlayerWaiting(true);
         socket.emit('ready', { username: user.username });
     }
 
@@ -283,10 +286,10 @@ function Multiplayer() {
             {userWaiting &&
                 <>
                     {gameState === IN_GAME &&
-                        <h1>Match In Progress, Waiting for Next Round</h1>
+                        <h1 className="waiting">Match In Progress, Waiting for Next Round</h1>
                     }
                     {gameState === GAME_OVER &&
-                        <h1>Match Over, Click New Game To Start</h1>
+                        <h1 className="waiting">Match Over, Click New Game To Start</h1>
                     }
                 </>
             }
@@ -295,22 +298,19 @@ function Multiplayer() {
                     <p key={idx}>{username} is in lobby, waiting for next game.</p>
                 ))
             }
-            {/* {players &&
-                players.map((player, idx) => (
-                    <p key={idx}>{player}</p>
-                ))
-            } */}
             {gameState === GAME_OVER &&
                 <div className=' flex items-center justify-center pb-64 absolute top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
                 <div className='flex-column items-center justify-center'>
                     {winner &&
-                    <>
+                        <>
                         <h2  className='text-2xl font-semibold text-white uppercase lg:text-3xl pr-6'>{winner} Won</h2>
-                        <p className='text-2xl italic text-white  lg:text-2xl pb-2'> Waiting for all players to ready</p>
-                        
+
                         </>
                     }
                     <button className='bg-red-600 hover:bg-red-700 text-white text-sm px-4 py-2  border rounded-full   border rounded-full' onClick={readyUp}>New Game</button>
+                        {playerWaiting &&
+                            <p className='text-2xl italic text-white  lg:text-2xl pb-2'> Waiting for all players to ready</p>
+                        }
                     </div>
                 </div>
             }
