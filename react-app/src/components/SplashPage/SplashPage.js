@@ -72,16 +72,16 @@ function SplashPage() {
                 height="300px"
               ></img>
               <p>
-                Welcome to the landing page!  You must login or sign up to play!!!
-
+                Welcome to the landing page! You must login or sign up to
+                play!!!
               </p>
             </div>
             <div className="features-two">
               <p>
                 Logging in or signing up will take you to the home page.{" "}
                 <br></br>
-                Here you may see the top players, as well as the ability to start a new game.
-               
+                Here you may see the top players, as well as the ability to
+                start a new game.
               </p>
               <img
                 src="https://media.giphy.com/media/26ufcZICbgCSGe5sQ/giphy.gif"
@@ -99,13 +99,14 @@ function SplashPage() {
               ></img>{" "}
               <p>
                 When you select the single player mode you be playing against
-                the dealer AI.  AI always holds at 17 and plays with one card hidden!
+                the dealer AI. AI always holds at 17 and plays with one card
+                hidden!
               </p>
             </div>
             <div className="features-four">
               <p>
-                In multi-player mode, you may play live with up to 4 other users.  
-                Remember to ready up to start a new match.
+                In multi-player mode, you may play live with up to 4 other
+                users. Remember to ready up to start a new match.
               </p>
               <img
                 src="https://media.giphy.com/media/26ufcZICbgCSGe5sQ/giphy.gif"
@@ -167,7 +168,7 @@ function SplashPage() {
             <div className="card-eng">
               <h1 className="engineer-name">Jeb Griffin</h1>
               <img
-                src="https://i.ibb.co/dc2BWnn/Screen-Shot-2021-08-02-at-6-18-00-PM.png"
+                src="https://i.ibb.co/rkbqY6J/Screen-Shot-2021-08-02-at-8-50-12-PM-1.jpg"
                 alt="Screen-Shot-2021-07-28-at-3-00-05-PM"
                 border="0"
                 width="200px"
@@ -175,10 +176,11 @@ function SplashPage() {
               />
 
               <div className="engineer-story">
-                Jeb enjoys React projects and working in both front/back end.  
+                Jeb enjoys React projects and working in both front/back end.
                 With a history of being a professional chef, Jeb has a passion
-                for creativity and unique designs.  Upon graduating from App Academy's
-                bootcamp, Jeb has worked on other personal projects such as <a href='https://eatbambu.herokuapp.com/'>Bambu</a>
+                for creativity and unique designs. Upon graduating from App
+                Academy's bootcamp, Jeb has worked on other personal projects
+                such as <a href="https://eatbambu.herokuapp.com/">Bambu</a>
               </div>
 
               <div className="engineers-links">
@@ -211,7 +213,7 @@ function SplashPage() {
             <div className="card-eng">
               <h1 className="engineer-name">Tristan San Juan</h1>
               <img
-                src="https://i.ibb.co/Y855xF8/Screenshot-20200210-125456-copy.png"
+                src="https://i.ibb.co/jWPPVx1/Screenshot-20200210-125456-copy.jpg"
                 alt="Screen-Shot-2021-07-28-at-3-00-05-PM"
                 border="0"
                 width="200px"
@@ -219,16 +221,12 @@ function SplashPage() {
               />
 
               <div className="engineer-story">
-                Tristan wore different hats in the retail industry from
-                specialist, to lead, to stock, and different levels of
-                management for about 18 years. Along the way he also gain
-                experience in hospitality field as well as in the food industry.
-                Being a pisces he creates and escapes into many world which why
-                the gaming world appeal to him. The world of gaming is vast and
-                always created a safe haven for him. However, what really appeal
-                to his is the world with-in the game and the many elements that
-                forms it. So due to covid closing some doors of opportunity. He
-                took the opportunity to strive to become a Software Engineer.
+                Tristan is an avid gamer, who fell in love worlds being render
+                in these game. He love the intricacy of the elements and logic
+                behind the creation of these worlds in the game. As a pisces he
+                naturally imagines world, but like to bring some of those world
+                into the reality. After Covid he took upon this opportunity to
+                become a software engineer/developer.
               </div>
 
               <div className="engineers-links">

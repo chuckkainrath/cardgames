@@ -263,7 +263,7 @@ header h1 {
   backdrop-filter: blur(50px);
   background-color: #fff;
   /* opacity: 60%; */
-  height: 15rem;
+  height: 10rem;
   border-radius: 10%;
   margin-top: 0.5rem;
 }
