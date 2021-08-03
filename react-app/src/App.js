@@ -11,6 +11,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import { authenticate } from "./store/session";
 import HomePage from "./components/HomePage/HomePage";
 import ContactPage from "./components/ContactPage/ContactPage";
+import Tutorial from "./components/Tutorial/Tutorial";
 
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
@@ -38,11 +39,14 @@ function App() {
         <Route path="/login" exact={true}>
           <LoginForm />
         </Route>
-        <Route path="/home" exact={true}>
+        <ProtectedRoute path="/home" exact={true}>
           <HomePage />
-        </Route>
+        </ProtectedRoute>
         <Route path="/sign-up" exact={true}>
           <SignUpForm />
+        </Route>
+        <Route path="/tutorial">
+          <Tutorial />
         </Route>
         <ProtectedRoute path="/contact-page" exact={true} >
          <ContactPage />

@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory} from "react-router-dom";
 import "./SplashPage.css";
 import logo from "./bjkids.png";
 import video from "./tristy.mp4";
@@ -7,8 +7,16 @@ import splashVideo from '../../resources/cardgame-login.gif';
 import homeVideo from '../../resources/cardgame-home.gif';
 import soloVideo from '../../resources/cardgame-solo.gif';
 import multiplayer from "../../resources/Hnet-image.gif"
+import { useSelector } from "react-redux";
 
 function SplashPage() {
+  const history = useHistory()
+  const user = useSelector(state => state.session.user)
+
+  if (user) {
+    history.push('/home')
+  }
+
   return (
     <div>
       <section className="splash-container">
