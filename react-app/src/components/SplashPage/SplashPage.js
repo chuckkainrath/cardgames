@@ -6,6 +6,7 @@ import video from "./tristy.mp4";
 import splashVideo from '../../resources/cardgame-login.gif';
 import homeVideo from '../../resources/cardgame-home.gif';
 import soloVideo from '../../resources/cardgame-solo.gif';
+import multiplayer from "../../resources/Hnet-image.gif"
 
 function SplashPage() {
   return (
@@ -17,37 +18,7 @@ function SplashPage() {
             BLAK-JAK
           </h1>
         </header>
-        {/* <iframe
-          width="1500"
-          height="1500"
-          src="https://www.youtube.com/embed/NiVdFpawZs8?&controls=0&autoplay=1&cc_load_policy=3&mute=1&showinfo=0&rel=0&loop=1&playlist=eyoh-Ku9TCI"
-          frameborder="0"
-          title="Youtube Video"
-          style={{
-            position: "fixed",
-            top: "0",
-            left: "0",
-            bottom: "0",
-            right: "0",
-            width: "100%",
-            height: "100%",
-            border: "none",
-            margin: "0",
-            padding: "0",
-            overflow: "hidden",
-          }}
-          allowfullscreen="allowfullscreen"
-        ></iframe> */}
-
-        {/* <iframe
-          width="3000"
-          height="3000"
-          src="https://www.youtube.com/embed/NiVdFpawZs8?&controls=0&autoplay=1&cc_load_policy=3&mute=1&showinfo=0&autohite=1&rel=0&modestbranding=1&loop=1&playlist=NiVdFpawZs8&allowfullscreen=allowfullscreen"
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe> */}
+       
         <video src={video} muted loop autoPlay></video>
         <div className="overlay"></div>
         <div className="splash-text">
@@ -71,8 +42,8 @@ function SplashPage() {
               <img
                 src={splashVideo}
                 alt=""
-                width="400px"
-                height="300px"
+                width="500px"
+                height="400px"
               ></img>
               <p>
                 Welcome to the landing page! You must login or sign up to
@@ -97,8 +68,8 @@ function SplashPage() {
               <img
                 src={soloVideo}
                 alt=""
-                width="400px"
-                height="300px"
+                width="500px"
+                height="400px"
               ></img>{" "}
               <p>
                 When you select the single player mode you be playing against
@@ -112,7 +83,7 @@ function SplashPage() {
                 Remember to ready up to start a new match.
               </p>
               <img
-                src="https://media.giphy.com/media/26ufcZICbgCSGe5sQ/giphy.gif"
+                src={multiplayer}
                 alt=""
                 width="400px"
                 height="300px"
@@ -224,7 +195,7 @@ function SplashPage() {
               />
 
               <div className="engineer-story">
-                Tristan is an avid gamer, who fell in love worlds being render
+                Tristan is an avid gamer, who fell in love with the worlds being render
                 in these game. He love the intricacy of the elements and logic
                 behind the creation of these worlds in the game. As a pisces he
                 naturally imagines world, but like to bring some of those world
