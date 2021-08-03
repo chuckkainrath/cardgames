@@ -2,7 +2,7 @@
 
 To view the live project click <a href="https://blak-jak.herokuapp.com/">here</a>.
 
-Technologies used: React, Redux, Flask, SQLAlchemy, SocketIO, Tailwind, CSS.
+Technologies used: Python, JavaScript, React, Redux, Flask, SQLAlchemy, SocketIO, Tailwind, CSS.
 
 ## Developed by:
 ### Jeb Griffin
@@ -49,7 +49,7 @@ Displays nav functionality, users may view leaderboard, or start a game.
 ### Single Player Game
 A user can battle the AI in a single player game.
 
-<img src="https://ibb.co/N2G6Rnh"><img src="https://i.ibb.co/k2PgZ6n/Screen-Shot-2021-08-02-at-7-03-55-PM.png" />
+<img src="https://i.ibb.co/k2PgZ6n/Screen-Shot-2021-08-02-at-7-03-55-PM.png" />
 
 
 ### Multi-Player Game
