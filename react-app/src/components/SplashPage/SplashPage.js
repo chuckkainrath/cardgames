@@ -40,6 +40,8 @@ function SplashPage() {
             <NavLink to="/login">Log In</NavLink>
             {"  "} {/*  do not remove space */}
             <NavLink to="sign-up">Sign Up</NavLink>
+            {" "}
+            <NavLink to="/tutorial">Tutorial</NavLink>
           </div>
           <div className="features-container">
             <h1>FEATURES</h1>{" "}
@@ -98,6 +100,7 @@ function SplashPage() {
               ></img>{" "}
             </div>
           </div>
+
           <div className="engineers-title">
             <h1>Meet The Developers</h1>
           </div>
