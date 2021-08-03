@@ -27,6 +27,37 @@ Technologies used: React, Redux, Flask, SQLAlchemy, SocketIO, Tailwind, CSS.
 <a href="https://tristan-88.github.io/">Portfolio</a>
 
 
+
+### Main Features
+- Single Player: All logged in users can play the AI in black jack.
+- Multiplayer: Up to 4 people can chanllenge the dealer in a live game.
+- Leader Board: All users are automatically ranked and the top 10 are displayed on the home page.
+
+
+### Splash Page
+All logged out users will land here and must sign up or login to start playing.
+
+<img src="https://i.ibb.co/MZ1M6kp/Screen-Shot-2021-08-02-at-7-03-38-PM.png" />
+
+
+### Home Page
+Displays nav functionality, users may view leaderboard, or start a game.
+
+<img src="https://i.ibb.co/MZ1M6kp/Screen-Shot-2021-08-02-at-7-03-38-PM.png" />
+
+
+### Single Player Game
+A user can battle the AI in a single player game.
+
+<img src="https://ibb.co/N2G6Rnh"><img src="https://i.ibb.co/k2PgZ6n/Screen-Shot-2021-08-02-at-7-03-55-PM.png" />
+
+
+### Multi-Player Game
+Up to four users can battle the AI in a live game.
+
+<img src="https://i.ibb.co/94swMzK/Screen-Shot-2021-08-02-at-7-10-31-PM.png" />
+
+
 ### To Deploy:
 1. Clone this repository (only this branch)
 
