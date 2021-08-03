@@ -49,7 +49,7 @@ const NavBar = () => {
                     className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
                   > Multi-Player </NavLink>
 
-                  <NavLink to='/about'
+                  <NavLink to='/contact-page'
                     className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
                   > Contact the Developers </NavLink>
 
@@ -152,7 +152,7 @@ const NavBar = () => {
                 </NavLink>
 
                    <NavLink
-                  to='/about'
+                  to='/contact-page'
                   className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Contact the Developers
