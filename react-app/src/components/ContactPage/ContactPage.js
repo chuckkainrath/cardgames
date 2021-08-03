@@ -113,7 +113,7 @@ function ContactPage() {
               Tristan San Juan
             </h3>
             <p className="text-gray-600 text-justify m-2">
-              Tristan is an avid gamer, who fell in love worlds being render in
+              Tristan is an avid gamer, who fell in love with the worlds being render in
               these game. He love the intricacy of the elements and logic behind
               the creation of these worlds in the game. As a pisces he naturally
               imagines world, but like to bring some of those world into the
