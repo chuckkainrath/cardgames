@@ -1,0 +1,60 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.tutorial-container {
+  background-color: honeydew;
+  padding: 3em;
+  margin: 2em;
+  opacity: 0.9;
+
+}
+
+.tutorial-one {
+  display: flex;
+  margin: 1rem;
+  height: auto;
+  justify-content: space-between;
+  margin-top: 4rem;
+}
+
+.tutorial-two {
+  display: flex;
+  margin: 1rem;
+  height: auto;
+  justify-content: space-between;
+}
+.tutorial-three {
+  display: flex;
+  margin: 1em;
+  height: auto;
+  justify-content: space-between;
+}
+.tutorial-four {
+  display: flex;
+  margin: 1rem;
+  height: auto;
+  justify-content: space-between;
+}
+
+.tutorial-container h1 {
+  display: flex;
+  justify-content: center;
+  font-weight: bolder;
+  font-size: xx-large;
+  /* color: white; */
+  padding: 3rem;
+}
+
+.tutorial-container p {
+  font-size: 1.1em;
+  /* color: #fff; */
+  margin: 1.25rem 0;
+  font-weight: 400;
+  text-align: center;
+  place-self: center;
+}
+
