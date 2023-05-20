@@ -7,8 +7,8 @@ import random
 
 if os.environ.get("FLASK_ENV") == 'production':
     origins = [
-        'http://blak-jak.herokuapp.com',
-        'https://blak-jak.herokuapp.com'
+        'http://blak-jak.fly.dev/',
+        'https://blak-jak.fly.dev/'
     ]
 else:
     origins = "*"
