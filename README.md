@@ -1,6 +1,6 @@
 # Welcome to Blak-Jak
 
-To view the live project click <a href="https://blak-jak.herokuapp.com/">here</a>.
+To view the live project click <a href="https://blak-jak.fly.dev/">here</a>.
 
 Technologies used: Python, JavaScript, React, Redux, Flask, SQLAlchemy, SocketIO, Tailwind, CSS.
 
