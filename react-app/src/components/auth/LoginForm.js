@@ -67,7 +67,7 @@ const LoginForm = () => {
               value={email}
               type="email"
               name="email"
-              placeholder="john.doe@company.com"
+              placeholder="demo@aa.io"
               autocomplete="email"
               className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
               required
@@ -84,7 +84,7 @@ const LoginForm = () => {
               value={password}
               type="password"
               name="password"
-              placeholder="********"
+              placeholder="password"
               autocomplete="new-password"
               className="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
               required
